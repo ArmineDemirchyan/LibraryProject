@@ -12,6 +12,8 @@
     "@testing-library/user-event": "^13.5.0",
     "babel-plugin-macros": "^3.1.0",
     "react": "^17.0.2",
+    "react-admin": "^3.19.11",
+    "react-admin-lb4": "^1.0.3",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
