@@ -1,10 +1,9 @@
 import { BASE_URL } from "../../constants";
-
 const END_POINTS = {
     books:'books',
 }
 class BookService {
-    async getBooks(data) {
+    async getBooks() {
 
         const url = `${BASE_URL}/${END_POINTS.books}`
         const response = await fetch(url, {

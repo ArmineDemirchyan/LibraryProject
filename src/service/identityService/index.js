@@ -10,7 +10,7 @@ class IdentityService {
         const url = `${BASE_URL}/${END_POINTS.register}`
         const response = await fetch(url, {
             method:'POST',
-            mode:'no-cors',
+            
             body:JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json-patch+json",

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { List,Datagrid,TextField } from "react-admin";
 import bookService from "../../../service/bookService";
 
 function BooksList(){
@@ -7,7 +6,10 @@ function BooksList(){
      const response = bookService.getBooks();
     },[]);
     return(
-        <div></div>
+        <div>
+            <div>filter goes here</div>
+            <div>datatable goes here</div>
+        </div>
     )
 }
 export default BooksList;
