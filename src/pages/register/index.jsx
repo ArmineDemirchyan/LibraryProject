@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from "react";
 import styles from "./register.module.css";
-import { USER_TYPES } from "../../../constants";
-import identityService from '../../../service/identityService';
+import { USER_TYPES } from "../../helpers/constants";
+import identityService from '../../service/identityService';
 
 export function Register() {
     const [userType, setUserType] = useState(USER_TYPES.STUDENT);

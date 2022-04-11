@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../constants";
+import { BASE_URL } from "../../helpers/constants";
 
 const END_POINTS = {
     books:'books',
