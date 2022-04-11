@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState } from "react";
 import styles from "./register.module.css";
-import { USER_TYPES } from "../../../constants";
-import identityService from '../../../service/identityService';
-import axios from 'axios';
+import { USER_TYPES } from "../../helpers/constants";
+import identityService from '../../service/identityService';
 
 export function Register() {
     const [userType, setUserType] = useState(USER_TYPES.STUDENT);
@@ -16,12 +15,6 @@ export function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [phone, setPhone] = useState('');
-    // const [registeredData, setRegisteredData] = useState({ name: '', lastname: '' });
-
-
-    //patkeracrir che ?motavor- ) nayi es mi registeredDAtan karair amen angamupdate aneir, vor esqan state chpaheir, vortev esqan angam qo componenty renderea linelu vory shat kopit sxal a eli, bayc voch qo paragayum )
-    ///es inchqan state es pahel)
-    //stex karair senc aneir
 
     const handleNameChange = (event) => {
         const value = event.target.value;
@@ -62,38 +55,17 @@ export function Register() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(name, lastname, passportNumber, email, confirmPassword, phone);
-
-        var cors = require('cors')
-        const corsOptions = {
-            origin: 'http://localhost:3000',
-            credentials: true,            //access-control-allow-credentials:true
-            optionSuccessStatus: 200
-        }
-
-        axios.post('http://138.68.129.12/api/register', {
-            email: email,
-            password: password,
-            firstName: name,
-            lastName: lastname,
-            phoneNumber: phone,
-            groupNumber: groupNumber,
-            studentCardNumber: studentCardNumber
-        })
-            .then(function (response) {
-                console.log(response);
-            })
-
-        // const response = identityService.register(
-        //     {
-        //         email: email,
-        //         password: password,
-        //         firstName: name,
-        //         lastName: lastname,
-        //         phoneNumber: phone,
-        //         groupNumber: groupNumber,
-        //         studentCardNumber: studentCardNumber
-        //     }
-        // );
+        const response = identityService.register(
+            {
+                email: email,
+                password: password,
+                firstName: name,
+                lastName: lastname,
+                phoneNumber: phone,
+                groupNumber: groupNumber,
+                studentCardNumber: studentCardNumber
+              }
+        );
     };
     return <div className={styles.base_container} >
         <form onSubmit={handleSubmit} >
@@ -138,18 +110,18 @@ export function Register() {
                     }
 
                     <div className={styles.flex}>
-                        {
-                            userType === USER_TYPES.STUDENT ? (
-                                <div className={styles.formgroup}>
-                                    <label className={styles.label} htmlFor="studentCardNumber">Ուսանողական տոմսի համար</label>
-                                    <input className={styles.input} value={studentCardNumber} onChange={handleStudentCardNumberChange} type="text" name="username" placeholder="Օրինակ`  Դ-128" />
-                                </div>
-                            ) : <div className={styles.formgroup}>
-                                <label className={styles.label}>Անձնագրի համար</label>
-                                <input className={styles.input} value={passportNumber} onChange={handlePassportNumberChange} type="text" name="username" placeholder="Օրինակ Դ-128" />
+                    {
+                        userType===USER_TYPES.STUDENT?(
+                            <div className={styles.formgroup}>
+                                <label className={styles.label} htmlFor="studentCardNumber">Ուսանողական տոմսի համար</label>
+                                <input className={styles.input} value={studentCardNumber} onChange={handleStudentCardNumberChange} type="text" name="username" placeholder="Օրինակ`  Դ-128" />
                             </div>
-                        }
-
+                        ):<div className={styles.formgroup}>
+                            <label className={styles.label}>Անձնագրի համար</label>
+                            <input className={styles.input} value={passportNumber} onChange={handlePassportNumberChange} type="text" name="username" placeholder="Օրինակ Դ-128" />
+                        </div>
+                    }
+                        
                         <div className={styles.formgroup}>
                             <label className={styles.label} htmlFor="email">Էլ․հասցե</label>
                             <input className={styles.input} value={email} onChange={handleEmailChange} type="email" name="username" placeholder="example@gmail.com" />
