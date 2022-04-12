@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-import bookService from "../../../service/bookService";
+import React from "react";
+
 
 function BooksList(){
-    useEffect(()=>{
-     const response = bookService.getBooks();
-    },[]);
+    
     return(
         <div>
             <div>filter goes here</div>

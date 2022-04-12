@@ -1,11 +1,11 @@
-import { BASE_URL } from "../../constants";
+import { HostUrls} from "helpers/constants"
 const END_POINTS = {
     books:'books',
 }
 class BookService {
     async getBooks() {
 
-        const url = `${BASE_URL}/${END_POINTS.books}`
+        const url = `${HostUrls.BASE_URL}/${END_POINTS.books}`
         const response = await fetch(url, {
             method:'GET',
     
@@ -16,7 +16,7 @@ class BookService {
             }            
         });
         const responseData = await response.json();
-        console.log(responseData);
+        return responseData;
     }
 }
 const bookService = new BookService;

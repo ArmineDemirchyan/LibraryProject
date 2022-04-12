@@ -20,6 +20,7 @@ export function Login() {
     console.log(mail, password);
   };
   return (
+    <body>
     <div className={styles.base_container}>
       <form onSubmit={handleSubmit}>
         <div className={styles.header}>Մուտք</div>
@@ -27,7 +28,7 @@ export function Login() {
           <div className={styles.image}>
             <img
               className={styles.img}
-              src="https://wwalt=w.planstudyabroad.uniagents.com/images/login.png"
+              src="https://multsoftautomacao.com.br/multsoft/pluginfile.php/38/block_cocoon_gallery_slider/content/signup.png"
               alt=""
             />
           </div>
@@ -70,5 +71,6 @@ export function Login() {
         </div>
       </form>
     </div>
+    </body>
   );
 }
