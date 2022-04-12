@@ -1,22 +1,13 @@
-/* body{
-    background: url(/public/img/intro-bg.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
-} */
 .base_container {
-    background-color: aliceblue;
+    background-color: #fff;
     border-radius: 10px;
     width: 470px;
-    height: 770px;
+    height: 750px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid gainsboro ;
     margin: 0 auto;
-    margin-top: 150px;
 }
 .changeform {
     display: flex;
@@ -47,21 +38,16 @@
     flex-direction: column;
 }
 .select{
-    margin-top: -20px;
-    min-width: 27.5em;
-    height: 37px;
-    padding: 0px 10px;
+    width: 440px;
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
     background-color: #e0e0e0;
     border:0;
     border-radius: 4px;
-    margin-bottom: 31px;
-    transition: all 250ms ease-in-out; 
 }
 .selectlabel{
     margin-top: -35px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
 }
@@ -71,15 +57,17 @@
 .prof{
     margin-left: 150px;
 }
-.image {
-    margin:0 auto;
+
+.image img{
+    margin-top: 15px;
     width:20em;
     height: 10em;
-
+    margin-left: 50px;
 }
 .flag {
     width: 15px;
     height: 10px;
+    margin-left: 5px;
 }
 .form {
     margin-top: 2em;
@@ -96,7 +84,7 @@
 .label{
     margin-left: 5px;
     font-size: 15px;
-    margin-top: -15px;
+    margin-top: -10px;
 }
 .input{
     margin-top: 6px;
@@ -120,9 +108,7 @@
     display: flex;
 }
 .phonecode{
-    margin-left: 5px;
-    margin-top: 6px;
-    min-width: 10em;
+    width: 10px;
     height: 37px;
     padding: 10px 10px;
     font-size: 16px;
@@ -131,11 +117,11 @@
     border:0;
     border-radius: 4px;
     margin-bottom: 31px;
-    transition: all 250ms ease-in-out;
+    
 }
 .phone{
     margin-top: 6px;
-    min-width: 14em;
+    min-width: 5em;
     height: 37px;
     padding: 0px 10px;
     font-size: 16px;

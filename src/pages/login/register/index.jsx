@@ -55,6 +55,7 @@ export function Register() {
   console.log(groupsDropdownData);
   return (
     <div className={styles.base_container}>
+    
       <form onSubmit={handleSubmit}>
         <div className={styles.header}>Գրանցում</div>
         <div className={styles.changeform}>
@@ -76,12 +77,12 @@ export function Register() {
           </button>
         </div>
         <div className={styles.content}>
-          <div className={styles.image}>
+            <div className={styles.image}>
             <img
               alt=""
               src="https://www.cdc.gov/healthyyouth/classroom-management/images/teacher-expectations.jpg"
             />
-          </div>
+      </div>
           <div className={styles.from}>
             <div className={styles.flex}>
               <div className={styles.formgroup}>
@@ -114,7 +115,7 @@ export function Register() {
                 <label className={styles.selectlabel} htmlFor="groupNumber">
                   Խմբի համար
                 </label>
-                <FormControl className={styles.select} fullWidth>
+                <FormControl className={styles.select} >
                   <InputLabel id="demo-simple-select-label">
                     Խմբի համար
                   </InputLabel>
@@ -215,7 +216,7 @@ export function Register() {
                 <label for="area_code" className={styles.phonecode}>
                   <img
                     className={styles.flag}
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_Armenia.svg/800px-Flag_of_Armenia.svg.png"
+                    src="/img/flag.png"
                     alt="Img"
                   />
                   +374
@@ -225,7 +226,7 @@ export function Register() {
                   value={phoneNumber}
                   onChange={handleChange("phoneNumber")}
                   type="text"
-                  placeholder="6 նիշ"
+                  placeholder="8 նիշ"
                   name="phoneNumber"
                 />
               </div>

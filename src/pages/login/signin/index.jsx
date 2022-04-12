@@ -23,14 +23,15 @@ export function Login() {
     }
   };
   return (
+    
     <div className={styles.base_container}>
       <form onSubmit={handleSubmit}>
-        <div className={styles.header}>Մուտք</div>
+        
         <div className={styles.content}>
           <div className={styles.image}>
             <img
               className={styles.img}
-              src="https://wwalt=w.planstudyabroad.uniagents.com/images/login.png"
+              src="img/login.png"
               alt=""
             />
           </div>
@@ -73,5 +74,6 @@ export function Login() {
         </div>
       </form>
     </div>
+  
   );
 }
