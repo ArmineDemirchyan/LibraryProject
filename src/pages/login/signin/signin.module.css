@@ -1,8 +1,13 @@
-.body{
-    background-image: url(/public/img/intro-bg.jpg);
-}
+/* body{
+    background: url(/public/img/intro-bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+} */
 .base_container {
-    background-color: rgb(246, 248, 251);
+    background-color: aliceblue;
     border-radius: 10px;
     width: 400px;
     display: flex;
@@ -28,8 +33,7 @@
 }
 
 .image {
-    width: 15em;
-    margin: 0 auto;
+    width: 25em;
 }
 
 img {
@@ -82,7 +86,7 @@ img {
     transition: all 250ms ease-in-out;
     cursor: pointer; 
     margin-bottom: 30px;
-    margin-left: 130px;
+    margin-left: 150px;
      
 }
 .btn .hover{

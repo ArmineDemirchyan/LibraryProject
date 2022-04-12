@@ -36,20 +36,3 @@
     transform: rotate(360deg);
   }
 }
-@media screen and (max-width: 400px) {
-  #features {
-    padding: 20px;
-    width: 111%;
-  }
-  #about,
-  
-  #team,
-  
-  #footer {
-    width: 111%;
-  }
-
-  #portfolio {
-    width: 110%;
-  }
-}

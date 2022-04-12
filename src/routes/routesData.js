@@ -50,6 +50,12 @@ const routesData = [
     Comp: Register,
     exact: true,
   },
+  {
+    title: "bookList",
+    path: routes.bookList,
+    Comp: Register,
+    exact: true,
+  },
 ];
 
 export default routesData;

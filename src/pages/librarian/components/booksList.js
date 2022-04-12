@@ -1,13 +1,10 @@
-import React from "react";
+import AdminController from "controllers/admin";
+import React, { useEffect } from "react";
 
-
-function BooksList(){
-    
-    return(
-        <div>
-            <div>filter goes here</div>
-            <div>datatable goes here</div>
-        </div>
-    )
+function BooksList() {
+  useEffect(() => {
+    const response = AdminController.getBooks();
+  }, []);
+  return <div></div>;
 }
 export default BooksList;

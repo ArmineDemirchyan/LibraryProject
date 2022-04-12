@@ -1,26 +1,28 @@
+import SignInController from "controllers/signIn";
+import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React from "react";
 import { useState } from "react";
 import styles from "./signin.module.css";
 
 export function Login() {
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
-  console.log("Hello");
-
-  const handleEmailChange = (event) => {
+  const navigate = useNavigationWithQueryParams();
+  const [userLoginInfo, setUserLoginInfo] = useState({
+    username: "",
+    password: "",
+  });
+  const handleChange = (type) => (event) => {
     const value = event.target.value;
-    setMail(value);
+    setUserLoginInfo({ ...userLoginInfo, [type]: value });
   };
-  const handlePasswordChange = (event) => {
-    const value = event.target.value;
-    setPassword(value);
-  };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(mail, password);
+    const response = await SignInController.login(userLoginInfo);
+    if (response) {
+      console.log(response);
+      navigate("/user");
+    }
   };
   return (
-    <body>
     <div className={styles.base_container}>
       <form onSubmit={handleSubmit}>
         <div className={styles.header}>Մուտք</div>
@@ -28,7 +30,7 @@ export function Login() {
           <div className={styles.image}>
             <img
               className={styles.img}
-              src="https://multsoftautomacao.com.br/multsoft/pluginfile.php/38/block_cocoon_gallery_slider/content/signup.png"
+              src="https://wwalt=w.planstudyabroad.uniagents.com/images/login.png"
               alt=""
             />
           </div>
@@ -39,8 +41,8 @@ export function Login() {
               </label>
               <input
                 className={styles.input}
-                onChange={handleEmailChange}
-                value={mail}
+                onChange={handleChange("username")}
+                value={userLoginInfo.mail}
                 type="email"
                 name="username"
                 placeholder="example@gmail.com"
@@ -52,8 +54,8 @@ export function Login() {
               </label>
               <input
                 className={styles.input}
-                onChange={handlePasswordChange}
-                value={password}
+                onChange={handleChange("password")}
+                value={userLoginInfo.password}
                 type="password"
                 name="password"
                 placeholder="Գաղտնաբառ"
@@ -71,6 +73,5 @@ export function Login() {
         </div>
       </form>
     </div>
-    </body>
   );
 }

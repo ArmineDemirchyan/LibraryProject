@@ -7,7 +7,6 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
   speedAsDuration: true,
 });
 
-
 const Start = () => {
   return (
     <div>
@@ -19,7 +18,6 @@ const Start = () => {
           <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
           <a href="#team">ՀԵՂԻՆԱԿՆԵՐ</a>
           <a href="/login">ՄՈՒՏՔ</a>
-          <a href="/login">ԳՐՔԵՐԻ ՑԱՆԿ</a>
         </div>
       </nav>
       <div>

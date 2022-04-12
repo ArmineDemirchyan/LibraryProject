@@ -264,8 +264,3 @@ footer p{
     margin: auto;
     letter-spacing: 0.5px;
 }
-@media all and (max-width:100%) {
-    body{
-        color:blue;
-    }
-}
