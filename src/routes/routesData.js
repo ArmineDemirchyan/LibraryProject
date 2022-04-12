@@ -1,4 +1,5 @@
 import Admin from "pages/admin";
+import BookList from "pages/bookList";
 import Librarian from "pages/librarian";
 import { Register } from "pages/login/register";
 import { Login } from "pages/login/signin";
@@ -53,7 +54,7 @@ const routesData = [
   {
     title: "bookList",
     path: routes.bookList,
-    Comp: Register,
+    Comp: BookList,
     exact: true,
   },
 ];
