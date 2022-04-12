@@ -3,7 +3,7 @@ export const Hosts = {
   PUBLIC_URL: "PUBLIC_URL",
 };
 
-export const Methods = {groups: "groups"};
+export const Methods = { groups: "groups" };
 
 export const Controllers = {
   register: "register",
