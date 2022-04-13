@@ -1,6 +1,6 @@
 import AppController from "controllers/app";
 import SignInController from "controllers/signIn";
-import { USER_TYPES } from "helpers/constants";
+import { USER_NAVIGATION, USER_TYPES } from "helpers/constants";
 import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React from "react";
 import { useState } from "react";
@@ -31,11 +31,10 @@ export function Login() {
           ? await SignInController.login(userLoginInfo)
           : await SignInController.adminLogin(userLoginInfo);
       if (response.data) {
-        console.log(response);
-        navigate("/user");
+        navigate(USER_NAVIGATION[response.data.role]);
       }
     } else {
-      return;
+      return setErrorMessage("Please Fill all Fields")
     }
   };
   return (

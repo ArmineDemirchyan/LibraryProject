@@ -14,7 +14,7 @@ SignInController.adminLogin = async (body) => {
     Hosts.PUBLIC_URL,
     Controllers.admin,
     Methods.adminLogin,
-    { body }
+    body
   );
 };
 

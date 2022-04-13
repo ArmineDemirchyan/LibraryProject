@@ -27,3 +27,10 @@ export const USER_TYPES = {
   superAdmin: 2,
   student: 3,
 };
+
+export const USER_NAVIGATION = {
+  0: "/accountant",
+  1: "/admin",
+  2: "/admin",
+  3: "/user",
+};
