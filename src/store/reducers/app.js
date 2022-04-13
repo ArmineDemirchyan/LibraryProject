@@ -1,20 +1,17 @@
 import * as actionTypes from "../action-types/app";
 
 const initialState = {
-  queryParams: null,
-  translations: null,
-  showSteps: false,
+  showBooksBasketContainer: false,
+  booksBasket: [],
 };
 
 export default function appReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case actionTypes.SET_QUERYPARAMS:
-      return { ...state, queryParams: payload };
-    case actionTypes.SET_TRANSLATIONS:
-      return { ...state, translations: payload };
-    case actionTypes.CHANGE_STEPS_VISIBILITY:
-      return { ...state, showSteps: payload };
+    case actionTypes.SHOW_BOOKS_BASKET_CONTAINER:
+      return { ...state, showBooksBasketContainer: payload };
+    case actionTypes.BOOKS_BASKET_LIST_CHANGE:
+      return { ...state, booksBasket: payload };
     default:
       return { ...state };
   }
