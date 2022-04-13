@@ -3,12 +3,17 @@ export const Hosts = {
   PUBLIC_URL: "PUBLIC_URL",
 };
 
-export const Methods = { groups: "groups" };
+export const Methods = {
+  groups: "groups",
+  getUserRole: "getUserRole",
+  login: "login",
+  adminLogin: "identity/login",
+};
 
 export const Controllers = {
   register: "register",
   books: "books",
-  login: "login",
+  admin: "admin",
 };
 
 export const HostUrls = {
@@ -17,6 +22,8 @@ export const HostUrls = {
 };
 
 export const USER_TYPES = {
-  TEACHER: "TEACHER",
-  STUDENT: "STUDENT",
+  accountant: 0,
+  librarian: 1,
+  superAdmin: 2,
+  student: 3,
 };

@@ -1,4 +1,6 @@
+import AppController from "controllers/app";
 import SignInController from "controllers/signIn";
+import { USER_TYPES } from "helpers/constants";
 import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React from "react";
 import { useState } from "react";
@@ -6,6 +8,7 @@ import styles from "./signin.module.css";
 
 export function Login() {
   const navigate = useNavigationWithQueryParams();
+  const [errorMessage, setErrorMessage] = useState("");
   const [userLoginInfo, setUserLoginInfo] = useState({
     username: "",
     password: "",
@@ -16,10 +19,23 @@ export function Login() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await SignInController.login(userLoginInfo);
-    if (response) {
-      console.log(response);
-      navigate("/user");
+    if (
+      userLoginInfo.username.length > 0 &&
+      userLoginInfo.password.length > 0
+    ) {
+      const userRole = await AppController.getUserRole(userLoginInfo.username);
+      if (userRole?.userExists) {
+      }
+      const response =
+        userRole.userRole === USER_TYPES.student
+          ? await SignInController.login(userLoginInfo)
+          : await SignInController.adminLogin(userLoginInfo);
+      if (response.data) {
+        console.log(response);
+        navigate("/user");
+      }
+    } else {
+      return;
     }
   };
   return (
@@ -67,6 +83,7 @@ export function Login() {
           </div>
         </div>
         <div className={styles.footer}>
+          <p className="errorMessage">{errorMessage}</p>
           <button className={styles.btn} type="submit">
             Մուտք
           </button>
