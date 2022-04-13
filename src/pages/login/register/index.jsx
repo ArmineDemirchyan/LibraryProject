@@ -2,8 +2,12 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import AppController from "controllers/app";
 import SignInController from "controllers/signIn";
 import React, { useEffect, useState } from "react";
-import { USER_TYPES } from "../../../helpers/constants";
 import styles from "./register.module.css";
+
+const USER_TYPES = {
+  TEACHER: "TEACHER",
+  STUDENT: "STUDENT",
+};
 
 export function Register() {
   const [groupsDropdownData, setGroupsDropdownData] = useState([]);
