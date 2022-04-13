@@ -78,7 +78,7 @@ export default function BookList() {
                   )}
                   <CardContent>
                     <div className="bookList-book-card-cardContent-wrapper">
-                      <h4>Գրքի անուն: {name}</h4>
+                      <h4>Գրքի անուն: {name}</h4>                     
                       <h5>Գրքի հեղինակ: {author}</h5>
                       <p>Գրքի մեկնաբանություն: {description}</p>
                       <div className="buttons-container">
