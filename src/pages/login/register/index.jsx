@@ -51,15 +51,17 @@ export function Register() {
     console.log(e);
     setUserInfo({ ...userInfo, [type]: e.target.value });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = SignInController.register(userInfo);
+    const userExists = await AppController.getUserRole(userInfo.email);
+    if (userExists.userExists) {
+      return alert("The User Already Exists");
+    }
+    const response = await SignInController.register(userInfo);
     console.log(response);
   };
-  console.log(groupsDropdownData);
   return (
     <div className={styles.base_container}>
-    
       <form onSubmit={handleSubmit}>
         <div className={styles.header}>Գրանցում</div>
         <div className={styles.changeform}>
@@ -81,12 +83,12 @@ export function Register() {
           </button>
         </div>
         <div className={styles.content}>
-            <div className={styles.image}>
+          <div className={styles.image}>
             <img
               alt=""
               src="https://www.cdc.gov/healthyyouth/classroom-management/images/teacher-expectations.jpg"
             />
-      </div>
+          </div>
           <div className={styles.from}>
             <div className={styles.flex}>
               <div className={styles.formgroup}>
@@ -119,7 +121,7 @@ export function Register() {
                 <label className={styles.selectlabel} htmlFor="groupNumber">
                   Խմբի համար
                 </label>
-                <FormControl className={styles.select} >
+                <FormControl className={styles.select}>
                   <InputLabel id="demo-simple-select-label">
                     Խմբի համար
                   </InputLabel>
@@ -218,11 +220,7 @@ export function Register() {
               </label>
               <div>
                 <label for="area_code" className={styles.phonecode}>
-                  <img
-                    className={styles.flag}
-                    src="/img/flag.png"
-                    alt="Img"
-                  />
+                  <img className={styles.flag} src="/img/flag.png" alt="Img" />
                   +374
                 </label>
                 <input

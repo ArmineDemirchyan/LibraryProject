@@ -1,9 +1,8 @@
 import AppController from "controllers/app";
 import SignInController from "controllers/signIn";
-import { USER_NAVIGATION, USER_TYPES } from "helpers/constants";
+import { USER_NAVIGATION } from "helpers/constants";
 import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./signin.module.css";
 
 export function Login() {
@@ -27,28 +26,22 @@ export function Login() {
       if (userRole?.userExists) {
       }
       const response =
-        userRole.userRole === USER_TYPES.student
+        userRole.userRole === 1
           ? await SignInController.login(userLoginInfo)
           : await SignInController.adminLogin(userLoginInfo);
       if (response.data) {
         navigate(USER_NAVIGATION[response.data.role]);
       }
     } else {
-      return setErrorMessage("Please Fill all Fields")
+      return setErrorMessage("Please Fill all Fields");
     }
   };
   return (
-    
     <div className={styles.base_container}>
       <form onSubmit={handleSubmit}>
-        
         <div className={styles.content}>
           <div className={styles.image}>
-            <img
-              className={styles.img}
-              src="img/login.png"
-              alt=""
-            />
+            <img className={styles.img} src="img/login.png" alt="" />
           </div>
           <div className={styles.from}>
             <div className={styles.form_group}>
@@ -90,6 +83,5 @@ export function Login() {
         </div>
       </form>
     </div>
-  
   );
 }
