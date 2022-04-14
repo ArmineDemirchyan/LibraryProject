@@ -7,6 +7,7 @@ import {
   IconButton,
 } from "@mui/material";
 import BookListFilters from "components/bookListFilters";
+import Loading from "components/loading";
 import BooksListBasket from "container/booksListBasket";
 import UserController from "controllers/user";
 import React, { useEffect, useState } from "react";
@@ -24,7 +25,9 @@ export default function BookList() {
   const booksBasket = useSelector(booksBasketSelector, shallowEqual);
   const dispatch = useDispatch();
   const [bookList, setBookList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const getBookList = async () => {
+    setLoading(true);
     return await UserController.getBookList();
   };
   const handleAddToCard = (books) => () => {
@@ -44,9 +47,11 @@ export default function BookList() {
     getBookList().then((res) => {
       setBookList(res.data.data);
     });
+    setLoading(false);
   }, []);
   return (
     <>
+      {loading && <Loading />}
       <BooksListBasket />
       <div className="booksList-container-wrapper">
         <div className="header-wrapper">

@@ -5,9 +5,13 @@ import {
   CardContent,
   CardMedia,
   Modal,
+  TextField,
 } from "@mui/material";
-import React from "react";
 import Button from "@mui/material/Button";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { isEmpty } from "lodash";
+import React from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   BooksBasketListChange,
@@ -19,8 +23,6 @@ import {
 } from "store/selectors/app";
 // import scss
 import "./index.scss";
-import BookList from "pages/bookList";
-import { isEmpty } from "lodash";
 
 const style = {
   position: "absolute",
@@ -79,6 +81,22 @@ export default function BooksListBasket() {
                             <h4>Գրքի անուն: {name}</h4>
                             <h5>Գրքի հեղինակ: {author}</h5>
                             <p>Գրքի մեկնաբանություն: {description}</p>
+                            <div>
+                              <LocalizationProvider
+                                dateAdapter={AdapterDateFns}
+                              >
+                                <DateTimePicker
+                                  renderInput={(props) => (
+                                    <TextField {...props} />
+                                  )}
+                                  label="DateTimePicker"
+                                  // value={value}
+                                  // onChange={(newValue) => {
+                                  //   setValue(newValue);
+                                  // }}
+                                />
+                              </LocalizationProvider>
+                            </div>
                             <div className="buttons-container">
                               <Button
                                 variant="outlined"

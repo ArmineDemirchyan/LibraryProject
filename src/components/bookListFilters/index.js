@@ -50,7 +50,7 @@ export default function BookListFilters({ setBookList }) {
         onChange={handleSearch("author")}
         placeholder="Փնտրել Գրքի Հեղինակով"
       />
-      <Box sx={{ maxWidth: 300 }}>
+      <Box sx={{ minWidth: 200 }}>
         <FormControl variant="outlined" fullWidth>
           <InputLabel id="demo-simple-select-label">
             Փնտրել Գրքի Կատեգորիայով

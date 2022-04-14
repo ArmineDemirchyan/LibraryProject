@@ -1,6 +1,7 @@
 .modal-container {
   display: flex;
   flex-direction: column;
+  height: 40rem;
 
   .modal-header {
     display: flex;
@@ -14,8 +15,10 @@
 
   .booksList-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    overflow-y: auto;
+    justify-content: center;
+    overflow: scroll;
   }
 
   .modal-submitButton-wrapper {
