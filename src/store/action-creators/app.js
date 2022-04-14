@@ -9,3 +9,7 @@ export const BooksBasketListChange = (payload) => ({
   type: actionTypes.BOOKS_BASKET_LIST_CHANGE,
   payload,
 });
+export const setBooksList = (payload) => ({
+  type: actionTypes.SET_BOOKS_LIST,
+  payload,
+});

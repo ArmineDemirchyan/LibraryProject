@@ -8,6 +8,7 @@ export const Methods = {
   getUserRole: "getUserRole",
   login: "login",
   adminLogin: "identity/login",
+  categories: "categories"
 };
 
 export const Controllers = {

@@ -24,6 +24,21 @@
 
   .books-wrapper {
     padding: 3rem;
+
+    .books-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .bookList-filters-wrapper {
+      margin-bottom: 1rem;
+
+      .bookList-filters {
+        width: 100%;
+        display: flex;
+      }
+    }
   }
   .bookList-book-card-cardContent-wrapper {
     display: flex;

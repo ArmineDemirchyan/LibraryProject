@@ -48,7 +48,6 @@ export function Register() {
   };
 
   const handleChange = (type) => (e) => {
-    console.log(e);
     setUserInfo({ ...userInfo, [type]: e.target.value });
   };
   const handleSubmit = async (event) => {

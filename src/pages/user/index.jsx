@@ -12,7 +12,7 @@ const User = () => {
         <div className={styles.navleft}>
           <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
           <a href="/bookList">ԳՐՔԵՐԻ ՑԱՆԿ</a>
-          
+          <a href="myBooks">Իմ Գրքերը</a>
         </div>
       </nav>
       <div>

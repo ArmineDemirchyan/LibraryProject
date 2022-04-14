@@ -4,9 +4,9 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  CardMedia,
   IconButton,
 } from "@mui/material";
+import BookListFilters from "componets/bookListFilters";
 import BooksListBasket from "container/booksListBasket";
 import UserController from "controllers/user";
 import React, { useEffect, useState } from "react";
@@ -41,7 +41,9 @@ export default function BookList() {
   };
 
   useEffect(() => {
-    getBookList().then((res) => setBookList(res.data.data));
+    getBookList().then((res) => {
+      setBookList(res.data.data);
+    });
   }, []);
   return (
     <>
@@ -63,47 +65,46 @@ export default function BookList() {
           </div>
         </div>
         <div className="books-wrapper">
-          {bookList.map((book) => {
-            const { bookId, image, name, author, description } = book;
-            return (
-              <Card sx={{ maxWidth: 400 }} key={bookId}>
-                <CardActionArea>
-                  {image && (
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image={image}
-                      alt="Book"
-                    />
-                  )}
-                  <CardContent>
-                    <div className="bookList-book-card-cardContent-wrapper">
-                      <h4>Գրքի անուն: {name}</h4>                     
-                      <h5>Գրքի հեղինակ: {author}</h5>
-                      <p>Գրքի մեկնաբանություն: {description}</p>
-                      <div className="buttons-container">
-                        {booksBasket.some((elem) => elem.bookId === bookId) ? (
-                          <Button
-                            variant="outlined"
-                            onClick={handleDeleteFromBasket(bookId)}
-                          >
-                            Ջնջել ամրագրումների ցուցակից
-                          </Button>
-                        ) : (
-                          <Button
-                            variant="outlined"
-                            onClick={handleAddToCard(book)}
-                          >
-                            Ավելացնել ամրագրումների ցուցակում
-                          </Button>
-                        )}
+          <div className="bookList-filters-wrapper">
+            <BookListFilters bookList={bookList} setBookList={setBookList} />
+          </div>
+          <div className="books-list">
+            {bookList.map((book) => {
+              const { bookId, name, author, description } = book;
+              return (
+                <Card sx={{ width: "25rem" }} key={bookId}>
+                  <CardActionArea>
+                    <CardContent>
+                      <div className="bookList-book-card-cardContent-wrapper">
+                        <h4>Գրքի անուն: {name}</h4>
+                        <h5>Գրքի հեղինակ: {author}</h5>
+                        <p>Գրքի մեկնաբանություն: {description}</p>
+                        <div className="buttons-container">
+                          {booksBasket.some(
+                            (elem) => elem.bookId === bookId
+                          ) ? (
+                            <Button
+                              variant="outlined"
+                              onClick={handleDeleteFromBasket(bookId)}
+                            >
+                              Ջնջել ամրագրումների ցուցակից
+                            </Button>
+                          ) : (
+                            <Button
+                              variant="outlined"
+                              onClick={handleAddToCard(book)}
+                            >
+                              Ավելացնել ամրագրումների ցուցակում
+                            </Button>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            );
-          })}
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

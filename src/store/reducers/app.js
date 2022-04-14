@@ -3,6 +3,7 @@ import * as actionTypes from "../action-types/app";
 const initialState = {
   showBooksBasketContainer: false,
   booksBasket: [],
+  bookList: [],
 };
 
 export default function appReducer(state = initialState, action) {
@@ -12,6 +13,8 @@ export default function appReducer(state = initialState, action) {
       return { ...state, showBooksBasketContainer: payload };
     case actionTypes.BOOKS_BASKET_LIST_CHANGE:
       return { ...state, booksBasket: payload };
+    case actionTypes.SET_BOOKS_LIST:
+      return { ...state, bookList: payload };
     default:
       return { ...state };
   }
