@@ -1,4 +1,5 @@
 import React from "react";
+import routes from "routes/routes";
 import styles from "./user.module.css";
 
 const User = () => {
@@ -11,8 +12,8 @@ const User = () => {
         </div>
         <div className={styles.navleft}>
           <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
-          <a href="/bookList">ԳՐՔԵՐԻ ՑԱՆԿ</a>
-          <a href="myBooks">Իմ Գրքերը</a>
+          <a href={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</a>
+          <a href={routes.myBooks}>Իմ Գրքերը</a>
         </div>
       </nav>
       <div>

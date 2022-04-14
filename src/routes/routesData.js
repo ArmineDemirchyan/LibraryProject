@@ -3,6 +3,7 @@ import BookList from "pages/bookList";
 import Librarian from "pages/librarian";
 import { Register } from "pages/login/register";
 import { Login } from "pages/login/signin";
+import myBooks from "pages/myBooks";
 import Start from "pages/start";
 import SuperAdmin from "pages/superadmin";
 import User from "pages/user";
@@ -55,6 +56,12 @@ const routesData = [
     title: "bookList",
     path: routes.bookList,
     Comp: BookList,
+    exact: true,
+  },
+  {
+    title: "myBooks",
+    path: routes.myBooks,
+    Comp: myBooks,
     exact: true,
   },
 ];

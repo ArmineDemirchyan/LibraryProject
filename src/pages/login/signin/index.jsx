@@ -1,13 +1,18 @@
+import Loading from "components/loading";
 import AppController from "controllers/app";
 import SignInController from "controllers/signIn";
 import { USER_NAVIGATION } from "helpers/constants";
 import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { saveUserInfo } from "store/action-creators/userInfo";
 import styles from "./signin.module.css";
 
 export function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigationWithQueryParams();
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const [userLoginInfo, setUserLoginInfo] = useState({
     username: "",
     password: "",
@@ -17,6 +22,7 @@ export function Login() {
     setUserLoginInfo({ ...userLoginInfo, [type]: value });
   };
   const handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
     if (
       userLoginInfo.username.length > 0 &&
@@ -30,14 +36,17 @@ export function Login() {
           ? await SignInController.login(userLoginInfo)
           : await SignInController.adminLogin(userLoginInfo);
       if (response.data) {
+        dispatch(saveUserInfo(response.data));
         navigate(USER_NAVIGATION[response.data.role]);
       }
     } else {
       return setErrorMessage("Please Fill all Fields");
     }
+    setLoading(false);
   };
   return (
     <div className={styles.base_container}>
+      {loading && <Loading />}
       <form onSubmit={handleSubmit}>
         <div className={styles.content}>
           <div className={styles.image}>
