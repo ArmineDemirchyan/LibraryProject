@@ -10,7 +10,7 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 
 const Start = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <nav>
         <div className={styles.navright}>
           <Link to="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
