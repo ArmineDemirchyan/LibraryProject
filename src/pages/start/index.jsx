@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SmoothScroll from "smooth-scroll";
 import styles from "./start.module.css";
 
@@ -12,12 +13,12 @@ const Start = () => {
     <div>
       <nav>
         <div className={styles.navright}>
-          <a href="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</a>
+          <Link to="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
         </div>
         <div className={styles.navleft}>
-          <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
-          <a href="#team">ՀԵՂԻՆԱԿՆԵՐ</a>
-          <a href="/login">ՄՈՒՏՔ</a>
+          <Link to="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</Link>
+          <Link to="#team">ՀԵՂԻՆԱԿՆԵՐ</Link>
+          <Link to="/login">ՄՈՒՏՔ</Link>
         </div>
       </nav>
       <div>
@@ -31,9 +32,9 @@ const Start = () => {
               ԵԻՊՔ-ի օնլայն գրադարան, որտեղ կարող ես փնտրել,գտնել և ամրագրել քեզ
               անհրաժեշտ գրքերը։
             </p>
-            <a href="#about" className={styles.btn}>
+            <Link to="#about" className={styles.btn}>
               Կարդալ ավելին
-            </a>
+            </Link>
           </div>
         </div>
         <div id="about" className={styles.about}>

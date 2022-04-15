@@ -5,13 +5,12 @@ import {
   CardContent,
   CardMedia,
   Modal,
-  TextField,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import BooksListBasketDatePickers from "components/booksListBasketDatePickers";
+import UserController from "controllers/user";
 import { isEmpty } from "lodash";
-import React from "react";
+import React, { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   BooksBasketListChange,
@@ -23,6 +22,7 @@ import {
 } from "store/selectors/app";
 // import scss
 import "./index.scss";
+import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
@@ -38,6 +38,7 @@ const style = {
 };
 
 export default function BooksListBasket() {
+  const [datePickersData, setDatePickerData] = useState({});
   const showBasketContainer = useSelector(
     showBooksBasketContainerSelector,
     shallowEqual
@@ -54,6 +55,30 @@ export default function BooksListBasket() {
     dispatch(BooksBasketListChange(newBookList));
   };
 
+  const handleReserveBooks = async () => {
+    let error = false;
+    const newBookList = booksList.map(({ bookId }) => {
+      if (
+        datePickersData[bookId] &&
+        datePickersData[bookId].borrowingDate &&
+        datePickersData[bookId].returnDate
+      ) {
+        return {
+          bookId,
+          borrowingDate: datePickersData[bookId].borrowingDate,
+          returnDate: datePickersData[bookId].returnDate,
+        };
+      }
+      error = true;
+    });
+    if (error) return toast.error("Please fill al fields");
+    const response = await UserController.ReserveNewBook(newBookList);
+    if (!response.hasError) {
+      dispatch(BooksBasketListChange([]));
+      dispatch(showBooksBasketContainer(false));
+    }
+  };
+
   return (
     <Modal onClose={handleCloseModal} open={showBasketContainer}>
       <Box sx={style}>
@@ -66,7 +91,7 @@ export default function BooksListBasket() {
               <div className="booksList-wrapper">
                 {booksList.map(
                   ({ bookId, image, name, author, description }, index) => (
-                    <Card sx={{ maxWidth: 300 }} key={bookId}>
+                    <Card sx={{ maxWidth: "25rem" }} key={bookId}>
                       <CardActionArea>
                         {image && (
                           <CardMedia
@@ -81,22 +106,11 @@ export default function BooksListBasket() {
                             <h4>Գրքի անուն: {name}</h4>
                             <h5>Գրքի հեղինակ: {author}</h5>
                             <p>Գրքի մեկնաբանություն: {description}</p>
-                            <div>
-                              <LocalizationProvider
-                                dateAdapter={AdapterDateFns}
-                              >
-                                <DateTimePicker
-                                  renderInput={(props) => (
-                                    <TextField {...props} />
-                                  )}
-                                  label="DateTimePicker"
-                                  // value={value}
-                                  // onChange={(newValue) => {
-                                  //   setValue(newValue);
-                                  // }}
-                                />
-                              </LocalizationProvider>
-                            </div>
+                            <BooksListBasketDatePickers
+                              state={datePickersData}
+                              setState={setDatePickerData}
+                              bookId={bookId}
+                            />
                             <div className="buttons-container">
                               <Button
                                 variant="outlined"
@@ -113,7 +127,9 @@ export default function BooksListBasket() {
                 )}
               </div>
               <div className="modal-submitButton-wrapper">
-                <Button variant="contained">Ամրագրել</Button>
+                <Button onClick={handleReserveBooks} variant="contained">
+                  Ամրագրել
+                </Button>
               </div>
             </>
           )}

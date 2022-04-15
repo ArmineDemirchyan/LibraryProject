@@ -3,6 +3,7 @@ import AppController from "controllers/app";
 import SignInController from "controllers/signIn";
 import React, { useEffect, useState } from "react";
 import styles from "./register.module.css";
+import { toast } from "react-toastify";
 
 const USER_TYPES = {
   TEACHER: "TEACHER",
@@ -54,7 +55,7 @@ export function Register() {
     event.preventDefault();
     const userExists = await AppController.getUserRole(userInfo.email);
     if (userExists.userExists) {
-      return alert("The User Already Exists");
+      return toast.error("The User Already Exists");
     }
     const response = await SignInController.register(userInfo);
     console.log(response);

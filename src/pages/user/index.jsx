@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import routes from "routes/routes";
 import styles from "./user.module.css";
 
@@ -8,12 +9,12 @@ const User = () => {
       {/* className={navbar ? 'nav active' : 'navbar'} */}
       <nav>
         <div className={styles.navright}>
-          <a href="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</a>
+          <Link to="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
         </div>
         <div className={styles.navleft}>
-          <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
-          <a href={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</a>
-          <a href={routes.myBooks}>Իմ Գրքերը</a>
+          <Link to="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</Link>
+          <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
+          <Link to={routes.myBooks}>Իմ Գրքերը</Link>
         </div>
       </nav>
       <div>
@@ -27,9 +28,9 @@ const User = () => {
               ԵԻՊՔ-ի օնլայն գրադարան, որտեղ կարող ես փնտրել,գտնել և ամրագրել քեզ
               անհրաժեշտ գրքերը։
             </p>
-            <a href="#about" className={styles.btn}>
+            <Link to="#about" className={styles.btn}>
               Կարդալ ավելին
-            </a>
+            </Link>
           </div>
         </div>
         <div id="about" className={styles.about}>

@@ -20,6 +20,7 @@ import {
 import { booksBasketSelector } from "store/selectors/app";
 //import scss
 import "./index.scss";
+import { toast } from "react-toastify";
 
 export default function BookList() {
   const booksBasket = useSelector(booksBasketSelector, shallowEqual);
@@ -74,7 +75,7 @@ export default function BookList() {
             <BookListFilters bookList={bookList} setBookList={setBookList} />
           </div>
           <div className="books-list">
-            {bookList.map((book) => {
+            {bookList?.map((book) => {
               const { bookId, name, author, description } = book;
               return (
                 <Card sx={{ width: "25rem" }} key={bookId}>

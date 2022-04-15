@@ -22,7 +22,7 @@ const REQ = async (
     );
     return response;
   } catch (err) {
-    throw new Error(err);
+    return { hasError: true, errorMessage: err.message };
   }
 };
 

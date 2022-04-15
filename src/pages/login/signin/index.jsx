@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveUserInfo } from "store/action-creators/userInfo";
 import styles from "./signin.module.css";
+import { Link } from "react-router-dom";
 
 export function Login() {
   const dispatch = useDispatch();
@@ -78,9 +79,9 @@ export function Login() {
                 name="password"
                 placeholder="Գաղտնաբառ"
               />
-              <a href="/register" className={styles.registerlink}>
+              <Link to="/register" className={styles.registerlink}>
                 Գրանցում
-              </a>
+              </Link>
             </div>
           </div>
         </div>

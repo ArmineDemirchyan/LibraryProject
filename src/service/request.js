@@ -1,5 +1,7 @@
 import axios from "axios";
 import { Hosts, HostUrls } from "helpers/constants";
+import store from "store/app";
+import { userPersonalInfoSelector } from "../store/selectors/userInfo";
 
 const constructBaseURLFunction = (controller, method) =>
   `${HostUrls.BASE_URL}/${controller}/${method}`;
@@ -27,6 +29,7 @@ export const request = (
   data = {},
   headers
 ) => {
+  const token = userPersonalInfoSelector(store.getState()).token;
   return axios({
     url: constructUrl(host)(controller, method),
     method: reqMethod,
@@ -35,6 +38,7 @@ export const request = (
       "Content-Type": "application/json-patch+json",
       Accept: "text/plain",
       charset: "UTF-8",
+      Authorization: token ? `Bearer ${token}` : "",
     },
     data,
   });
