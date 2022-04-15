@@ -33,6 +33,7 @@ UserController.ReserveNewBook = async (books) => {
       })
     )
   );
+  console.log(responses);
   responses.map((res) =>
     res.hasError ? toast.error(res.errorMessage) : toast.success("Success")
   );
