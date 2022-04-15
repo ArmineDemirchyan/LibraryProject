@@ -1,3 +1,7 @@
+import AdminBooksList from "containers/adminBooksList";
+import AdminNewReservations from "containers/adminNewReservations";
+import AdminUsersList from "containers/adminUsersList";
+
 export const Hosts = {
   BASE_URL: "BASE_URL",
   PUBLIC_URL: "PUBLIC_URL",
@@ -37,3 +41,9 @@ export const USER_NAVIGATION = {
   2: "/admin",
   3: "/user",
 };
+
+export const adminHeaderData = [
+  { title: "Գրքերի Ցանկ", Comp: AdminBooksList, id: 0 },
+  { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 1 },
+  { title: "նոր հայյտեր", Comp: AdminNewReservations, id: 2 },
+];

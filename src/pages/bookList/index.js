@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import BookListFilters from "components/bookListFilters";
 import Loading from "components/loading";
-import BooksListBasket from "container/booksListBasket";
+import BooksListBasket from "containers/booksListBasket";
 import UserController from "controllers/user";
 import React, { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
