@@ -20,7 +20,6 @@ import {
 import { booksBasketSelector } from "store/selectors/app";
 //import scss
 import "./index.scss";
-import { toast } from "react-toastify";
 
 export default function BookList() {
   const booksBasket = useSelector(booksBasketSelector, shallowEqual);

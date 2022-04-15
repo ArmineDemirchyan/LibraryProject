@@ -10,6 +10,7 @@ export const Methods = {
   adminLogin: "identity/login",
   categories: "categories",
   reservations: "reservations",
+  logOut: "logOut",
 };
 
 export const Controllers = {

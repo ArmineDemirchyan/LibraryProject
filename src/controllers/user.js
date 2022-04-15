@@ -17,13 +17,6 @@ UserController.getBookCategories = async () => {
 };
 
 UserController.ReserveNewBook = async (books) => {
-  // const responses = books.map(async (book) => {
-  //   return await API.POST(Hosts.BASE_URL, Methods.reservations, "", {
-  //     bookId: book.bookId,
-  //     borrowingDate: book.borrowingDate,
-  //     returnDate: book.returnDate,
-  //   });
-  // });
   const responses = await Promise.all(
     books.map((book) =>
       API.POST(Hosts.BASE_URL, Methods.reservations, "", {
@@ -33,11 +26,14 @@ UserController.ReserveNewBook = async (books) => {
       })
     )
   );
-  console.log(responses);
   responses.map((res) =>
     res.hasError ? toast.error(res.errorMessage) : toast.success("Success")
   );
   return responses;
+};
+
+UserController.logOut = async () => {
+  return await API.POST(Hosts.BASE_URL, Methods.logOut, "");
 };
 
 export default UserController;

@@ -69,7 +69,7 @@ export default function BooksListBasket() {
           returnDate: datePickersData[bookId].returnDate,
         };
       }
-      error = true;
+      return (error = true);
     });
     if (error) return toast.error("Please fill al fields");
     const response = await UserController.ReserveNewBook(newBookList);
