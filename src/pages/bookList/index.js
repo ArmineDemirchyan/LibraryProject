@@ -7,7 +7,6 @@ import {
   hexToRgb,
   IconButton,
 } from "@mui/material";
-import { height } from "@mui/system";
 import BookListFilters from "components/bookListFilters";
 import Loading from "components/loading";
 import BooksListBasket from "containers/booksListBasket";

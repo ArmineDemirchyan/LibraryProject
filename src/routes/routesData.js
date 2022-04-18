@@ -3,7 +3,6 @@ import AdminNewReservations from "containers/adminNewReservations";
 import AdminUsersList from "containers/adminUsersList";
 import Admin from "pages/admin";
 import BookList from "pages/bookList";
-import Librarian from "pages/librarian";
 import { Register } from "pages/login/register";
 import { Login } from "pages/login/signin";
 import myBooks from "pages/myBooks";
@@ -35,12 +34,6 @@ const routesData = [
     title: "superAdmin",
     path: routes.superAdmin,
     Comp: SuperAdmin,
-    exact: true,
-  },
-  {
-    title: "librarian",
-    path: routes.librarian,
-    Comp: Librarian,
     exact: true,
   },
   {

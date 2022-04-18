@@ -6,7 +6,7 @@ import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryPa
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveUserInfo } from "store/action-creators/userInfo";
-import styles from "./signin.module.css";
+import "./style.scss";
 import { Link } from "react-router-dom";
 
 export function Login() {
@@ -46,20 +46,20 @@ export function Login() {
     setLoading(false);
   };
   return (
-    <div className={styles.base_container}>
+    <div className="base_container">
       {loading && <Loading />}
       <form onSubmit={handleSubmit}>
-        <div className={styles.content}>
-          <div className={styles.image}>
-            <img className={styles.img} src="img/login.png" alt="" />
-          </div>
-          <div className={styles.from}>
-            <div className={styles.form_group}>
-              <label className={styles.label} htmlFor="email">
+        <div className="content">
+          {/* <div className="image">
+            <img className="img" src="img/login.png" alt="" />
+          </div> */}
+          <div className="from">
+            <div className="form_group">
+              <label className="label" htmlFor="email">
                 Էլ․հասցե
               </label>
               <input
-                className={styles.input}
+                className="input"
                 onChange={handleChange("username")}
                 value={userLoginInfo.mail}
                 type="email"
@@ -67,27 +67,27 @@ export function Login() {
                 placeholder="example@gmail.com"
               />
             </div>
-            <div className={styles.form_group}>
-              <label className={styles.label} htmlFor="password">
+            <div className="form_group">
+              <label className="label" htmlFor="password">
                 Գաղտնաբառ
               </label>
               <input
-                className={styles.input}
+                className="input"
                 onChange={handleChange("password")}
                 value={userLoginInfo.password}
                 type="password"
                 name="password"
                 placeholder="Գաղտնաբառ"
               />
-              <Link to="/register" className={styles.registerlink}>
+              <Link to="/register" className="registerlink">
                 Գրանցում
               </Link>
             </div>
           </div>
         </div>
-        <div className={styles.footer}>
+        <div className="footer">
           <p className="errorMessage">{errorMessage}</p>
-          <button className={styles.btn} type="submit">
+          <button className="btn" type="submit">
             Մուտք
           </button>
         </div>

@@ -2,7 +2,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import AppController from "controllers/app";
 import SignInController from "controllers/signIn";
 import React, { useEffect, useState } from "react";
-import styles from "./register.module.css";
+import "./style.scss";
 import { toast } from "react-toastify";
 
 const USER_TYPES = {
@@ -61,12 +61,12 @@ export function Register() {
     console.log(response);
   };
   return (
-    <div className={styles.base_container}>
+    <div className="base_container">
       <form onSubmit={handleSubmit}>
-        <div className={styles.header}>Գրանցում</div>
-        <div className={styles.changeform}>
+        <div className="header">Գրանցում</div>
+        <div className="changeform">
           <button
-            className={styles.button}
+            className="button"
             disabled={userType === USER_TYPES.STUDENT}
             type="button"
             onClick={() => setUserType(USER_TYPES.STUDENT)}
@@ -74,7 +74,7 @@ export function Register() {
             Ուսանող
           </button>
           <button
-            className={styles.button}
+            className="button"
             disabled={userType === USER_TYPES.TEACHER}
             type="button"
             onClick={() => setUserType(USER_TYPES.TEACHER)}
@@ -82,33 +82,33 @@ export function Register() {
             Դասախոս
           </button>
         </div>
-        <div className={styles.content}>
-          <div className={styles.image}>
+        <div className="content">
+          <div className="image">
             <img
               alt=""
               src="https://www.cdc.gov/healthyyouth/classroom-management/images/teacher-expectations.jpg"
             />
           </div>
-          <div className={styles.from}>
-            <div className={styles.flex}>
-              <div className={styles.formgroup}>
-                <label className={styles.label} htmlFor="name">
+          <div className="from">
+            <div className="flex">
+              <div className="formgroup">
+                <label className="label" htmlFor="name">
                   Անուն
                 </label>
                 <input
-                  className={styles.input}
+                  className="input"
                   value={firstName}
                   onChange={handleChange("firstName")}
                   type="text"
                   name="username"
                 />
               </div>
-              <div className={styles.formgroup}>
-                <label className={styles.label} htmlFor="lastname">
+              <div className="formgroup">
+                <label className="label" htmlFor="lastname">
                   Ազգանուն
                 </label>
                 <input
-                  className={styles.input}
+                  className="input"
                   value={lastName}
                   onChange={handleChange("lastName")}
                   type="text"
@@ -117,12 +117,12 @@ export function Register() {
               </div>
             </div>
             {userType === USER_TYPES.STUDENT && (
-              <div className={styles.formgroup}>
-                <label className={styles.selectlabel} htmlFor="groupNumber">
+              <div className="formgroup">
+                <label className="selectlabel" htmlFor="groupNumber">
                   Խմբի համար
                 </label>
-                <FormControl className={styles.select}>
-                  <InputLabel id="demo-simple-select-label">
+                <FormControl className="select">
+                  <InputLabel className="select-label" id="demo-simple-select-label">
                     Խմբի համար
                   </InputLabel>
                   <Select
@@ -143,14 +143,14 @@ export function Register() {
               </div>
             )}
 
-            <div className={styles.flex}>
+            <div className="flex">
               {userType === USER_TYPES.STUDENT ? (
-                <div className={styles.formgroup}>
-                  <label className={styles.label} htmlFor="studentCardNumber">
+                <div className="formgroup">
+                  <label className="label" htmlFor="studentCardNumber">
                     Ուսանողական տոմսի համար
                   </label>
                   <input
-                    className={styles.input}
+                    className="input"
                     value={studentCardNumber}
                     onChange={handleChange("studentCardNumber")}
                     type="text"
@@ -159,10 +159,10 @@ export function Register() {
                   />
                 </div>
               ) : (
-                <div className={styles.formgroup}>
-                  <label className={styles.label}>Անձնագրի համար</label>
+                <div className="formgroup">
+                  <label className="label">Անձնագրի համար</label>
                   <input
-                    className={styles.input}
+                    className="input"
                     value={passportNumber}
                     onChange={handleChange("passportNumber")}
                     type="text"
@@ -172,12 +172,12 @@ export function Register() {
                 </div>
               )}
 
-              <div className={styles.formgroup}>
-                <label className={styles.label} htmlFor="email">
+              <div className="formgroup">
+                <label className="label" htmlFor="email">
                   Էլ․հասցե
                 </label>
                 <input
-                  className={styles.input}
+                  className="input"
                   value={email}
                   onChange={handleChange("email")}
                   type="email"
@@ -186,13 +186,13 @@ export function Register() {
                 />
               </div>
             </div>
-            <div className={styles.flex}>
-              <div className={styles.formgroup}>
-                <label className={styles.label} htmlFor="password">
+            <div className="flex">
+              <div className="formgroup">
+                <label className="label" htmlFor="password">
                   Գաղտնաբառ
                 </label>
                 <input
-                  className={styles.input}
+                  className="input"
                   value={password}
                   onChange={handleChange("password")}
                   type="password"
@@ -200,12 +200,12 @@ export function Register() {
                   placeholder="Գաղտնաբառ"
                 />
               </div>
-              <div className={styles.formgroup}>
-                <label className={styles.label} htmlFor="confirmpassword">
+              <div className="formgroup">
+                <label className="label" htmlFor="confirmpassword">
                   Հաստատում
                 </label>
                 <input
-                  className={styles.input}
+                  className="input"
                   value={confirmPassword}
                   onChange={handleChange("confirmPassword")}
                   type="password"
@@ -214,17 +214,17 @@ export function Register() {
                 />
               </div>
             </div>
-            <div className={styles.formgroup}>
-              <label className={styles.label} htmlFor="phone">
+            <div className="formgroup">
+              <label className="label" htmlFor="phone">
                 Հեռախոսահամար
               </label>
               <div>
-                <label for="area_code" className={styles.phonecode}>
-                  <img className={styles.flag} src="/img/flag.png" alt="Img" />
+                <label for="area_code" className="phonecode">
+                  <img className="flag" src="/img/flag.png" alt="Img" />
                   +374
                 </label>
                 <input
-                  className={styles.phone}
+                  className="phone"
                   value={phoneNumber}
                   onChange={handleChange("phoneNumber")}
                   type="text"
@@ -235,8 +235,8 @@ export function Register() {
             </div>
           </div>
         </div>
-        <div className={styles.footer}>
-          <button className={styles.btn} type="submit">
+        <div className="footer">
+          <button className="btton" type="submit">
             Ուղարկել հայտը
           </button>
         </div>
