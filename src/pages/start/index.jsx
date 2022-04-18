@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SmoothScroll from "smooth-scroll";
 import styles from "./start.module.css";
 
-export const scroll = new SmoothScroll('a[href*="#"]', {
+export const scroll = new SmoothScroll('Link[to*="#"]', {
   speed: 1000,
   speedAsDuration: true,
 });

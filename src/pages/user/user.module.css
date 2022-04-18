@@ -11,6 +11,10 @@ h2 {
   font-size: 36px;
   color: #333;
 }
+.menuitem{
+  color: #333;
+  background-color: #608dfd;
+}
 
 h3 {
   font-size: 20px;

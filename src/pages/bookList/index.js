@@ -4,8 +4,10 @@ import {
   Card,
   CardActionArea,
   CardContent,
+  hexToRgb,
   IconButton,
 } from "@mui/material";
+import { height } from "@mui/system";
 import BookListFilters from "components/bookListFilters";
 import Loading from "components/loading";
 import BooksListBasket from "containers/booksListBasket";
@@ -50,10 +52,13 @@ export default function BookList() {
     setLoading(false);
   }, []);
   return (
+    <div className="main">
     <>
+    
       {loading && <Loading />}
       <BooksListBasket />
       <div className="booksList-container-wrapper">
+      <div className="book-header"></div>
         <div className="header-wrapper">
           <div className="header">
             <div>
@@ -64,11 +69,12 @@ export default function BookList() {
             <div></div>
             <div>
               <IconButton onClick={handleOpenBasket}>
-                <LocalGroceryStoreIcon />
+                <LocalGroceryStoreIcon className="card-icon"/>
               </IconButton>
             </div>
           </div>
         </div>
+        
         <div className="books-wrapper">
           <div className="bookList-filters-wrapper">
             <BookListFilters bookList={bookList} setBookList={setBookList} />
@@ -77,10 +83,13 @@ export default function BookList() {
             {bookList?.map((book) => {
               const { bookId, name, author, description } = book;
               return (
-                <Card sx={{ width: "25rem" }} key={bookId}>
+                <Card sx={{ width:"25rem",  }}  key={bookId}>
                   <CardActionArea>
-                    <CardContent>
+                    <CardContent>  
+
+                      <img src="https://yazidharoun.files.wordpress.com/2020/11/how-to-format-a-book-3.jpg"/>                   
                       <div className="bookList-book-card-cardContent-wrapper">
+                        
                         <h4>Գրքի անուն: {name}</h4>
                         <h5>Գրքի հեղինակ: {author}</h5>
                         <p>Գրքի մեկնաբանություն: {description}</p>
@@ -112,6 +121,7 @@ export default function BookList() {
           </div>
         </div>
       </div>
-    </>
+      
+    </></div>
   );
 }

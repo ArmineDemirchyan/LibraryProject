@@ -24,21 +24,20 @@ const User = () => {
   return (
     <div className={styles.main}>
       {loading && <Loading />}
-      {/* className={navbar ? 'nav active' : 'navbar'} */}
       <div className="header-wrapper">
         <nav>
           <div className={styles.navright}>
-            <Link to="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
+            <a href="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</a>
           </div>
           <div className={styles.navleft}>
-            <Link to="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</Link>
+            <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
             <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
-            <Link to={routes.myBooks}>Իմ Գրքերը</Link>
+            <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
             <Box sx={{ minWidth: "10rem" }}>
               <FormControl fullWidth>
                 <InputLabel>{displayName}</InputLabel>
                 <Select variant="standard">
-                  <MenuItem onClick={handleLogOut}>դուրս գալ</MenuItem>
+                  <MenuItem onClick={handleLogOut} className={styles.menuitem}>դուրս գալ</MenuItem>
                 </Select>
               </FormControl>
             </Box>
