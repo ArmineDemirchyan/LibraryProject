@@ -20,7 +20,7 @@ const constructUrl = (host) => {
   }
 };
 
-export const request = (
+export const request = async (
   host,
   reqMethod,
   controller,
@@ -30,16 +30,23 @@ export const request = (
   headers
 ) => {
   const token = userPersonalInfoSelector(store.getState()).token;
-  return axios({
-    url: constructUrl(host)(controller, method),
-    method: reqMethod,
-    headers: {
-      ...headers,
-      "Content-Type": "application/json-patch+json",
-      Accept: "text/plain",
-      charset: "UTF-8",
-      Authorization: token ? `Bearer ${token}` : "",
-    },
-    data,
-  });
+  let response = {}
+  try {
+    response  = await axios({
+      url: constructUrl(host)(controller, method),
+      method: reqMethod,
+      headers: {
+        ...headers,
+        "Content-Type": "application/json-patch+json",
+        Accept: "text/plain",
+        charset: "UTF-8",
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+      data,
+    });
+  } catch (error) {
+    console.log(error)
+  }
+return response
+ 
 };

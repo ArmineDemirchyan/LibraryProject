@@ -1,16 +1,10 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { TextField } from "@mui/material";
+import BooksCategoryDropdown from "components/booksCategoryDropdown";
+import UserController from "controllers/user";
 import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { bookListSelector } from "store/selectors/app";
-import { Box } from "@mui/system";
-import UserController from "controllers/user";
 
 export default function BookListFilters({ setBookList }) {
   const [booksCategoriesData, setBooksCategoriesData] = useState({
@@ -50,23 +44,10 @@ export default function BookListFilters({ setBookList }) {
         onChange={handleSearch("author")}
         placeholder="Փնտրել Գրքի Հեղինակով"
       />
-      <Box sx={{ minWidth: 200 }}>
-        <FormControl variant="outlined" fullWidth>
-          <InputLabel id="demo-simple-select-label">
-            Փնտրել Գրքի Կատեգորիայով
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            onChange={handleSearchByCategory}
-            label="Age"
-          >
-            {booksCategoriesData.data?.map((elem) => (
-              <MenuItem value={elem.id}>{elem.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
+      <BooksCategoryDropdown
+        handleSearch={handleSearchByCategory}
+        booksCategoriesData={booksCategoriesData.data}
+      />
     </div>
   );
 }

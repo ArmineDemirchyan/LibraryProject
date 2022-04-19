@@ -15,6 +15,7 @@ export const Methods = {
   categories: "categories",
   reservations: "reservations",
   logOut: "logOut",
+  BookCreationRequests: "BookCreationRequests",
 };
 
 export const Controllers = {
@@ -46,4 +47,23 @@ export const adminHeaderData = [
   { title: "Գրքերի Ցանկ", Comp: AdminBooksList, id: 0 },
   { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 1 },
   { title: "նոր հայյտեր", Comp: AdminNewReservations, id: 2 },
+];
+
+export const ADMIN_CREATE_NEW_BOOK_LIST_INPUTS = [
+  { title: "Անուն", id: "name" },
+  { title: "հեղինակ", id: "author" },
+  { title: "արտադրության տարեթիվ", id: "productionYear", type: "number" },
+  { title: "նկարագրությունը", id: "description" },
+  { title: "էջերի քանակ", id: "pagesCount", type: "number" },
+  { title: "Գրքերի քանակ", id: "quantity", type: "number" },
+  {
+    title: "Հասանելի պատվիրելու համար",
+    id: "availableForBorrowingCount",
+    type: "number",
+  },
+  {
+    title: "Հասանելի Գրադարանում Կարդալու համար",
+    id: "availableForUsingInLibraryCount",
+    type: "number",
+  },
 ];

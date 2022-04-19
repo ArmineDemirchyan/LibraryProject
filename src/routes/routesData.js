@@ -1,6 +1,3 @@
-import AdminBooksList from "containers/adminBooksList";
-import AdminNewReservations from "containers/adminNewReservations";
-import AdminUsersList from "containers/adminUsersList";
 import Admin from "pages/admin";
 import BookList from "pages/bookList";
 import Librarian from "pages/librarian";

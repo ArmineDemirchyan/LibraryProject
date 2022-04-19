@@ -26,6 +26,10 @@ const REQ = async (
   }
 };
 
+API.PUT = async (host, controller, method, data, query, headers) => {
+  return await REQ(host, "put", controller, method, data, query, headers);
+};
+
 API.GET = async (host, controller, method, query = {}, headers = {}) => {
   return await REQ(host, "get", controller, method, null, query, headers);
 };
