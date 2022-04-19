@@ -83,13 +83,13 @@ export function Register() {
           </button>
         </div>
         <div className="content">
-          <div className="image">
+          {/* <div className="image">
             <img
               alt=""
               src="https://www.cdc.gov/healthyyouth/classroom-management/images/teacher-expectations.jpg"
             />
-          </div>
-          <div className="from">
+          </div> */}
+          <div className="form">
             <div className="flex">
               <div className="formgroup">
                 <label className="label" htmlFor="name">
@@ -118,9 +118,6 @@ export function Register() {
             </div>
             {userType === USER_TYPES.STUDENT && (
               <div className="formgroup">
-                <label className="selectlabel" htmlFor="groupNumber">
-                  Խմբի համար
-                </label>
                 <FormControl className="select">
                   <InputLabel className="select-label" id="demo-simple-select-label">
                     Խմբի համար
