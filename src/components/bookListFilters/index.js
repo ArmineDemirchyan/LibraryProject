@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { bookListSelector } from "store/selectors/app";
+import "./style.scss";
 
 export default function BookListFilters({ setBookList }) {
   const [booksCategoriesData, setBooksCategoriesData] = useState({
@@ -35,11 +36,17 @@ export default function BookListFilters({ setBookList }) {
   return (
     <div className="bookList-filters">
       <TextField
+      sx={{ minWidth: 300, 
+            
+            boxShadow: 1,
+            borderRadius: 2,
+          }}
         type="search"
         onChange={handleSearch("name")}
         placeholder="Փնտրել Գրքի Անունով"
       />
       <TextField
+      sx={{ minWidth: 300 }}
         type="search"
         onChange={handleSearch("author")}
         placeholder="Փնտրել Գրքի Հեղինակով"

@@ -1,29 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SmoothScroll from "smooth-scroll";
-import styles from "./start.module.css";
+import "./style.scss";
 
-export const scroll = new SmoothScroll('a[href*="#"]', {
+export const scroll = new SmoothScroll('Link[to*="#"]', {
   speed: 1000,
   speedAsDuration: true,
 });
 
 const Start = () => {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <nav>
-        <div className={styles.navright}>
+        <div className="navright">
           <Link to="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
         </div>
-        <div className={styles.navleft}>
+        <div className="navleft">
           <Link to="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</Link>
           <Link to="#team">ՀԵՂԻՆԱԿՆԵՐ</Link>
           <Link to="/login">ՄՈՒՏՔ</Link>
         </div>
       </nav>
       <div>
-        <div className={styles.info}>
-          <div id="header" className={styles.overlay}>
+        <div className="info">
+          <div id="header" className="overlay">
             <h1>
               ԲԱՐԻ ԳԱԼՈՒՍՏ ԵԻՊՔ-Ի ԳՐԱԴԱՐԱՆ
               <span></span>
@@ -32,16 +32,16 @@ const Start = () => {
               ԵԻՊՔ-ի օնլայն գրադարան, որտեղ կարող ես փնտրել,գտնել և ամրագրել քեզ
               անհրաժեշտ գրքերը։
             </p>
-            <Link to="#about" className={styles.btn}>
+            <Link to="#about" className="btn">
               Կարդալ ավելին
             </Link>
           </div>
         </div>
-        <div id="about" className={styles.about}>
-          <div className={styles.aboutright}>
+        <div id="about" className="about">
+          <div className="aboutright">
             <img src="img/libraryphoto.jpg" alt="Img" />
           </div>
-          <div className={styles.aboutleft}>
+          <div className="aboutleft">
             <h2>ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</h2>
             <p>
               ԵԻՊՔ-ի օնլայն գրադարանից օգտվելու համար մուտք գործիր քո էջ,եթե դեռ

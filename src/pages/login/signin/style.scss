@@ -1,14 +1,4 @@
-.base_container {
-    background-color:#fff;
-    width: 350px;
-    height: 370px;
-    box-shadow: 4px 4px 5px #9f9f9f;
-    display: flex; 
-    align-items: center;
-    border: 0.5px  solid gainsboro ;
-    margin: 0 auto;
-    margin-top: 150px;
-}
+
 .registerlink{
     margin-top: -30px;
     margin-left: 5px;
@@ -44,25 +34,26 @@ img{
     font-family: "Open Sans", sans-serif;
     background-color: #e0e0e0;
     border:0;
-    margin-bottom: 31px;  
+    
 }
 
 .footer{
     margin-top: 2em;
 }
-.btn{
-    font-size: 21px;
-    padding: 5px 20px;
-    border: 0;
-    background-color: #3498db;
+.btn {
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
     color: #fff;
-    cursor: pointer; 
-    margin-left:120px;
-     
-}
-.btn .hover{
-    background-color: #2386c8;
-}
-.btn .focus{
-    outline:none;
-}
+    background-color: #5ca9fb;
+    background-image: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
+    padding: 14px 34px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    border-radius: 25px;
+    border: 0;
+    margin: 0 auto;
+    margin-top: 4em;
+    margin-left:5rem;
+    transition: all 0.5s linear;
+    text-decoration: none;
+  }

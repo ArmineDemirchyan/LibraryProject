@@ -11,6 +11,10 @@ h2 {
   font-size: 36px;
   color: #333;
 }
+.menuitem{
+  color: #333;
+  background-color: #608dfd;
+}
 
 h3 {
   font-size: 20px;
@@ -99,7 +103,8 @@ nav .active {
   display: table;
   width: 100%;
   padding: 0;
-  background: url(/public/img/intro-bg.jpg) center center no-repeat;
+  // background: url(/public/img/intro-bg.jpg) center center no-repeat;
+  background: url(https://media.istockphoto.com/photos/modern-library-with-laptops-on-the-table-and-books-on-the-bookshelves-picture-id1308634001?k=20&m=1308634001&s=612x612&w=0&h=gg_uOTobQvAmGFPcNQpjEcr9SQ6oZWT0xAqP4ww3gCI=) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -259,4 +264,7 @@ footer p {
 .header-wrapper {
   display: flex;
   justify-content: space-between;
+}
+@media only screen and (max-width:1425px) {
+ 
 }

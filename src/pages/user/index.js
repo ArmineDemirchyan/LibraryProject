@@ -9,8 +9,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import routes from "routes/routes";
 import { userPersonalInfoSelector } from "store/selectors/userInfo";
-import styles from "./user.module.css";
-
+import "./style.scss";
 const User = () => {
   const [loading, setLoading] = useState(false);
   const { displayName } = useSelector(userPersonalInfoSelector);
@@ -22,31 +21,30 @@ const User = () => {
     navigate(routes.home);
   };
   return (
-    <div className={styles.main}>
+    <div className="main">
       {loading && <Loading />}
-      {/* className={navbar ? 'nav active' : 'navbar'} */}
       <div className="header-wrapper">
         <nav>
-          <div className={styles.navright}>
-            <Link to="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
+          <div className="navright">
+            <a href="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</a>
           </div>
-          <div className={styles.navleft}>
-            <Link to="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</Link>
+          <div className="navleft">
+            <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
             <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
-            <Link to={routes.myBooks}>Իմ Գրքերը</Link>
+            <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
             <Box sx={{ minWidth: "10rem" }}>
               <FormControl fullWidth>
-                <InputLabel>{displayName}</InputLabel>
+                <InputLabel>{displayName}Լրացուցիչ</InputLabel>
                 <Select variant="standard">
-                  <MenuItem onClick={handleLogOut}>դուրս գալ</MenuItem>
+                  <MenuItem onClick={handleLogOut} className="menuitem">դուրս գալ</MenuItem>
                 </Select>
               </FormControl>
             </Box>
           </div>
         </nav>
         <div>
-          <div className={styles.info}>
-            <div id="header" className={styles.overlay}>
+          <div className="info">
+            <div id="header" className="overlay">
               <h1>
                 ԲԱՐԻ ԳԱԼՈՒՍՏ ԵԻՊՔ-Ի ԳՐԱԴԱՐԱՆ
                 <span></span>
@@ -55,16 +53,16 @@ const User = () => {
                 ԵԻՊՔ-ի օնլայն գրադարան, որտեղ կարող ես փնտրել,գտնել և ամրագրել
                 քեզ անհրաժեշտ գրքերը։
               </p>
-              <Link to="#about" className={styles.btn}>
+              <Link to="#about" className="btn">
                 Կարդալ ավելին
               </Link>
             </div>
           </div>
-          <div id="about" className={styles.about}>
-            <div className={styles.aboutright}>
+          <div id="about" className="about">
+            <div className="aboutright">
               <img src="img/libraryphoto.jpg" />
             </div>
-            <div className={styles.aboutleft}>
+            <div className="aboutleft">
               <h2>ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</h2>
               <p>
                 ԵԻՊՔ-ի օնլայն գրադարանից օգտվելու համար մուտք գործիր քո էջ,եթե
