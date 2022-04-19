@@ -8,6 +8,7 @@ export const Hosts = {
 };
 
 export const Methods = {
+  users: "users",
   groups: "groups",
   getUserRole: "getUserRole",
   login: "login",

@@ -11,7 +11,6 @@ export default function AdminBookEditModal({
 }) {
   const [bookData, setBookData] = useState({});
   useEffect(() => {
-    console.log(editableBook);
     setBookData({
       ...editableBook,
       quantity: editableBook.totalCount,
