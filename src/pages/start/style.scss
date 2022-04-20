@@ -64,21 +64,6 @@ ol {
 body {
     background-color: white;
 }
-/* .container{
-    max-width: 1200px;
-    margin: 0px auto;
-    padding: 0px 15px;
-} */
-@media(max-width:1200px){
-    .container{
-        max-width: 970px;
-    }
-}
-@media(max-width:992px){
-    .container{
-        max-width: 970px;
-    }
-}
 nav {
     position: fixed;
     display: flex;

@@ -46,7 +46,7 @@ export function Login() {
     setLoading(false);
   };
   return (
-    <div className="base_container">
+    <div className="base-container">
       {loading && <Loading />}
       <form onSubmit={handleSubmit}>
         <div className="content">
