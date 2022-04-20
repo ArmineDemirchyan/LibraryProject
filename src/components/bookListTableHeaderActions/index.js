@@ -11,15 +11,18 @@ export default function BookListTableHeaderActions() {
   const handleOpenNewBookModal = (type, payload) => () => {
     setModals({ ...modals, [type]: payload });
   };
+
   return (
     <>
-      <div>
-        <Button onClick={handleOpenNewBookModal("newBookModal", true)}>
-          Ավելացնել Նոր Գիրք
-        </Button>
-        <Button onClick={handleOpenNewBookModal("newCategoryModal", true)}>
-          ավելացնել Նոր Կատեգորիա
-        </Button>
+      <div className="bookList-headerActions-wrapper">
+        <div>
+          <Button onClick={handleOpenNewBookModal("newBookModal", true)}>
+            Ավելացնել Նոր Գիրք
+          </Button>
+          <Button onClick={handleOpenNewBookModal("newCategoryModal", true)}>
+            ավելացնել Նոր Կատեգորիա
+          </Button>
+        </div>
       </div>
       {modals.newBookModal && (
         <AdminAddNewBookModal

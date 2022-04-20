@@ -5,9 +5,7 @@ import AdminController from "controllers/admin";
 import UserController from "controllers/user";
 import { ADMIN_CREATE_NEW_BOOK_LIST_INPUTS } from "helpers/constants";
 import React, { useEffect, useState } from "react";
-import { shallowEqual, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { bookListSelector } from "store/selectors/app";
 
 const style = {
   position: "absolute",
@@ -22,7 +20,6 @@ const style = {
 };
 
 export default function AdminAddNewBookModal({ modalOpened, onClose }) {
-  const booksList = useSelector(bookListSelector, shallowEqual);
   const [booksCategoriesData, setBooksCategoriesData] = useState([]);
   const [newBookData, setNewBookData] = useState({
     name: "",

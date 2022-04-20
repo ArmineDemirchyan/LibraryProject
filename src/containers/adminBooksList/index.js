@@ -14,7 +14,7 @@ export default function AdminBooksList() {
     { headerName: "Անուն", field: "name", flex: 1 },
     { headerName: "հեղինակ", field: "author", flex: 1 },
     { headerName: "արտադրության տարեթիվ", field: "productionYear", flex: 1 },
-    { headerName: "էջերի քանակ", field: "էջերի քանակ", flex: 1 },
+    { headerName: "էջերի քանակ", field: "pagesCount", flex: 1 },
     { headerName: "նկարագրությունը", field: "description", flex: 1 },
     { headerName: "Գրքերի քանակ", field: "totalCount", flex: 1 },
     {

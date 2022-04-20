@@ -17,6 +17,8 @@ export const Methods = {
   reservations: "reservations",
   logOut: "logOut",
   BookCreationRequests: "BookCreationRequests",
+  confirmUser: "users/confirm",
+  changeUserStatus: "users/changeStatus",
 };
 
 export const Controllers = {
@@ -56,7 +58,7 @@ export const ADMIN_CREATE_NEW_BOOK_LIST_INPUTS = [
   { title: "արտադրության տարեթիվ", id: "productionYear", type: "number" },
   { title: "նկարագրությունը", id: "description" },
   { title: "էջերի քանակ", id: "pagesCount", type: "number" },
-  { title: "Գրքերի քանակ", id: "quantity", type: "number" },
+  { title: "Գրքերի քանակ", id: "quantity", type: "number", disabled: true },
   {
     title: "Հասանելի պատվիրելու համար",
     id: "availableForBorrowingCount",

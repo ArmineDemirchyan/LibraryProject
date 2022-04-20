@@ -26,16 +26,19 @@ export default function AdminBookEditModal({
   return (
     <Modal open={isOpened}>
       <div className="edit-modal-container">
-        {ADMIN_CREATE_NEW_BOOK_LIST_INPUTS.map(({ type, title, id }, index) => (
-          <div key={index}>
-            <label htmlFor="id">{title}</label>
-            <TextField
-              type={type || "text"}
-              value={bookData[id]}
-              onChange={handleInputsChange(id)}
-            />
-          </div>
-        ))}
+        {ADMIN_CREATE_NEW_BOOK_LIST_INPUTS.map(
+          ({ type, title, id, disabled }, index) => (
+            <div key={index}>
+              <label htmlFor="id">{title}</label>
+              <TextField
+                type={type || "text"}
+                value={bookData[id]}
+                onChange={handleInputsChange(id)}
+                disabled={disabled}
+              />
+            </div>
+          )
+        )}
         <div className="modal-buttons">
           <Button onClick={onClose(false)}>Չեղարկել</Button>
           <Button onClick={handleSubmit}>Հաստատել</Button>

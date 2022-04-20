@@ -5,6 +5,10 @@ const AdminController = {};
 
 AdminController.getBookList = async () => {
   const response = await API.GET(Hosts.BASE_URL, Controllers.books, "");
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
   return response;
 };
 
@@ -15,8 +19,8 @@ AdminController.CreateNewBook = async (body) => {
     "",
     body
   );
-  if (response.hasError) {
-    toast.error(response.errorMessage);
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
     return false;
   }
   return response.data;
@@ -29,8 +33,8 @@ AdminController.editBook = async (body) => {
     Controllers.books,
     body
   );
-  if (response.hasError) {
-    toast.error(response.errorMessage);
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
     return false;
   }
   return response.data;
@@ -38,21 +42,56 @@ AdminController.editBook = async (body) => {
 
 AdminController.createNewCategory = (body) => {
   const response = API.POST(Hosts.PUBLIC_URL, Methods.categories, "", body);
-  if (response.hasError) {
-    toast.error(response.errorMessage);
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
     return false;
   }
   return response.data;
 };
 
 AdminController.getUsersList = async () => {
+  const response = await API.GET(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    Methods.users
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  return response.data;
+};
+
+AdminController.confirmUser = async (body) => {
   const response = await API.POST(
     Hosts.PUBLIC_URL,
     Controllers.admin,
-    `${Methods.users}/confirm`,
-    { userId: 46 }
+    Methods.confirmUser,
+    body
   );
-  console.log(response);
+  if (response.data?.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  await AdminController.getUsersList();
+  return response?.data;
+};
+
+AdminController.ChangeUserStatus = async (body) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    Methods.changeUserStatus,
+    body
+  );
+  if (response.data?.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  await AdminController.getUsersList();
+  return response?.data;
 };
 
 export default AdminController;

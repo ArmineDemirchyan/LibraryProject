@@ -24,7 +24,7 @@ const REQ = async (
     return response;
   } catch (err) {
     toast.error(err.message);
-    return { hasError: true, errorMessage: err.message };
+    return { data: { hasError: true, errorMessage: err.message } };
   }
 };
 

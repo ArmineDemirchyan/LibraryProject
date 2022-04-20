@@ -32,21 +32,23 @@ export default function BookListFilters({ setBookList }) {
     getBookCategoriesList().then((res) =>
       setBooksCategoriesData({ ...booksCategoriesData, data: res })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="bookList-filters">
       <TextField
-      sx={{ minWidth: 300, 
-            
-            boxShadow: 1,
-            borderRadius: 2,
-          }}
+        sx={{
+          minWidth: 300,
+
+          boxShadow: 1,
+          borderRadius: 2,
+        }}
         type="search"
         onChange={handleSearch("name")}
         placeholder="Փնտրել Գրքի Անունով"
       />
       <TextField
-      sx={{ minWidth: 300 }}
+        sx={{ minWidth: 300 }}
         type="search"
         onChange={handleSearch("author")}
         placeholder="Փնտրել Գրքի Հեղինակով"
