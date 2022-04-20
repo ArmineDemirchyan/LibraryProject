@@ -8,7 +8,7 @@ AdminController.getBookList = async () => {
   return response;
 };
 
-AdminController.CerateNewBook = async (body) => {
+AdminController.CreateNewBook = async (body) => {
   const response = await API.POST(
     Hosts.PUBLIC_URL,
     Methods.BookCreationRequests,
@@ -34,6 +34,25 @@ AdminController.editBook = async (body) => {
     return false;
   }
   return response.data;
+};
+
+AdminController.createNewCategory = (body) => {
+  const response = API.POST(Hosts.PUBLIC_URL, Methods.categories, "", body);
+  if (response.hasError) {
+    toast.error(response.errorMessage);
+    return false;
+  }
+  return response.data;
+};
+
+AdminController.getUsersList = async () => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    `${Methods.users}/confirm`,
+    { userId: 46 }
+  );
+  console.log(response);
 };
 
 export default AdminController;

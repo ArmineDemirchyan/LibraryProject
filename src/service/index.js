@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { request } from "./request";
 const API = {};
 
@@ -22,6 +23,7 @@ const REQ = async (
     );
     return response;
   } catch (err) {
+    toast.error(err.message);
     return { hasError: true, errorMessage: err.message };
   }
 };

@@ -1,5 +1,9 @@
-import React from "react";
+import AdminController from "controllers/admin";
+import React, { useEffect } from "react";
 
 export default function AdminUsersList() {
-  return <div>AdminUsersList</div>;
+  useEffect(() => {
+    AdminController.getUsersList();
+  }, []);
+  return <div></div>;
 }

@@ -30,23 +30,17 @@ export const request = async (
   headers
 ) => {
   const token = userPersonalInfoSelector(store.getState()).token;
-  let response = {}
-  try {
-    response  = await axios({
-      url: constructUrl(host)(controller, method),
-      method: reqMethod,
-      headers: {
-        ...headers,
-        "Content-Type": "application/json-patch+json",
-        Accept: "text/plain",
-        charset: "UTF-8",
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-      data,
-    });
-  } catch (error) {
-    console.log(error)
-  }
-return response
- 
+  const response = await axios({
+    url: constructUrl(host)(controller, method),
+    method: reqMethod,
+    headers: {
+      ...headers,
+      "Content-Type": "application/json-patch+json",
+      Accept: "text/plain",
+      charset: "UTF-8",
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+    data,
+  });
+  return response;
 };

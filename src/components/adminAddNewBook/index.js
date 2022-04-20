@@ -5,7 +5,9 @@ import AdminController from "controllers/admin";
 import UserController from "controllers/user";
 import { ADMIN_CREATE_NEW_BOOK_LIST_INPUTS } from "helpers/constants";
 import React, { useEffect, useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { bookListSelector } from "store/selectors/app";
 
 const style = {
   position: "absolute",
@@ -20,6 +22,7 @@ const style = {
 };
 
 export default function AdminAddNewBookModal({ modalOpened, onClose }) {
+  const booksList = useSelector(bookListSelector, shallowEqual);
   const [booksCategoriesData, setBooksCategoriesData] = useState([]);
   const [newBookData, setNewBookData] = useState({
     name: "",
@@ -36,9 +39,12 @@ export default function AdminAddNewBookModal({ modalOpened, onClose }) {
   };
 
   const handleSubmit = async () => {
-    const response = await AdminController.CerateNewBook(newBookData);
+    const response = await AdminController.CreateNewBook({
+      ...newBookData,
+      overrideExistingValues: true,
+    });
     if (response) {
-      onClose(false)();
+      handleClose();
       toast.success("Success");
     }
   };
@@ -52,6 +58,10 @@ export default function AdminAddNewBookModal({ modalOpened, onClose }) {
   const handleSelectCategory = (e) => {
     console.log(e);
     setNewBookData({ ...newBookData, categoryId: e.target.value });
+  };
+
+  const handleClose = () => {
+    return onClose("newBookModal", false)();
   };
 
   return (
@@ -80,7 +90,7 @@ export default function AdminAddNewBookModal({ modalOpened, onClose }) {
         </div>
 
         <div className="modal-buttons">
-          <Button onClick={onClose(false)}>Չեղարկել</Button>
+          <Button onClick={handleClose}>Չեղարկել</Button>
           <Button onClick={handleSubmit}>Հաստատել</Button>
         </div>
       </Box>
