@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { bookListSelector } from "store/selectors/app";
-
+import "./style.scss";
 const style = {
   position: "absolute",
   top: "50%",
@@ -67,16 +67,17 @@ export default function AdminAddNewBookModal({ modalOpened, onClose }) {
   return (
     <Modal open={modalOpened}>
       <Box sx={style}>
-        <div>
+        <div className="create-new-book-list">
           {ADMIN_CREATE_NEW_BOOK_LIST_INPUTS.map(
             ({ type, title, id }, index) => (
-              <div key={index}>
-                <label htmlFor={id}>{title}</label>
+              <div className="new-book-data" key={index}>
+                <label className="input-type-label" htmlFor={id}>{title}</label>
                 <TextField
                   id={id}
                   type={type || "text"}
                   label={title}
                   placeholder={title}
+                  className="input-change"
                   onChange={handleInputsChange(id)}
                   value={newBookData[id]}
                 />

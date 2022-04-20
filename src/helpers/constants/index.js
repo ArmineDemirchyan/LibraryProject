@@ -47,7 +47,7 @@ export const USER_NAVIGATION = {
 export const adminHeaderData = [
   { title: "Գրքերի Ցանկ", Comp: AdminBooksList, id: 0 },
   { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 1 },
-  { title: "նոր հայյտեր", Comp: AdminNewReservations, id: 2 },
+  { title: "նոր հայտեր", Comp: AdminNewReservations, id: 2 },
 ];
 
 export const ADMIN_CREATE_NEW_BOOK_LIST_INPUTS = [
