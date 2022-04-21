@@ -1,6 +1,8 @@
 import API from "../service/index";
 import { Controllers, Hosts, Methods } from "helpers/constants";
 import { toast } from "react-toastify";
+import { saveUsersList } from "store/action-creators/app";
+import store from "store/app";
 const AdminController = {};
 
 AdminController.getBookList = async () => {
@@ -59,6 +61,7 @@ AdminController.getUsersList = async () => {
     toast.error(response.data.errorMessage);
     return false;
   }
+  store.dispatch(saveUsersList(response.data));
   return response.data;
 };
 
@@ -92,6 +95,30 @@ AdminController.ChangeUserStatus = async (body) => {
   toast.success("Success");
   await AdminController.getUsersList();
   return response?.data;
+};
+
+AdminController.getProfessions = async () => {
+  const response = await API.GET(Hosts.PUBLIC_URL, Controllers.profession, "");
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  return response.data;
+};
+
+AdminController.addNewGroup = async (body) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    Methods.groups,
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
 };
 
 export default AdminController;

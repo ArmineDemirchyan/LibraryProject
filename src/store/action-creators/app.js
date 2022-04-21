@@ -13,3 +13,8 @@ export const setBooksList = (payload) => ({
   type: actionTypes.SET_BOOKS_LIST,
   payload,
 });
+
+export const saveUsersList = (payload) => ({
+  type: actionTypes.SAVE_USERS_LIST,
+  payload,
+});

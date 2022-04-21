@@ -22,6 +22,7 @@ export const Methods = {
 };
 
 export const Controllers = {
+  profession: "Profession",
   register: "register",
   books: "books",
   admin: "admin",

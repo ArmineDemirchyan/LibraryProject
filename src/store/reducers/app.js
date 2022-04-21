@@ -4,6 +4,7 @@ const initialState = {
   showBooksBasketContainer: false,
   booksBasket: [],
   bookList: [],
+  users: [],
 };
 
 export default function appReducer(state = initialState, action) {
@@ -15,6 +16,8 @@ export default function appReducer(state = initialState, action) {
       return { ...state, booksBasket: payload };
     case actionTypes.SET_BOOKS_LIST:
       return { ...state, bookList: payload };
+    case actionTypes.SAVE_USERS_LIST:
+      return { ...state, users: payload };
     default:
       return { ...state };
   }

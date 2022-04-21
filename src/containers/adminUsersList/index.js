@@ -1,12 +1,9 @@
 import { Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import AdminUsersListHeaderActions from "components/adminUsersListHeaderActions";
 import Loading from "components/loading";
 import AdminController from "controllers/admin";
-import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { setBooksList } from "store/action-creators/app";
-import { bookListSelector } from "store/selectors/app";
 import "./index.scss";
 
 export default function AdminUsersList() {
@@ -65,6 +62,7 @@ export default function AdminUsersList() {
     <>
       {loading && <Loading />}
       <div className="users-list-table-wrapper">
+        <AdminUsersListHeaderActions setUserList={setUserList} />
         <DataGrid columns={ADMIN_USERS_LIST_COLUMNS} rows={userList} />
       </div>
     </>
