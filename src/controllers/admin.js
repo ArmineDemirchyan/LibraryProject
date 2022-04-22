@@ -135,4 +135,32 @@ AdminController.getNewReservations = async () => {
   return response.data;
 };
 
+AdminController.getEndingSoonReservations = async () => {
+  const response = await API.GET(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    Methods.getEndingSoonReservations
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  return response.data;
+};
+
+AdminController.UpdateBookReservationStatus = async (id, body) => {
+  const response = await API.PATCH(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    `${Methods.reservations}/${id}`,
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+
 export default AdminController;

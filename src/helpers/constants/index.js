@@ -2,6 +2,7 @@ import AdminBooksList from "containers/adminBooksList";
 import AdminNewReservations from "containers/adminNewReservations";
 import AdminUsersList from "containers/adminUsersList";
 import SuperAdminAdmins from "containers/superAdminAdmins";
+import AdminController from "controllers/admin";
 
 export const Hosts = {
   BASE_URL: "BASE_URL",
@@ -20,6 +21,7 @@ export const Methods = {
   BookCreationRequests: "BookCreationRequests",
   confirmUser: "users/confirm",
   changeUserStatus: "users/changeStatus",
+  getEndingSoonReservations: "reservations/getEndingSoonReservations",
 };
 
 export const Controllers = {
@@ -79,3 +81,16 @@ export const ADMIN_CREATE_NEW_BOOK_LIST_INPUTS = [
     type: "number",
   },
 ];
+
+export const ADMIN_RESERVATIONS_TABLE_ACTION_BUTTONS = [
+  { title: "հաստատել", id: 2, accessWith: 0 },
+  { title: "Չեղարկել", id: 1, accessWith: 0 },
+  { title: "Վերադարձնել", id: 3, accessWith: 2 },
+];
+
+export const AdminReservationStatuses = {
+  Reserved: 0,
+  Canceled: 1,
+  Borrowed: 2,
+  Returned: 3,
+};

@@ -1,28 +1,33 @@
 import { Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import AdminReservationsFilters from "components/adminReservationsFilters";
 import Loading from "components/loading";
 import AdminController from "controllers/admin";
+import {
+  AdminReservationStatuses,
+  ADMIN_RESERVATIONS_TABLE_ACTION_BUTTONS,
+} from "helpers/constants";
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 
 export default function AdminNewReservations() {
   const columns = [
-    { headerName: "id", field: "id", flex: 1 },
+    { headerName: "id", field: "id", width: 60 },
     { headerName: "հայտի Ստեղծման Ամսաթիվ", field: "creationDate", flex: 1 },
     {
       headerName: "սպասվող վերցման ամսաթիվ",
       field: "expectedBorrowingDate",
-      flex: 1,
+      width: 120,
     },
     {
       headerName: "սպասվող հանձնման ամսաթիվ",
       field: "expectedReturnDate",
-      flex: 1,
+      width: 120,
     },
     {
       headerName: "Կարգավիճակ",
       field: "status",
-      flex: 1,
+      width: 120,
     },
     {
       flex: 1,
@@ -31,10 +36,20 @@ export default function AdminNewReservations() {
       renderCell: ({ row }) => {
         return (
           <h5>
-            {row.book.author} {row.book.name}
+            {row.book?.author} {row.book?.name}
           </h5>
         );
       },
+    },
+    {
+      flex: 1,
+      headerName: "Օգտատեր",
+      field: "user",
+      renderCell: ({ row }) => (
+        <h5 className="row-user">
+          {row.user?.firstname} {row.user.lastname} ({row.user.groupNumber})
+        </h5>
+      ),
     },
     {
       flex: 1,
@@ -42,9 +57,16 @@ export default function AdminNewReservations() {
       field: "actions",
       type: "actions",
       renderCell: ({ row }) => {
-        return (
-          <Button onClick={handleConfirmReservation(row.id)}>հաստատել</Button>
+        return ADMIN_RESERVATIONS_TABLE_ACTION_BUTTONS.map(
+          (item) =>
+            item.id !== AdminReservationStatuses[row.status] &&
+            item.accessWith === AdminReservationStatuses[row.status] && (
+              <Button onClick={handleConfirmReservation(row.id, item.id)}>
+                {item.title}
+              </Button>
+            )
         );
+        // <Button onClick={handleConfirmReservation(row.id)}>հաստատել</Button>
       },
     },
   ];
@@ -53,21 +75,31 @@ export default function AdminNewReservations() {
   const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
-    // setLoading(true);
-    AdminController.getNewReservations()
-      .then((res) => res.data && setReservations(res.data))
-      .finally(() => setLoading(false));
+    getReservations();
   }, []);
 
-  const handleConfirmReservation = (id) => {
-    console.log(id);
+  const getReservations = async () => {
+    return await AdminController.getNewReservations()
+      .then((res) => res.data && setReservations(res.data))
+      .finally(() => setLoading(false));
   };
 
+  const handleConfirmReservation = (reservationId, status) => async () => {
+    setLoading(true);
+    await AdminController.UpdateBookReservationStatus(reservationId, {
+      status,
+    });
+    await getReservations();
+    setLoading(false);
+  };
   return (
     <>
       {loading && <Loading />}
       <div className="table-wrapper">
-        
+        <AdminReservationsFilters
+          setReservations={setReservations}
+          setLoading={setLoading}
+        />
         <DataGrid rows={reservations} columns={columns} />
       </div>
     </>

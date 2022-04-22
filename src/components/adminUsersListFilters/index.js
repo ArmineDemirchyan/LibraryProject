@@ -6,6 +6,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import GroupsListDropdown from "components/groupsListDropdown";
 import React from "react";
 
 export default function AdminUsersListFilters({
@@ -22,6 +23,7 @@ export default function AdminUsersListFilters({
         label="Փնտրել Օգտատերի Ազգանունով"
         onChange={handleFilterFieldChange("lastname")}
       />
+      <GroupsListDropdown handleChange={handleFilterFieldChange} />
       <Box sx={{ width: "13rem" }}>
         <FormControl fullWidth>
           <InputLabel>Փնտրել Օգտատերի Կարգավիճակով</InputLabel>

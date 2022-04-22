@@ -10,7 +10,7 @@ import AdminBookEditModal from "components/adminBookEdit";
 
 export default function AdminBooksList() {
   const ADMIN_BOOKS_LIST_COLUMNS = [
-    { headerName: "bookId", field: "bookId", flex: 1 },
+    { headerName: "Book Id", field: "bookId", width: 60 },
     { headerName: "Անուն", field: "name", flex: 1 },
     { headerName: "հեղինակ", field: "author", flex: 1 },
     { headerName: "արտադրության տարեթիվ", field: "productionYear", flex: 1 },

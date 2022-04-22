@@ -1,4 +1,17 @@
 .table-wrapper {
   width: 100%;
   height: 43rem;
+
+  .row-user {
+    cursor: pointer;
+  }
+
+  .row-user:hover {
+    color: #28affc;
+    text-decoration: underline;
+  }
+}
+
+.header-filters {
+  display: flex;
 }

@@ -40,4 +40,8 @@ API.POST = async (host, controller, method, data, query, headers) => {
   return await REQ(host, "post", controller, method, data, query, headers);
 };
 
+API.PATCH = async (host, controller, method, data, query, headers) => {
+  return await REQ(host, "patch", controller, method, data, query, headers);
+};
+
 export default API;

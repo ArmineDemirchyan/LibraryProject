@@ -16,8 +16,9 @@ export default function AdminUsersListHeaderActions({ setUserList }) {
   };
 
   const handleFilterFieldChange = (id) => (e) => {
+    const value = e.target.value === "all" ? "" : `${e.target.value}`;
     const newData = usersList.filter((user) =>
-      user[id].toUpperCase().includes(e.target.value.toUpperCase())
+      `${user[id]}`.toUpperCase().includes(value.toUpperCase())
     );
     setUserList(newData);
   };
@@ -38,9 +39,6 @@ export default function AdminUsersListHeaderActions({ setUserList }) {
           handleFilterByStatus={handleFilterByStatus}
         />
         <div>
-          <Button onClick={handleModalChange("professionsList", true)}>
-            Մասնագիտությունների ցանկ
-          </Button>
           <Button onClick={handleModalChange("addNewGroup", true)}>
             Ավելացնել Նոր Խմբի համար
           </Button>
