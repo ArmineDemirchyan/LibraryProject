@@ -1,7 +1,7 @@
 import API from "../service/index";
 import { Controllers, Hosts, Methods } from "helpers/constants";
 import { toast } from "react-toastify";
-import { saveUsersList } from "store/action-creators/app";
+import { saveReservationsList, saveUsersList } from "store/action-creators/app";
 import store from "store/app";
 const AdminController = {};
 
@@ -118,6 +118,20 @@ AdminController.addNewGroup = async (body) => {
     return false;
   }
   toast.success("Success");
+  return response.data;
+};
+
+AdminController.getNewReservations = async () => {
+  const response = await API.GET(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    Methods.reservations
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  store.dispatch(saveReservationsList(response.data));
   return response.data;
 };
 

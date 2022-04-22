@@ -18,3 +18,8 @@ export const saveUsersList = (payload) => ({
   type: actionTypes.SAVE_USERS_LIST,
   payload,
 });
+
+export const saveReservationsList = (payload) => ({
+  type: actionTypes.SAVE_RESERVATIONS_LIST,
+  payload,
+});

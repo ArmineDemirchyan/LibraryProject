@@ -11,7 +11,6 @@ export default function BooksListBasketDatePickers({
   const handleChange = (id) => (date) => {
     setState({ ...state, [bookId]: { ...state[bookId], [id]: date } });
   };
-  console.log(state);
   return (
     <div className="datePickers-wrapper">
       <LocalizationProvider dateAdapter={AdapterDateFns}>

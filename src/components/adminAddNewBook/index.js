@@ -53,7 +53,6 @@ export default function AdminAddNewBookModal({ modalOpened, onClose }) {
   }, []);
 
   const handleSelectCategory = (e) => {
-    console.log(e);
     setNewBookData({ ...newBookData, categoryId: e.target.value });
   };
 

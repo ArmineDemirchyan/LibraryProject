@@ -1,6 +1,7 @@
 import AdminBooksList from "containers/adminBooksList";
 import AdminNewReservations from "containers/adminNewReservations";
 import AdminUsersList from "containers/adminUsersList";
+import SuperAdminAdmins from "containers/superAdminAdmins";
 
 export const Hosts = {
   BASE_URL: "BASE_URL",
@@ -51,6 +52,13 @@ export const adminHeaderData = [
   { title: "Գրքերի Ցանկ", Comp: AdminBooksList, id: 0 },
   { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 1 },
   { title: "նոր հայտեր", Comp: AdminNewReservations, id: 2 },
+];
+
+export const superAdminHeaderData = [
+  { title: "Գրքերի Ցանկ", Comp: AdminBooksList, id: 0 },
+  { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 1 },
+  { title: "նոր հայտեր", Comp: AdminNewReservations, id: 2 },
+  { title: "Ադմիններ", Comp: SuperAdminAdmins, id: 3 },
 ];
 
 export const ADMIN_CREATE_NEW_BOOK_LIST_INPUTS = [

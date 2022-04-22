@@ -60,6 +60,7 @@ export default function AdminAddNewGroupModal({ open, onCLose }) {
     setLoading(true);
     await AdminController.addNewGroup(newGroup);
     handleClose();
+    handleClose();
     setLoading(false);
   };
   return (

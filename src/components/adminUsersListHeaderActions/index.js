@@ -1,20 +1,15 @@
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Box,
-} from "@mui/material";
+import { Button } from "@mui/material";
 import AdminAddNewGroupModal from "components/adminAddNewGroupModal";
+import AdminUsersListFilters from "components/adminUsersListFilters";
 import React, { useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { usersListSelector } from "store/selectors/app";
 
 export default function AdminUsersListHeaderActions({ setUserList }) {
   const usersList = useSelector(usersListSelector, shallowEqual).data;
-  const [modalsData, setModalsData] = useState({ addNewGroup: false });
+  const [modalsData, setModalsData] = useState({
+    addNewGroup: false,
+  });
 
   const handleModalChange = (id, payload) => () => {
     setModalsData({ ...modalsData, [id]: payload });
@@ -38,26 +33,14 @@ export default function AdminUsersListHeaderActions({ setUserList }) {
         onCLose={handleModalChange}
       />
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div style={{ display: "flex" }}>
-          <TextField
-            label="Փնտրել Օգտատերի Անունով"
-            onChange={handleFilterFieldChange("firstname")}
-          />
-          <TextField
-            label="Փնտրել Օգտատերի Ազգանունով"
-            onChange={handleFilterFieldChange("lastname")}
-          />
-          <Box sx={{ width: "13rem" }}>
-            <FormControl fullWidth>
-              <InputLabel>Փնտրել Օգտատերի Կարգավիճակով</InputLabel>
-              <Select onChange={handleFilterByStatus}>
-                <MenuItem value="Active">Active</MenuItem>
-                <MenuItem value="Inactive">Inactive</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-        </div>
+        <AdminUsersListFilters
+          handleFilterFieldChange={handleFilterFieldChange}
+          handleFilterByStatus={handleFilterByStatus}
+        />
         <div>
+          <Button onClick={handleModalChange("professionsList", true)}>
+            Մասնագիտությունների ցանկ
+          </Button>
           <Button onClick={handleModalChange("addNewGroup", true)}>
             Ավելացնել Նոր Խմբի համար
           </Button>
