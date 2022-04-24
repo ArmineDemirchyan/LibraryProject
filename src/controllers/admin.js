@@ -1,7 +1,11 @@
 import API from "../service/index";
 import { Controllers, Hosts, Methods } from "helpers/constants";
 import { toast } from "react-toastify";
-import { saveReservationsList, saveUsersList } from "store/action-creators/app";
+import {
+  saveAdminsList,
+  saveReservationsList,
+  saveUsersList,
+} from "store/action-creators/app";
 import store from "store/app";
 const AdminController = {};
 
@@ -153,6 +157,44 @@ AdminController.UpdateBookReservationStatus = async (id, body) => {
     Hosts.PUBLIC_URL,
     Controllers.admin,
     `${Methods.reservations}/${id}`,
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+
+AdminController.getAdminsList = async () => {
+  const response = await API.GET(Hosts.PUBLIC_URL, Controllers.admins, "");
+  if ((await response).data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  store.dispatch(saveAdminsList(response.data));
+  return response.data;
+};
+
+AdminController.getUserReservations = async (userId) => {
+  const response = await API.GET(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    `${Methods.reservations}/${userId}`
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  return response.data;
+};
+
+AdminController.createNewAdmin = async (body) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.admins,
+    "",
     body
   );
   if (response.data.hasError) {

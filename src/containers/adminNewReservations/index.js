@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import AdminReservationsFilters from "components/adminReservationsFilters";
+import AdminUserBookReservations from "components/adminUserBookReservations";
 import Loading from "components/loading";
 import AdminController from "controllers/admin";
 import {
@@ -31,7 +32,7 @@ export default function AdminNewReservations() {
     },
     {
       flex: 1,
-      headerName: "book",
+      headerName: "Գիրք",
       field: "book",
       renderCell: ({ row }) => {
         return (
@@ -46,7 +47,7 @@ export default function AdminNewReservations() {
       headerName: "Օգտատեր",
       field: "user",
       renderCell: ({ row }) => (
-        <h5 className="row-user">
+        <h5 onClick={handleOpenUserModal(row.user, true)} className="row-user">
           {row.user?.firstname} {row.user.lastname} ({row.user.groupNumber})
         </h5>
       ),
@@ -70,13 +71,17 @@ export default function AdminNewReservations() {
       },
     },
   ];
-
+  const [userModalData, setUserModalData] = useState({ data: {}, open: false });
   const [loading, setLoading] = useState(true);
   const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
     getReservations();
   }, []);
+
+  const handleOpenUserModal = (userData, open) => () => {
+    setUserModalData({ data: userData, open });
+  };
 
   const getReservations = async () => {
     return await AdminController.getNewReservations()
@@ -95,6 +100,11 @@ export default function AdminNewReservations() {
   return (
     <>
       {loading && <Loading />}
+      <AdminUserBookReservations
+        {...userModalData}
+        onClose={handleOpenUserModal}
+        setLoading={setLoading}
+      />
       <div className="table-wrapper">
         <AdminReservationsFilters
           setReservations={setReservations}

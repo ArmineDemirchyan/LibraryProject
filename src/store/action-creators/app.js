@@ -23,3 +23,8 @@ export const saveReservationsList = (payload) => ({
   type: actionTypes.SAVE_RESERVATIONS_LIST,
   payload,
 });
+
+export const saveAdminsList = (payload) => ({
+  type: actionTypes.SAVE_ADMINS_LIST,
+  payload,
+});

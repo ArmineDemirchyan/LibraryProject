@@ -29,6 +29,8 @@ export const Controllers = {
   register: "register",
   books: "books",
   admin: "admin",
+  admins: "admins",
+  BookCreationRequests: "BookCreationRequests",
 };
 
 export const HostUrls = {
@@ -41,6 +43,13 @@ export const USER_TYPES = {
   librarian: 1,
   superAdmin: 2,
   student: 3,
+};
+
+export const USER_TYPE_WITH_TRANSLATION = {
+  Accountant: "հաշվապահ",
+  Librarian: "Գրադարանավար",
+  SuperAdmin: "Սուպեր Ադմին",
+  Student: "Ուսանող",
 };
 
 export const USER_NAVIGATION = {
@@ -94,3 +103,51 @@ export const AdminReservationStatuses = {
   Borrowed: 2,
   Returned: 3,
 };
+
+export const ADMIN_USER_RESERVATIONS_COLUMNS = [
+  { headerName: "id", field: "id", width: 60 },
+  { headerName: "հայտի Ստեղծման Ամսաթիվ", field: "creationDate", flex: 1 },
+  {
+    headerName: "սպասվող վերցման ամսաթիվ",
+    field: "expectedBorrowingDate",
+    width: 120,
+  },
+  {
+    headerName: "սպասվող հանձնման ամսաթիվ",
+    field: "expectedReturnDate",
+    width: 120,
+  },
+  {
+    headerName: "Կարգավիճակ",
+    field: "status",
+    width: 120,
+  },
+  {
+    flex: 1,
+    headerName: "Գիրք",
+    field: "book",
+    renderCell: ({ row }) => {
+      return (
+        <h5>
+          {row.book?.author} {row.book?.name}
+        </h5>
+      );
+    },
+  },
+  {
+    flex: 1,
+    headerName: "Օգտատեր",
+    field: "user",
+    renderCell: ({ row }) => (
+      <h5 className="row-user">
+        {row.user?.firstname} {row.user.lastname} ({row.user.groupNumber})
+      </h5>
+    ),
+  },
+];
+
+export const SUPER_ADMIN_ADD_NEW_ADMIN = [
+  { id: "firstName", title: "Անուն" },
+  { id: "lastName", title: "Ազգանուն" },
+  { id: "email", title: "Էլ։ Փոստ", type: "email" },
+];
