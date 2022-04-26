@@ -4,6 +4,10 @@ const initialState = {
   showBooksBasketContainer: false,
   booksBasket: [],
   bookList: [],
+  users: [],
+  reservations: [],
+  admins: [],
+  bookCreationRequests: [],
 };
 
 export default function appReducer(state = initialState, action) {
@@ -15,6 +19,14 @@ export default function appReducer(state = initialState, action) {
       return { ...state, booksBasket: payload };
     case actionTypes.SET_BOOKS_LIST:
       return { ...state, bookList: payload };
+    case actionTypes.SAVE_USERS_LIST:
+      return { ...state, users: payload };
+    case actionTypes.SAVE_RESERVATIONS_LIST:
+      return { ...state, reservations: payload };
+    case actionTypes.SAVE_ADMINS_LIST:
+      return { ...state, admins: payload };
+    case actionTypes.BOOK_CREATION_REQUESTS_LIST:
+      return { ...state, bookCreationRequests: payload };
     default:
       return { ...state };
   }

@@ -1,3 +1,4 @@
+import Accountant from "pages/accountant";
 import Admin from "pages/admin";
 import BookList from "pages/bookList";
 import { Register } from "pages/login/register";
@@ -25,6 +26,12 @@ const routesData = [
     title: "user",
     path: routes.user,
     Comp: User,
+    exact: true,
+  },
+  {
+    title: "Accountant",
+    path: routes.accountant,
+    Comp: Accountant,
     exact: true,
   },
   {

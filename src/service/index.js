@@ -24,7 +24,7 @@ const REQ = async (
     return response;
   } catch (err) {
     toast.error(err.message);
-    return { hasError: true, errorMessage: err.message };
+    return { data: { hasError: true, errorMessage: err.message } };
   }
 };
 
@@ -38,6 +38,10 @@ API.GET = async (host, controller, method, query = {}, headers = {}) => {
 
 API.POST = async (host, controller, method, data, query, headers) => {
   return await REQ(host, "post", controller, method, data, query, headers);
+};
+
+API.PATCH = async (host, controller, method, data, query, headers) => {
+  return await REQ(host, "patch", controller, method, data, query, headers);
 };
 
 export default API;

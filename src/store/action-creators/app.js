@@ -13,3 +13,23 @@ export const setBooksList = (payload) => ({
   type: actionTypes.SET_BOOKS_LIST,
   payload,
 });
+
+export const saveUsersList = (payload) => ({
+  type: actionTypes.SAVE_USERS_LIST,
+  payload,
+});
+
+export const saveReservationsList = (payload) => ({
+  type: actionTypes.SAVE_RESERVATIONS_LIST,
+  payload,
+});
+
+export const saveAdminsList = (payload) => ({
+  type: actionTypes.SAVE_ADMINS_LIST,
+  payload,
+});
+
+export const saveBookCreationRequest = (payload) => ({
+  type: actionTypes.BOOK_CREATION_REQUESTS_LIST,
+  payload,
+});

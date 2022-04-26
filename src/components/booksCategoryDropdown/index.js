@@ -5,7 +5,6 @@ export default function BooksCategoryDropdown({
   handleSearch,
   booksCategoriesData,
 }) {
-  console.log(booksCategoriesData);
   return (
     <Box sx={{ minWidth: 200 }}>
       <FormControl variant="outlined" fullWidth>

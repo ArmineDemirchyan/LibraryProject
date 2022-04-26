@@ -7,12 +7,24 @@ const UserController = {};
 
 UserController.getBookList = async () => {
   const response = await API.GET(Hosts.BASE_URL, Controllers.books, "");
-  store.dispatch(setBooksList(response.data.data));
+  store.dispatch(
+    setBooksList(
+      response.data.data.map((elem) => ({ ...elem, id: elem.bookId }))
+    )
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
   return response;
 };
 
 UserController.getBookCategories = async () => {
   const response = await API.GET(Hosts.BASE_URL, Methods.categories, "");
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
   return response.data;
 };
 
@@ -27,13 +39,29 @@ UserController.ReserveNewBook = async (books) => {
     )
   );
   responses.map((res) =>
-    res.hasError ? toast.error(res.errorMessage) : toast.success("Success")
+    res.data.hasError
+      ? toast.error(res.data.errorMessage)
+      : toast.success("Success")
   );
   return responses;
 };
 
 UserController.logOut = async () => {
   return await API.POST(Hosts.BASE_URL, Methods.logOut, "");
+};
+
+UserController.getMyBookReservations = async () => {
+  const response = await API.GET(
+    Hosts.BASE_URL,
+    Methods.reservations,
+    Methods.myReservations
+  );
+
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  return response.data;
 };
 
 export default UserController;

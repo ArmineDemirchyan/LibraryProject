@@ -36,7 +36,9 @@ const User = () => {
               <FormControl fullWidth>
                 <InputLabel>{displayName}Լրացուցիչ</InputLabel>
                 <Select variant="standard">
-                  <MenuItem onClick={handleLogOut} className="menuitem">դուրս գալ</MenuItem>
+                  <MenuItem onClick={handleLogOut} className="menuitem">
+                    դուրս գալ
+                  </MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -60,7 +62,7 @@ const User = () => {
           </div>
           <div id="about" className="about">
             <div className="aboutright">
-              <img src="img/libraryphoto.jpg" />
+              <img alt="" src="img/libraryphoto.jpg" />
             </div>
             <div className="aboutleft">
               <h2>ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</h2>

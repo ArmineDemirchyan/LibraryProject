@@ -5,9 +5,7 @@ import AdminController from "controllers/admin";
 import UserController from "controllers/user";
 import { ADMIN_CREATE_NEW_BOOK_LIST_INPUTS } from "helpers/constants";
 import React, { useEffect, useState } from "react";
-import { shallowEqual, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { bookListSelector } from "store/selectors/app";
 import "./style.scss";
 const style = {
   position: "absolute",
@@ -22,7 +20,6 @@ const style = {
 };
 
 export default function AdminAddNewBookModal({ modalOpened, onClose }) {
-  const booksList = useSelector(bookListSelector, shallowEqual);
   const [booksCategoriesData, setBooksCategoriesData] = useState([]);
   const [newBookData, setNewBookData] = useState({
     name: "",
@@ -56,7 +53,6 @@ export default function AdminAddNewBookModal({ modalOpened, onClose }) {
   }, []);
 
   const handleSelectCategory = (e) => {
-    console.log(e);
     setNewBookData({ ...newBookData, categoryId: e.target.value });
   };
 
@@ -71,7 +67,9 @@ export default function AdminAddNewBookModal({ modalOpened, onClose }) {
           {ADMIN_CREATE_NEW_BOOK_LIST_INPUTS.map(
             ({ type, title, id }, index) => (
               <div className="new-book-data" key={index}>
-                <label className="input-type-label" htmlFor={id}>{title}</label>
+                <label className="input-type-label" htmlFor={id}>
+                  {title}
+                </label>
                 <TextField
                   id={id}
                   type={type || "text"}

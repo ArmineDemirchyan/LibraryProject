@@ -8,5 +8,6 @@ const routes = {
   register: "/register",
   bookList: "/bookList",
   myBooks: "/myBooks",
+  accountant: "/accountant",
 };
 export default routes;

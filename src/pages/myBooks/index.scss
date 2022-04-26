@@ -1,0 +1,32 @@
+.my-books-container-wrapper {
+  .header-wrapper {
+    width: 100%;
+    background-color: rgb(6, 52, 88);
+    display: flex;
+    justify-content: center;
+
+    .header {
+      width: 95%;
+      height: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .header-logo {
+        text-decoration: none;
+        font-size: 25px;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
+
+  .my-books-container-inner-wrapper {
+    padding: 7rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 2rem;
+  }
+}

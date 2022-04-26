@@ -29,7 +29,9 @@ export const request = async (
   data = {},
   headers
 ) => {
-  const token = userPersonalInfoSelector(store.getState()).token;
+  const token =
+    userPersonalInfoSelector(store.getState()).token ||
+    localStorage.getItem("token");
   const response = await axios({
     url: constructUrl(host)(controller, method),
     method: reqMethod,

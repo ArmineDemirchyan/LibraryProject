@@ -4,7 +4,6 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  hexToRgb,
   IconButton,
 } from "@mui/material";
 import BookListFilters from "components/bookListFilters";
@@ -52,75 +51,76 @@ export default function BookList() {
   }, []);
   return (
     <div className="main">
-    <>
-    
-      {loading && <Loading />}
-      <BooksListBasket />
-      <div className="booksList-container-wrapper">
-      <div className="book-header"></div>
-        <div className="header-wrapper">
-          <div className="header">
-            <div>
-              <Link className="header-logo" to="/user">
-                ԵԻՊՔ ԳՐԱԴԱՐԱՆ
-              </Link>
-            </div>
-            <div></div>
-            <div>
-              <IconButton onClick={handleOpenBasket}>
-                <LocalGroceryStoreIcon className="card-icon"/>
-              </IconButton>
+      <>
+        {loading && <Loading />}
+        <BooksListBasket />
+        <div className="booksList-container-wrapper">
+          <div className="book-header"></div>
+          <div className="header-wrapper">
+            <div className="header">
+              <div>
+                <Link className="header-logo" to="/user">
+                  ԵԻՊՔ ԳՐԱԴԱՐԱՆ
+                </Link>
+              </div>
+              <div></div>
+              <div>
+                <IconButton onClick={handleOpenBasket}>
+                  <LocalGroceryStoreIcon className="card-icon" />
+                </IconButton>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div className="books-wrapper">
-          <div className="bookList-filters-wrapper">
-            <BookListFilters bookList={bookList} setBookList={setBookList} />
-          </div>
-          <div className="books-list">
-            {bookList?.map((book) => {
-              const { bookId, name, author, description } = book;
-              return (
-                <Card sx={{ width:"25rem",  }}  key={bookId}>
-                  <CardActionArea>
-                    <CardContent>  
 
-                      <img src="https://yazidharoun.files.wordpress.com/2020/11/how-to-format-a-book-3.jpg"/>                   
-                      <div className="bookList-book-card-cardContent-wrapper">
-                        
-                        <h4>Գրքի անուն: {name}</h4>
-                        <h5>Գրքի հեղինակ: {author}</h5>
-                        <p>Գրքի մեկնաբանություն: {description}</p>
-                        <div className="buttons-container">
-                          {booksBasket.some(
-                            (elem) => elem.bookId === bookId
-                          ) ? (
-                            <Button
-                              variant="outlined"
-                              onClick={handleDeleteFromBasket(bookId)}
-                            >
-                              Ջնջել ամրագրումների ցուցակից
-                            </Button>
-                          ) : (
-                            <Button
-                              variant="outlined"
-                              onClick={handleAddToCard(book)}
-                            >
-                              Ավելացնել ամրագրումների ցուցակում
-                            </Button>
-                          )}
+          <div className="books-wrapper">
+            <div className="bookList-filters-wrapper">
+              <BookListFilters bookList={bookList} setBookList={setBookList} />
+            </div>
+            <div className="books-list">
+              {bookList?.map((book) => {
+                const { bookId, name, author, description } = book;
+                return (
+                  <Card sx={{ width: "25rem" }} key={bookId}>
+                    <CardActionArea>
+                      <CardContent>
+                        <img
+                        className="book-item-header-image"
+                          alt=""
+                          src="https://yazidharoun.files.wordpress.com/2020/11/how-to-format-a-book-3.jpg"
+                        />
+                        <div className="bookList-book-card-cardContent-wrapper">
+                          <h4>Գրքի անուն: {name}</h4>
+                          <h5>Գրքի հեղինակ: {author}</h5>
+                          <p>Գրքի մեկնաբանություն: {description}</p>
+                          <div className="buttons-container">
+                            {booksBasket.some(
+                              (elem) => elem.bookId === bookId
+                            ) ? (
+                              <Button
+                                variant="outlined"
+                                onClick={handleDeleteFromBasket(bookId)}
+                              >
+                                Ջնջել ամրագրումների ցուցակից
+                              </Button>
+                            ) : (
+                              <Button
+                                variant="outlined"
+                                onClick={handleAddToCard(book)}
+                              >
+                                Ավելացնել ամրագրումների ցուցակում
+                              </Button>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              );
-            })}
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
-      
-    </></div>
+      </>
+    </div>
   );
 }
