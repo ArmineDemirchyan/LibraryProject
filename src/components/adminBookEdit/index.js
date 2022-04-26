@@ -3,7 +3,7 @@ import Modal from "@mui/material/Modal";
 import AdminController from "controllers/admin";
 import { ADMIN_CREATE_NEW_BOOK_LIST_INPUTS } from "helpers/constants";
 import React, { useEffect, useState } from "react";
-
+import "./style.scss";
 export default function AdminBookEditModal({
   editableBook,
   isOpened,
