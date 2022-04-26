@@ -28,3 +28,8 @@ export const saveAdminsList = (payload) => ({
   type: actionTypes.SAVE_ADMINS_LIST,
   payload,
 });
+
+export const saveBookCreationRequest = (payload) => ({
+  type: actionTypes.BOOK_CREATION_REQUESTS_LIST,
+  payload,
+});

@@ -22,6 +22,7 @@ export const Methods = {
   confirmUser: "users/confirm",
   changeUserStatus: "users/changeStatus",
   getEndingSoonReservations: "reservations/getEndingSoonReservations",
+  myReservations: "myReservations",
 };
 
 export const Controllers = {

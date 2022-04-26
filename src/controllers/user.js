@@ -50,4 +50,18 @@ UserController.logOut = async () => {
   return await API.POST(Hosts.BASE_URL, Methods.logOut, "");
 };
 
+UserController.getMyBookReservations = async () => {
+  const response = await API.GET(
+    Hosts.BASE_URL,
+    Methods.reservations,
+    Methods.myReservations
+  );
+
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  return response.data;
+};
+
 export default UserController;

@@ -1,6 +1,8 @@
 import { Controllers, Hosts } from "helpers/constants";
 import { toast } from "react-toastify";
 import API from "service";
+import store from "store/app";
+import { saveBookCreationRequest } from "../store/action-creators/app";
 
 const AccountantController = {};
 
@@ -14,6 +16,36 @@ AccountantController.getBookCreationRequests = async () => {
     toast.error(response.data.errorMessage);
     return false;
   }
+  store.dispatch(saveBookCreationRequest(response.data));
+  return response.data;
+};
+
+AccountantController.ConfirmRequest = async (body, requestId) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.BookCreationRequests,
+    `${requestId}/confirm`,
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+AccountantController.rejectConfirmRequest = async (body, requestId) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.BookCreationRequests,
+    `${requestId}/reject`,
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
   return response.data;
 };
 
