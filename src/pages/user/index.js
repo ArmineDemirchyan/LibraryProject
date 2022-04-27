@@ -23,28 +23,28 @@ const User = () => {
   return (
     <div className="main">
       {loading && <Loading />}
+      
       <div className="header-wrapper">
-        <nav>
-          <div className="navright">
+        <div className="header">
+        <nav>   
             <a href="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</a>
-          </div>
-          <div className="navleft">
             <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
             <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
             <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
             <Box sx={{ minWidth: "10rem" }}>
               <FormControl fullWidth>
-                <InputLabel>{displayName}Լրացուցիչ</InputLabel>
+                <InputLabel>{displayName}</InputLabel>
                 <Select variant="standard">
                   <MenuItem onClick={handleLogOut} className="menuitem">
                     դուրս գալ
                   </MenuItem>
                 </Select>
               </FormControl>
-            </Box>
-          </div>
+            </Box>    
         </nav>
-        <div>
+        
+        </div>
+        <div className="info-wrapper">
           <div className="info">
             <div id="header" className="overlay">
               <h1>

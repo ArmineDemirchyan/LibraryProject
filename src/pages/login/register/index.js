@@ -212,12 +212,13 @@ export function Register() {
               </div>
             </div>
             <div className="formgroup">
-              <label className="label" htmlFor="phone">
+
+              <label className="label phone-label" htmlFor="phone">
                 Հեռախոսահամար
               </label>
-              <div>
+              <div className="phone-group">
                 <label for="area_code" className="phonecode">
-                  <img className="flag" src="/img/flag.png" alt="Img" />
+                  <img className="flag" src="../../../public/img/flag.jpg" alt="Img" />
                   +374
                 </label>
                 <input
@@ -233,7 +234,7 @@ export function Register() {
           </div>
         </div>
         <div className="footer">
-          <button className="btton" type="submit">
+          <button className="submit-button" type="submit">
             Ուղարկել հայտը
           </button>
         </div>
