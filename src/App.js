@@ -10,7 +10,7 @@ function App() {
   const user = useSelector(userPersonalInfoSelector);
   const navigate = useNavigationWithQueryParams();
   useEffect(() => {
-    !user?.token && navigate(routes.login);
+    !user?.token && navigate(routes.home);
   }, []);
   return (
     <div id="main">
