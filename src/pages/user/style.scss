@@ -63,9 +63,11 @@ ul,
 ol {
   padding: 0;
 }
-
-nav {
+.header{
   position: fixed;
+}
+nav {
+  
   display: flex;
   justify-content: space-between;
   background-color: #ffffff;
@@ -75,35 +77,20 @@ nav {
 nav .active {
   background: linear-gradient(90deg, rgb(74, 72, 72));
 }
-.navright {
-  margin-top: 1.5em;
-  margin-left: 15em;
-}
 
-.navright a {
+nav a {
+  margin-top: 1.5rem;
   text-decoration: none;
-  font-size: 25px;
   font-weight: bold;
   color: rgb(72, 72, 72);
-}
-
-.navleft {
-  display: flex;
-  margin-top: 1.5em;
-  margin-right: 15em;
-}
-
-.navleft a {
-  margin-left: 4em;
-  text-decoration: none;
-  color: rgb(49, 49, 49);
+  
 }
 
 .info {
   display: table;
   width: 100%;
   padding: 0;
-  background: url(../../../public/img/intro-bg.jpg) center center no-repeat;
+  background: url(../../../public/img/bg-img.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;

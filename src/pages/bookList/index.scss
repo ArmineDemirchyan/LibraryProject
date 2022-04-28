@@ -29,24 +29,28 @@
   }
 
   .books-wrapper {
-    padding: 7rem;
+    width: 100%;
     background-color: rgb(255, 255, 255);
 
     .books-list {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin: 2rem;
+      display: grid;
+      justify-content: space-around;
+      grid-gap:1rem ;
+      grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
+      margin: 2rem auto;
     }
 
     .bookList-filters-wrapper {
-      margin-top: -5rem;
+      
 
       .bookList-filters {
+        display: grid;
+        justify-content: center;
         width: 100%;
         color: white;
         margin: 0 auto;
-        display: flex;
+        grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+        grid-gap:0.5rem;
       }
     }
   }

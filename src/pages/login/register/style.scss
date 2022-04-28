@@ -46,6 +46,7 @@
             flex-direction: column;
 
             .flex {
+                flex-wrap: wrap;
                 display: flex;
             }
 
@@ -82,7 +83,7 @@
                     outline: none;
                     box-shadow: 0px 0px 12px 0.8px #0e81ce;
                 }
-
+                
                 .select {
                     width: 510px;
                     font-size: 16px;
@@ -94,27 +95,31 @@
                     
              
                 }
-                
-                .image img {
-                    margin-top: 15px;
-                    width: 20em;
-                    height: 10em;
-
+                @media only screen and (max-width:600px) {
+                    .select {
+                        width: 210px;
+                    } 
                 }
+                
 
                 .flag {
                     width: 15px;
-                    height: 10px;
+                    
                     margin-left: 5px;
                 }
 
 
 
-
-
+                .phone-label{
+                    margin-bottom: 1rem;
+                }
+                .phone-group{
+                    display:flex;
+                }
                 .phonecode {
-                    width: 10px;
-                    height: 37px;
+                    width: 90px;
+                    margin-right: 0.4re;
+                    margin-top:0.4rem;
                     padding: 10px 10px;
                     font-size: 16px;
                     font-family: "Open Sans", sans-serif;
@@ -150,7 +155,8 @@
     }
 }
 
-.btton {
+.submit-button {
+    display: block;
     font-family: "Raleway", sans-serif;
     text-transform: uppercase;
     color: #fff;
@@ -162,7 +168,6 @@
     border-radius: 25px;
     border: 0;
     margin: 0 auto;
-    margin-left: 11rem;
     transition: all 0.5s linear;
     text-decoration: none;
 
