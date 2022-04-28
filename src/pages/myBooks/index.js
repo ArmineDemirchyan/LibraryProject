@@ -32,25 +32,43 @@ export default function MyBooks() {
           </div>
         </div>
         <div className="my-books-container-inner-wrapper">
-          {myBooks.map(({ bookId, name, author, description, status }) => (
-            <Card sx={{ width: "25rem" }} key={bookId}>
-              <CardActionArea>
-                <CardContent>
-                  <img
-                    className="book-item-header-image"
-                    alt=""
-                    src="https://yazidharoun.files.wordpress.com/2020/11/how-to-format-a-book-3.jpg"
-                  />
-                  <div className="bookList-book-card-cardContent-wrapper">
-                    <h4>Գրքի անուն: {name}</h4>
-                    <h5>Գրքի հեղինակ: {author}</h5>
-                    <p>Գրքի մեկնաբանություն: {description}</p>
-                    <p>կարգավիճակ։ {status}</p>
-                  </div>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          ))}
+          {myBooks.map(({ book, bookName, bookAuthor, status }) => {
+            return book ? (
+              <Card sx={{ width: "25rem" }} key={book?.bookId}>
+                <CardActionArea>
+                  <CardContent>
+                    <img
+                      className="book-item-header-image"
+                      alt=""
+                      src="https://yazidharoun.files.wordpress.com/2020/11/how-to-format-a-book-3.jpg"
+                    />
+                    <div className="bookList-book-card-cardContent-wrapper">
+                      <h4>Գրքի անուն: {book?.name}</h4>
+                      <h5>Գրքի հեղինակ: {book?.author}</h5>
+                      <p>Գրքի մեկնաբանություն: {book?.description}</p>
+                      <p>կարգավիճակ։ {status}</p>
+                    </div>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            ) : (
+              <Card sx={{ width: "25rem" }} key={book?.bookId}>
+                <CardActionArea>
+                  <CardContent>
+                    <img
+                      className="book-item-header-image"
+                      alt=""
+                      src="https://yazidharoun.files.wordpress.com/2020/11/how-to-format-a-book-3.jpg"
+                    />
+                    <div className="bookList-book-card-cardContent-wrapper">
+                      <h4>Գրքի անուն: {bookName}</h4>
+                      <h5>Գրքի հեղինակ: {bookAuthor}</h5>
+                    </div>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </>

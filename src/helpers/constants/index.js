@@ -10,6 +10,7 @@ export const Hosts = {
 };
 
 export const Methods = {
+  delete: "users/delete",
   users: "users",
   groups: "groups",
   getUserRole: "getUserRole",

@@ -44,4 +44,8 @@ API.PATCH = async (host, controller, method, data, query, headers) => {
   return await REQ(host, "patch", controller, method, data, query, headers);
 };
 
+API.DELETE = async (host, controller, method, data, query, headers) => {
+  return await REQ(host, "delete", controller, method, data, query, headers);
+};
+
 export default API;

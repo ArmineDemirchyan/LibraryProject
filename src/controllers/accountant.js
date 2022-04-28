@@ -49,4 +49,19 @@ AccountantController.rejectConfirmRequest = async (body, requestId) => {
   return response.data;
 };
 
+AccountantController.deleteBook = async (id) => {
+  const response = await API.DELETE(
+    Hosts.PUBLIC_URL,
+    Controllers.BookCreationRequests,
+    id
+  );
+
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+
 export default AccountantController;

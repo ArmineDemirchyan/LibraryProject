@@ -100,6 +100,21 @@ AdminController.ChangeUserStatus = async (body) => {
   await AdminController.getUsersList();
   return response?.data;
 };
+AdminController.deleteUser = async (body) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    Methods.delete,
+    body
+  );
+  if (response.data?.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  await AdminController.getUsersList();
+  return response?.data;
+};
 
 AdminController.getProfessions = async () => {
   const response = await API.GET(Hosts.PUBLIC_URL, Controllers.profession, "");

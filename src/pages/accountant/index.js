@@ -32,7 +32,7 @@ export default function Accountant() {
       headerName: "",
       flex: 1,
       renderCell: ({ row }) =>
-        row.requestStatus === "Pending" && (
+        row.requestStatus === "Pending" ? (
           <>
             <Button
               onClick={handelConfirmRequestModalChange(row.id, true, "confirm")}
@@ -45,6 +45,8 @@ export default function Accountant() {
               Չեղարկել
             </Button>
           </>
+        ) : (
+          <Button onClick={handleDelete(row.id)}>Ջնջել</Button>
         ),
     },
   ];
@@ -65,6 +67,10 @@ export default function Accountant() {
       setBookCreationRequests(res.data)
     );
     setLoading(false);
+  };
+
+  const handleDelete = (id) => () => {
+    AccountantController.deleteBook(id);
   };
 
   const handelConfirmRequestModalChange = (requestId, payload, type) => () => {
