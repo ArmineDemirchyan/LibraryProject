@@ -4,7 +4,12 @@ import AccountantBookRequestsListTableHeaderActions from "components/accountantB
 import AccountantConfirmBookCreationRequestData from "components/accountantConfirmBookCreationRequestData";
 import Loading from "components/loading";
 import AccountantController from "controllers/accountant";
+import SignInController from "controllers/signIn";
+import UserController from "controllers/user";
+import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import routes from "routes/routes";
 import "./index.scss";
 
 export default function Accountant() {
@@ -32,7 +37,7 @@ export default function Accountant() {
       headerName: "",
       flex: 1,
       renderCell: ({ row }) =>
-        row.requestStatus === "Pending" ? (
+        row.requestStatus === "Pending" && (
           <>
             <Button
               onClick={handelConfirmRequestModalChange(row.id, true, "confirm")}
@@ -45,12 +50,10 @@ export default function Accountant() {
               Չեղարկել
             </Button>
           </>
-        ) : (
-          <Button onClick={handleDelete(row.id)}>Ջնջել</Button>
         ),
     },
   ];
-
+  const navigate = useNavigationWithQueryParams();
   const [confirmModalData, setConfirmModalData] = useState({
     open: false,
     requestId: null,
@@ -58,6 +61,7 @@ export default function Accountant() {
   });
   const [bookCreationRequests, setBookCreationRequests] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     getBookCreationRequests();
   }, []);
@@ -96,6 +100,13 @@ export default function Accountant() {
     setLoading(false);
   };
 
+  const handleLogOut = async () => {
+    setLoading(true);
+    await UserController.logOut();
+    navigate(routes.home);
+    setLoading(false);
+  };
+
   return (
     <>
       {loading && <Loading />}
@@ -104,6 +115,9 @@ export default function Accountant() {
         onClose={handelConfirmRequestModalChange}
         handleSubmit={handleConfirmRequest}
       />
+      <div className="table-header">
+        <Button onClick={handleLogOut}>Դուրս Գալ</Button>
+      </div>
       <div className="table-wrapper">
         <AccountantBookRequestsListTableHeaderActions
           setBookCreationRequests={setBookCreationRequests}

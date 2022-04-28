@@ -7,6 +7,7 @@ import Loading from "components/loading";
 import BookListTableHeaderActions from "components/bookListTableHeaderActions";
 import { IconButton } from "@mui/material";
 import AdminBookEditModal from "components/adminBookEdit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function AdminBooksList() {
   const ADMIN_BOOKS_LIST_COLUMNS = [
@@ -33,9 +34,14 @@ export default function AdminBooksList() {
       type: "actions",
       renderCell: (row) => {
         return (
-          <IconButton onClick={handleEdit(row.id)}>
-            <EditIcon />
-          </IconButton>
+          <>
+            <IconButton onClick={handleEdit(row.id)}>
+              <EditIcon />
+            </IconButton>
+            <IconButton>
+              <DeleteIcon />
+            </IconButton>
+          </>
         );
       },
     },
@@ -44,6 +50,7 @@ export default function AdminBooksList() {
     isOpened: false,
     editableBook: {},
   });
+  const [deleteModalDats, setDeleteModalDats] = useState({ open: false });
   const [loading, setLoading] = useState(true);
   const [bookList, setBookList] = useState([]);
 

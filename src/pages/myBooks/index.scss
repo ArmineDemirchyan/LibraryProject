@@ -29,4 +29,10 @@
     flex-wrap: wrap;
     margin: 2rem;
   }
+
+  .card-footer-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

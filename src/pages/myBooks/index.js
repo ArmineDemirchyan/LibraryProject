@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent } from "@mui/material";
+import { Button, Card, CardActionArea, CardContent } from "@mui/material";
 import Loading from "components/loading";
 import UserController from "controllers/user";
 import React, { useEffect, useState } from "react";
@@ -17,6 +17,15 @@ export default function MyBooks() {
       .then((res) => setMyBooks(res.data))
       .finally(() => setLoading(false));
   };
+
+  const handleCancelReservation = (id) => async (e) => {
+    setLoading(true);
+    e.stopPropagation();
+    await UserController.CancelBookReservation(id);
+    await getMyBooks();
+    setLoading(false);
+  };
+
   return (
     <>
       {loading && <Loading />}
@@ -32,7 +41,7 @@ export default function MyBooks() {
           </div>
         </div>
         <div className="my-books-container-inner-wrapper">
-          {myBooks.map(({ book, bookName, bookAuthor, status }) => {
+          {myBooks.map(({ book, bookName, bookAuthor, status, id }) => {
             return book ? (
               <Card sx={{ width: "25rem" }} key={book?.bookId}>
                 <CardActionArea>
@@ -48,6 +57,14 @@ export default function MyBooks() {
                       <p>Գրքի մեկնաբանություն: {book?.description}</p>
                       <p>կարգավիճակ։ {status}</p>
                     </div>
+
+                    {status === "Reserved" && (
+                      <div className="card-footer-button">
+                        <Button onClick={handleCancelReservation(id)}>
+                          Չեղարկել
+                        </Button>
+                      </div>
+                    )}
                   </CardContent>
                 </CardActionArea>
               </Card>

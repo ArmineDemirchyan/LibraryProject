@@ -24,9 +24,11 @@ export const Methods = {
   changeUserStatus: "users/changeStatus",
   getEndingSoonReservations: "reservations/getEndingSoonReservations",
   myReservations: "myReservations",
+  cancel: "cancel",
 };
 
 export const Controllers = {
+  refresh: "refresh",
   profession: "Profession",
   register: "register",
   books: "books",

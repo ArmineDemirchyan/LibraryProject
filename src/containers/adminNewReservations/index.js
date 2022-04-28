@@ -84,6 +84,7 @@ export default function AdminNewReservations() {
   };
 
   const getReservations = async () => {
+    setLoading(true);
     return await AdminController.getNewReservations()
       .then((res) => res.data && setReservations(res.data))
       .finally(() => setLoading(false));

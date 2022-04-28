@@ -1,5 +1,5 @@
-import { toast } from "react-toastify";
 import { request } from "./request";
+import { serializeErrorMessage } from "./validationErrorHandler";
 const API = {};
 
 const REQ = async (
@@ -23,8 +23,7 @@ const REQ = async (
     );
     return response;
   } catch (err) {
-    toast.error(err.message);
-    return { data: { hasError: true, errorMessage: err.message } };
+    return serializeErrorMessage(err);
   }
 };
 
