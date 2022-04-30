@@ -55,7 +55,7 @@ export default function BookList() {
         {loading && <Loading />}
         <BooksListBasket />
         <div className="booksList-container-wrapper">
-          <div className="book-header"></div>
+          {/* <div className="book-header"></div> */}
           <div className="header-wrapper">
             <div className="header">
               <div>

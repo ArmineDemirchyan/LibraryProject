@@ -22,14 +22,29 @@ export default function MyBooks() {
       {loading && <Loading />}
       <div className="my-books-container-wrapper">
         <div className="header-wrapper">
-          <div className="header">
+          {/* <div className="header">
             <div>
               <Link className="header-logo" to="/user">
                 ԵԻՊՔ ԳՐԱԴԱՐԱՆ
               </Link>
             </div>
             <div></div>
-          </div>
+          </div> */}
+          <nav>   
+            <a href="#header">ԻՄ ԳՐՔԵՐԸ</a>
+            <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
+            <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
+            <Box sx={{ minWidth: "10rem" }}>
+              <FormControl fullWidth>
+                <InputLabel>{displayName}</InputLabel>
+                <Select variant="standard">
+                  <MenuItem onClick={handleLogOut} className="menuitem">
+                    դուրս գալ
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </Box>    
+        </nav>
         </div>
         <div className="my-books-container-inner-wrapper">
           {myBooks.map(({ bookId, name, author, description, status }) => (
