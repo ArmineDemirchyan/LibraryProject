@@ -55,22 +55,21 @@ export default function BookList() {
         {loading && <Loading />}
         <BooksListBasket />
         <div className="booksList-container-wrapper">
-          {/* <div className="book-header"></div> */}
-          <div className="header-wrapper">
+          <div className="book-header"></div>
+          
             <div className="header">
               <div>
                 <Link className="header-logo" to="/user">
                   ԵԻՊՔ ԳՐԱԴԱՐԱՆ
                 </Link>
               </div>
-              <div></div>
               <div>
                 <IconButton onClick={handleOpenBasket}>
-                  <LocalGroceryStoreIcon className="" />
+                  <LocalGroceryStoreIcon className="card-icon" />
                 </IconButton>
               </div>
             </div>
-          </div>
+          
 
           <div className="books-wrapper">
             <div className="bookList-filters-wrapper">
