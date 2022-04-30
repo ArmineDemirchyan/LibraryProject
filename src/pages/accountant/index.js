@@ -4,11 +4,9 @@ import AccountantBookRequestsListTableHeaderActions from "components/accountantB
 import AccountantConfirmBookCreationRequestData from "components/accountantConfirmBookCreationRequestData";
 import Loading from "components/loading";
 import AccountantController from "controllers/accountant";
-import SignInController from "controllers/signIn";
 import UserController from "controllers/user";
 import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
 import routes from "routes/routes";
 import "./index.scss";
 
@@ -71,10 +69,6 @@ export default function Accountant() {
       setBookCreationRequests(res.data)
     );
     setLoading(false);
-  };
-
-  const handleDelete = (id) => () => {
-    AccountantController.deleteBook(id);
   };
 
   const handelConfirmRequestModalChange = (requestId, payload, type) => () => {

@@ -10,7 +10,6 @@ import { saveUserInfo } from "store/action-creators/userInfo";
 import "./App.css";
 
 function App() {
-  // const user = useSelector(userPersonalInfoSelector);
   const dispatch = useDispatch();
   const navigate = useNavigationWithQueryParams();
   const [loading, setLoading] = useState(false);
@@ -37,6 +36,7 @@ function App() {
 
   useEffect(() => {
     getUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

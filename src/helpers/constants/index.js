@@ -2,7 +2,6 @@ import AdminBooksList from "containers/adminBooksList";
 import AdminNewReservations from "containers/adminNewReservations";
 import AdminUsersList from "containers/adminUsersList";
 import SuperAdminAdmins from "containers/superAdminAdmins";
-import AdminController from "controllers/admin";
 
 export const Hosts = {
   BASE_URL: "BASE_URL",
@@ -35,11 +34,12 @@ export const Controllers = {
   admin: "admin",
   admins: "admins",
   BookCreationRequests: "BookCreationRequests",
+  bookDeletionRequests: "bookDeletionRequests",
 };
 
 export const HostUrls = {
-  BASE_URL: "http://138.68.129.12/api",
-  PUBLIC_URL: "http://138.68.129.12:8888/api",
+  BASE_URL: "https://feodal-brnapet.me/api",
+  PUBLIC_URL: "https://admin.feodal-brnapet.me/api",
 };
 
 export const USER_TYPES = {
@@ -154,4 +154,11 @@ export const SUPER_ADMIN_ADD_NEW_ADMIN = [
   { id: "firstName", title: "Անուն" },
   { id: "lastName", title: "Ազգանուն" },
   { id: "email", title: "Էլ։ Փոստ", type: "email" },
+];
+
+export const adminBookDeletionReasons = [
+  "GivenAway",
+  "Makulatura",
+  "Destroyed",
+  "Lost",
 ];

@@ -5,7 +5,6 @@ import { Register } from "pages/login/register";
 import { Login } from "pages/login/signin";
 import myBooks from "pages/myBooks";
 import Start from "pages/start";
-import SuperAdmin from "pages/superadmin";
 import User from "pages/user";
 import routes from "routes/routes.js";
 
@@ -32,12 +31,6 @@ const routesData = [
     title: "Accountant",
     path: routes.accountant,
     Comp: Accountant,
-    exact: true,
-  },
-  {
-    title: "superAdmin",
-    path: routes.superAdmin,
-    Comp: SuperAdmin,
     exact: true,
   },
   {

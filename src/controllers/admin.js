@@ -220,4 +220,19 @@ AdminController.createNewAdmin = async (body) => {
   return response.data;
 };
 
+AdminController.deleteBookCreationRequest = async (body) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.bookDeletionRequests,
+    "",
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+
 export default AdminController;
