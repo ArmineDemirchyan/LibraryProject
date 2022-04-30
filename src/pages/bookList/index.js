@@ -66,7 +66,7 @@ export default function BookList() {
               <div></div>
               <div>
                 <IconButton onClick={handleOpenBasket}>
-                  <LocalGroceryStoreIcon className="card-icon" />
+                  <LocalGroceryStoreIcon className="" />
                 </IconButton>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function BookList() {
                     <CardActionArea>
                       <CardContent>
                         <img
-                        className="book-item-header-image"
+                          className="book-item-header-image"
                           alt=""
                           src="https://yazidharoun.files.wordpress.com/2020/11/how-to-format-a-book-3.jpg"
                         />

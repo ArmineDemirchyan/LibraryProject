@@ -43,4 +43,17 @@ SignInController.register = async (data) => {
   return response;
 };
 
+SignInController.refreshUser = async () => {
+  const token = localStorage.getItem("token");
+  const refreshToken = localStorage.getItem("refreshToken");
+  const response = await API.POST(Hosts.BASE_URL, Controllers.refresh, "", {
+    refreshToken: refreshToken,
+    token: token,
+  });
+  if (response.data.hasError) {
+    return false;
+  }
+  return response;
+};
+
 export default SignInController;

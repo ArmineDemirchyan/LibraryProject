@@ -119,7 +119,10 @@ export function Register() {
             {userType === USER_TYPES.STUDENT && (
               <div className="formgroup">
                 <FormControl className="select">
-                  <InputLabel className="select-label" id="demo-simple-select-label">
+                  <InputLabel
+                    className="select-label"
+                    id="demo-simple-select-label"
+                  >
                     Խմբի համար
                   </InputLabel>
                   <Select
@@ -212,13 +215,16 @@ export function Register() {
               </div>
             </div>
             <div className="formgroup">
-
               <label className="label phone-label" htmlFor="phone">
                 Հեռախոսահամար
               </label>
               <div className="phone-group">
                 <label for="area_code" className="phonecode">
-                  <img className="flag" src="../../../public/img/flag.jpg" alt="Img" />
+                  <img
+                    className="flag"
+                    src="../../../public/img/flag.jpg"
+                    alt="Img"
+                  />
                   +374
                 </label>
                 <input

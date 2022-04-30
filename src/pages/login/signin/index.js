@@ -37,6 +37,7 @@ export function Login() {
           ? await SignInController.login(userLoginInfo)
           : await SignInController.adminLogin(userLoginInfo);
       if (response.data) {
+        localStorage.setItem("refreshToken", response.data.refreshToken);
         localStorage.setItem("token", response.data.token);
         dispatch(saveUserInfo(response.data));
         navigate(USER_NAVIGATION[response.data.role]);

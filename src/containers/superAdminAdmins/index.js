@@ -35,7 +35,6 @@ export default function SuperAdminAdmins() {
     );
     setLoading(false);
   };
-  console.log(admins);
   return (
     <>
       {loading && <Loading />}

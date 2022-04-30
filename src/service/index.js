@@ -1,5 +1,5 @@
-import { toast } from "react-toastify";
 import { request } from "./request";
+import { serializeErrorMessage } from "./validationErrorHandler";
 const API = {};
 
 const REQ = async (
@@ -23,8 +23,7 @@ const REQ = async (
     );
     return response;
   } catch (err) {
-    toast.error(err.message);
-    return { data: { hasError: true, errorMessage: err.message } };
+    return serializeErrorMessage(err);
   }
 };
 
@@ -42,6 +41,10 @@ API.POST = async (host, controller, method, data, query, headers) => {
 
 API.PATCH = async (host, controller, method, data, query, headers) => {
   return await REQ(host, "patch", controller, method, data, query, headers);
+};
+
+API.DELETE = async (host, controller, method, data, query, headers) => {
+  return await REQ(host, "delete", controller, method, data, query, headers);
 };
 
 export default API;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SmoothScroll from "smooth-scroll";
-import { NavHashLink } from 'react-router-hash-link';
+import { NavHashLink } from "react-router-hash-link";
 import "./style.scss";
 
 export const scroll = new SmoothScroll('Link[to*="#"]', {
@@ -14,11 +14,15 @@ const Start = () => {
     <div className="container">
       <nav>
         <div className="navright">
-          <NavHashLink smooth to="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</NavHashLink>
+          <NavHashLink smooth to="#header">
+            ԵԻՊՔ ԳՐԱԴԱՐԱՆ
+          </NavHashLink>
         </div>
         <div className="navleft">
-          <NavHashLink smooth to="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</NavHashLink>
-          <Link to="#team">ՀԵՂԻՆԱԿՆԵՐ</Link>
+          <NavHashLink smooth to="#about">
+            ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ
+          </NavHashLink>
+          <NavHashLink to="#team">ՀԵՂԻՆԱԿՆԵՐ</NavHashLink>
           <Link to="/login">ՄՈՒՏՔ</Link>
         </div>
       </nav>

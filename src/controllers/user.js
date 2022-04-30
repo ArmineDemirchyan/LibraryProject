@@ -47,6 +47,8 @@ UserController.ReserveNewBook = async (books) => {
 };
 
 UserController.logOut = async () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("refreshToken");
   return await API.POST(Hosts.BASE_URL, Methods.logOut, "");
 };
 
@@ -57,6 +59,20 @@ UserController.getMyBookReservations = async () => {
     Methods.myReservations
   );
 
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  return response.data;
+};
+
+UserController.CancelBookReservation = async (id) => {
+  const response = await API.POST(
+    Hosts.BASE_URL,
+    Methods.reservations,
+    `${id}/${Methods.cancel}`,
+    { id }
+  );
   if (response.data.hasError) {
     toast.error(response.data.errorMessage);
     return false;

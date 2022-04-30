@@ -8,23 +8,26 @@ import "./index.scss";
 
 export default function AdminUsersList() {
   const ADMIN_USERS_LIST_COLUMNS = [
-    { flex: 1, headerName: "Id", field: "id" },
+    { width: 60, headerName: "Id", field: "id" },
     { flex: 1, headerName: "Անուն", field: "firstname" },
     { flex: 1, headerName: "Ազգանուն", field: "lastname" },
-    { flex: 1, headerName: "Խմբի համար", field: "groupNumber" },
+    { width: 60, headerName: "Խմբի համար", field: "groupNumber" },
     {
       flex: 1,
       headerName: "ՈՒսանողական Քարտի համար",
       field: "studentCardNumber",
     },
-    { flex: 1, headerName: "Կարգավիճակ", field: "status" },
+    { width: 120, headerName: "Կարգավիճակ", field: "status" },
     {
       flex: 1,
       field: "actions",
       type: "actions",
       renderCell: ({ row }) => {
         return row.status === "Inactive" ? (
-          <Button onClick={handleConfirmUser(row.id)}>հաստատել</Button>
+          <>
+            <Button onClick={handleConfirmUser(row.id)}>հաստատել</Button>
+            <Button onClick={handleDeleteUser(row.id)}>մերժել</Button>
+          </>
         ) : (
           <Button onClick={handleDeActivateUser(row.id)}>Ապաակտիվացնել</Button>
         );
@@ -36,6 +39,12 @@ export default function AdminUsersList() {
   useEffect(() => {
     getUsersList();
   }, []);
+
+  const handleDeleteUser = (userId) => async () => {
+    setLoading(true);
+    AdminController.deleteUser({ userId });
+    setLoading(false);
+  };
 
   const getUsersList = async () => {
     setLoading(true);

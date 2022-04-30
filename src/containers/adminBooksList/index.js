@@ -7,6 +7,8 @@ import Loading from "components/loading";
 import BookListTableHeaderActions from "components/bookListTableHeaderActions";
 import { IconButton } from "@mui/material";
 import AdminBookEditModal from "components/adminBookEdit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AdminBookDeleteModal from "components/adminBookDeleteModal";
 
 export default function AdminBooksList() {
   const ADMIN_BOOKS_LIST_COLUMNS = [
@@ -33,9 +35,14 @@ export default function AdminBooksList() {
       type: "actions",
       renderCell: (row) => {
         return (
-          <IconButton onClick={handleEdit(row.id)}>
-            <EditIcon />
-          </IconButton>
+          <>
+            <IconButton onClick={handleEdit(row.id)}>
+              <EditIcon />
+            </IconButton>
+            <IconButton onClick={handleDeleteBook(true, row.id)}>
+              <DeleteIcon />
+            </IconButton>
+          </>
         );
       },
     },
@@ -43,6 +50,10 @@ export default function AdminBooksList() {
   const [editModalData, setEditModalData] = useState({
     isOpened: false,
     editableBook: {},
+  });
+  const [deleteModalData, setDeleteModalData] = useState({
+    open: false,
+    bookId: null,
   });
   const [loading, setLoading] = useState(true);
   const [bookList, setBookList] = useState([]);
@@ -52,6 +63,9 @@ export default function AdminBooksList() {
       isOpened: true,
       editableBook: bookList.find((elem) => elem.bookId === id),
     });
+
+  const handleDeleteBook = (payload, bookId) => () =>
+    setDeleteModalData({ open: payload, bookId });
 
   const getBookList = async () => {
     return await UserController.getBookList();
@@ -71,6 +85,13 @@ export default function AdminBooksList() {
     <>
       {loading && <Loading />}
       <div>
+        {deleteModalData.open && (
+          <AdminBookDeleteModal
+            {...deleteModalData}
+            onClose={handleDeleteBook}
+            setLoading={setLoading}
+          />
+        )}
         <AdminBookEditModal onClose={handleCloseEditModal} {...editModalData} />
         <div className="bookList-table-wrapper">
           <DataGrid
