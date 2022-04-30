@@ -3,14 +3,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import AccountantBookRequestsListTableHeaderActions from "components/accountantBookRequestsListTableHeaderActions";
 import AccountantConfirmBookCreationRequestData from "components/accountantConfirmBookCreationRequestData";
 import Loading from "components/loading";
+import UserSelect from "components/userSelect";
 import AccountantController from "controllers/accountant";
-import UserController from "controllers/user";
-import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React, { useEffect, useState } from "react";
-import routes from "routes/routes";
 import "./index.scss";
 
 export default function Accountant() {
+  
   const columns = [
     { field: "id", headerName: "Id", width: 60 },
     { field: "name", headerName: "Գրքի Անուն", flex: 1 },
@@ -51,7 +50,7 @@ export default function Accountant() {
         ),
     },
   ];
-  const navigate = useNavigationWithQueryParams();
+  // const navigate = useNavigationWithQueryParams();
   const [confirmModalData, setConfirmModalData] = useState({
     open: false,
     requestId: null,
@@ -79,13 +78,13 @@ export default function Accountant() {
     setLoading(true);
     confirmModalData.type === "confirm"
       ? AccountantController.ConfirmRequest(
-          { accountantMessage: comment },
-          confirmModalData.requestId
-        )
+        { accountantMessage: comment },
+        confirmModalData.requestId
+      )
       : AccountantController.rejectConfirmRequest(
-          { accountantMessage: comment },
-          confirmModalData.requestId
-        );
+        { accountantMessage: comment },
+        confirmModalData.requestId
+      );
     handelConfirmRequestModalChange({
       open: false,
       requestId: null,
@@ -93,14 +92,6 @@ export default function Accountant() {
     });
     setLoading(false);
   };
-
-  const handleLogOut = async () => {
-    setLoading(true);
-    await UserController.logOut();
-    navigate(routes.home);
-    setLoading(false);
-  };
-
   return (
     <>
       {loading && <Loading />}
@@ -109,9 +100,11 @@ export default function Accountant() {
         onClose={handelConfirmRequestModalChange}
         handleSubmit={handleConfirmRequest}
       />
-      <div className="table-header">
-        <Button onClick={handleLogOut}>Դուրս Գալ</Button>
-      </div>
+      <nav className="table-header">
+      <h1>ՀԱՇՎԱՊԱՀ</h1>
+        <UserSelect />
+      </nav>
+
       <div className="table-wrapper">
         <AccountantBookRequestsListTableHeaderActions
           setBookCreationRequests={setBookCreationRequests}

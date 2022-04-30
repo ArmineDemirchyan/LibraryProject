@@ -29,8 +29,9 @@ export default function AdminBookEditModal({
         {ADMIN_CREATE_NEW_BOOK_LIST_INPUTS.map(
           ({ type, title, id, disabled }, index) => (
             <div key={index}>
-              <label htmlFor="id">{title}</label>
+              <label htmlFor="id" className="edit-label">{title}</label>
               <TextField
+                className="edit-textfield"
                 type={type || "text"}
                 value={bookData[id]}
                 onChange={handleInputsChange(id)}

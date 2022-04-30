@@ -1,5 +1,6 @@
 import { Button, Tab, Tabs } from "@mui/material";
 import Loading from "components/loading";
+import UserSelect from "components/userSelect";
 import UserController from "controllers/user";
 import {
   adminHeaderData,
@@ -25,12 +26,6 @@ export default function AdminHeader({ tabValue, setTabValue }) {
     );
   };
 
-  const handleLogOut = async () => {
-    setLoading(true);
-    await UserController.logOut();
-    navigate(routes.home);
-    setLoading(false);
-  };
 
   return (
     <>
@@ -47,7 +42,7 @@ export default function AdminHeader({ tabValue, setTabValue }) {
             ))}
           </Tabs>
           <div>
-            <Button onClick={handleLogOut}>Դուրս Գալ</Button>
+            <UserSelect setLoading={setLoading}/>
           </div>
         </div>
       </div>

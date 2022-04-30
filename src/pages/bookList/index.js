@@ -56,8 +56,8 @@ export default function BookList() {
         <BooksListBasket />
         <div className="booksList-container-wrapper">
           <div className="book-header"></div>
-          
-            <div className="header">
+          <div className="header-wrapper">
+            <div className="booklist-header">
               <div>
                 <Link className="header-logo" to="/user">
                   ԵԻՊՔ ԳՐԱԴԱՐԱՆ
@@ -69,7 +69,7 @@ export default function BookList() {
                 </IconButton>
               </div>
             </div>
-          
+          </div>
 
           <div className="books-wrapper">
             <div className="bookList-filters-wrapper">
