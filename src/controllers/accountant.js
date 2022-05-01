@@ -64,4 +64,18 @@ AccountantController.deleteBook = async (id) => {
   return response.data;
 };
 
+AccountantController.getBookDeletionRequests = async () => {
+  const response = await API.GET(
+    Hosts.PUBLIC_URL,
+    Controllers.bookDeletionRequests,
+    ""
+  );
+
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  return response.data;
+};
+
 export default AccountantController;

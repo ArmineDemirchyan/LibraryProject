@@ -16,6 +16,7 @@ export default function AdminBookDeleteModal({
   bookId,
   onClose,
   setLoading,
+  getBookList,
 }) {
   const [inputsData, setInputsData] = useState({
     count: "",
@@ -33,6 +34,7 @@ export default function AdminBookDeleteModal({
   const handleSubmit = async () => {
     setLoading(true);
     await AdminController.deleteBookCreationRequest({ ...inputsData, bookId });
+    await getBookList();
     setLoading(false);
   };
 

@@ -15,23 +15,33 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const getUserInfo = async () => {
-    setLoading(true);
     const refreshToken = localStorage.getItem("refreshToken");
+    let response = null;
     if (refreshToken) {
-      const response = await SignInController.refreshUser();
+      setLoading(true);
+      const userIsAdmin = await SignInController.getUserRoleWithToken();
+      if (userIsAdmin.hasError) {
+        setLoading(false);
+        navigate(routes.home);
+      }
+      response = userIsAdmin.isUserAdmin
+        ? await SignInController.refreshAdmin()
+        : await SignInController.refreshUser();
+
       if (response) {
         localStorage.setItem("refreshToken", response.data.refreshToken);
         localStorage.setItem("token", response.data.token);
         dispatch(saveUserInfo(response.data));
+        setLoading(false);
         USER_NAVIGATION[response.data?.role] &&
           navigate(USER_NAVIGATION[response.data.role]);
       } else {
+        setLoading(false);
         navigate(routes.home);
       }
     } else {
       navigate(routes.home);
     }
-    setLoading(false);
   };
 
   useEffect(() => {

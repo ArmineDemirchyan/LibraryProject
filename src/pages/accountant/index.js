@@ -1,123 +1,28 @@
-import { Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import AccountantBookRequestsListTableHeaderActions from "components/accountantBookRequestsListTableHeaderActions";
-import AccountantConfirmBookCreationRequestData from "components/accountantConfirmBookCreationRequestData";
-import Loading from "components/loading";
-import AccountantController from "controllers/accountant";
-import UserController from "controllers/user";
-import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
-import React, { useEffect, useState } from "react";
-import routes from "routes/routes";
+import { Tab, Tabs } from "@mui/material";
+import { ACCOUNTANT_TABS } from "helpers/constants";
+import React, { useState } from "react";
 import "./index.scss";
 
 export default function Accountant() {
-  const columns = [
-    { field: "id", headerName: "Id", width: 60 },
-    { field: "name", headerName: "Գրքի Անուն", flex: 1 },
-    { field: "author", headerName: "Հեղինակ", flex: 1 },
-    { field: "productionYear", headerName: "Գրքի Տարեթիվ", flex: 1 },
-    { field: "quantity", headerName: "Ընդհանուր Քանակ", width: 120 },
-    {
-      field: "availableForBorrowingCount",
-      headerName: "Հասանելի պատվիրելու համար",
-      width: 120,
-    },
-    {
-      field: "availableForUsingInLibraryCount",
-      headerName: "Հասանելի Գրադարանում Կարդալու համար",
-      width: 120,
-    },
-    { field: "pagesCount", headerName: "Էջերի Քանակ", width: 120 },
-    { field: "requestStatus", headerName: "Կարգավիճակ", width: 120 },
-    {
-      field: "actions",
-      type: "actions",
-      headerName: "",
-      flex: 1,
-      renderCell: ({ row }) =>
-        row.requestStatus === "Pending" && (
-          <>
-            <Button
-              onClick={handelConfirmRequestModalChange(row.id, true, "confirm")}
-            >
-              հաստատել
-            </Button>
-            <Button
-              onClick={handelConfirmRequestModalChange(row.id, true, "reject")}
-            >
-              Չեղարկել
-            </Button>
-          </>
-        ),
-    },
-  ];
-  const navigate = useNavigationWithQueryParams();
-  const [confirmModalData, setConfirmModalData] = useState({
-    open: false,
-    requestId: null,
-    type: null,
-  });
-  const [bookCreationRequests, setBookCreationRequests] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [tabValue, setTabValue] = useState(ACCOUNTANT_TABS[0]);
 
-  useEffect(() => {
-    getBookCreationRequests();
-  }, []);
-  const getBookCreationRequests = async () => {
-    setLoading(true);
-    await AccountantController.getBookCreationRequests().then((res) =>
-      setBookCreationRequests(res.data)
-    );
-    setLoading(false);
+  const handleTabChange = (e, index) => {
+    setTabValue(ACCOUNTANT_TABS[index]);
   };
-
-  const handelConfirmRequestModalChange = (requestId, payload, type) => () => {
-    setConfirmModalData({ open: payload, requestId, type });
-  };
-
-  const handleConfirmRequest = (comment) => async () => {
-    setLoading(true);
-    confirmModalData.type === "confirm"
-      ? AccountantController.ConfirmRequest(
-          { accountantMessage: comment },
-          confirmModalData.requestId
-        )
-      : AccountantController.rejectConfirmRequest(
-          { accountantMessage: comment },
-          confirmModalData.requestId
-        );
-    handelConfirmRequestModalChange({
-      open: false,
-      requestId: null,
-      type: null,
-    });
-    setLoading(false);
-  };
-
-  const handleLogOut = async () => {
-    setLoading(true);
-    await UserController.logOut();
-    navigate(routes.home);
-    setLoading(false);
-  };
-
   return (
-    <>
-      {loading && <Loading />}
-      <AccountantConfirmBookCreationRequestData
-        {...confirmModalData}
-        onClose={handelConfirmRequestModalChange}
-        handleSubmit={handleConfirmRequest}
-      />
-      <div className="table-header">
-        <Button onClick={handleLogOut}>Դուրս Գալ</Button>
+    <div>
+      <div className="accountant-header-wrapper">
+        <div className="accountant-header">
+          <div></div>
+          <Tabs value={tabValue.id} onChange={handleTabChange}>
+            {ACCOUNTANT_TABS.map((tab) => (
+              <Tab label={tab.title} key={tab.id} />
+            ))}
+          </Tabs>
+          <div></div>
+        </div>
       </div>
-      <div className="table-wrapper">
-        <AccountantBookRequestsListTableHeaderActions
-          setBookCreationRequests={setBookCreationRequests}
-        />
-        <DataGrid columns={columns} rows={bookCreationRequests} />
-      </div>
-    </>
+      <tabValue.Comp />
+    </div>
   );
 }

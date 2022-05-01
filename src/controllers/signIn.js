@@ -43,12 +43,38 @@ SignInController.register = async (data) => {
   return response;
 };
 
+SignInController.getUserRoleWithToken = async () => {
+  const token = localStorage.getItem("token");
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.getUserRoleByToken,
+    "",
+    { token }
+  );
+  return response.data;
+};
+
+SignInController.refreshAdmin = async () => {
+  const token = localStorage.getItem("token");
+  const refreshToken = localStorage.getItem("refreshToken");
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    `${Controllers.admin}/${Controllers.identity}`,
+    Controllers.refresh,
+    { refreshToken, token }
+  );
+  if (response.data.hasError) {
+    return false;
+  }
+  return response;
+};
+
 SignInController.refreshUser = async () => {
   const token = localStorage.getItem("token");
   const refreshToken = localStorage.getItem("refreshToken");
   const response = await API.POST(Hosts.BASE_URL, Controllers.refresh, "", {
-    refreshToken: refreshToken,
-    token: token,
+    refreshToken,
+    token,
   });
   if (response.data.hasError) {
     return false;

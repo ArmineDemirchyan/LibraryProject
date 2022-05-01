@@ -1,3 +1,5 @@
+import AccountantNewBookCreationRequests from "containers/accountantNewBookCreationRequests";
+import AccountantRemovableBookRequests from "containers/accountantRemovableBookRequests";
 import AdminBooksList from "containers/adminBooksList";
 import AdminNewReservations from "containers/adminNewReservations";
 import AdminUsersList from "containers/adminUsersList";
@@ -27,6 +29,8 @@ export const Methods = {
 };
 
 export const Controllers = {
+  identity: "identity",
+  getUserRoleByToken: "getUserRoleByToken",
   refresh: "refresh",
   profession: "Profession",
   register: "register",
@@ -161,4 +165,17 @@ export const adminBookDeletionReasons = [
   "Makulatura",
   "Destroyed",
   "Lost",
+];
+
+export const ACCOUNTANT_TABS = [
+  {
+    id: 0,
+    title: "Նոր Գրքերի Հայտեր",
+    Comp: AccountantNewBookCreationRequests,
+  },
+  {
+    id: 1,
+    title: "Հեռացվող Գրքերի Հայտեր",
+    Comp: AccountantRemovableBookRequests,
+  },
 ];

@@ -68,18 +68,19 @@ export default function AdminBooksList() {
     setDeleteModalData({ open: payload, bookId });
 
   const getBookList = async () => {
-    return await UserController.getBookList();
+    setLoading(true);
+    return await UserController.getBookList()
+      .then((res) =>
+        setBookList(res.data.data.map((elem) => ({ ...elem, id: elem.bookId })))
+      )
+      .finally(() => setLoading(false));
   };
 
   const handleCloseEditModal = (payload) => () => {
     setEditModalData({ isOpened: payload, editableBook: {} });
   };
   useEffect(() => {
-    getBookList()
-      .then((res) =>
-        setBookList(res.data.data.map((elem) => ({ ...elem, id: elem.bookId })))
-      )
-      .finally(() => setLoading(false));
+    getBookList();
   }, []);
   return (
     <>
@@ -90,6 +91,7 @@ export default function AdminBooksList() {
             {...deleteModalData}
             onClose={handleDeleteBook}
             setLoading={setLoading}
+            getBookList={getBookList}
           />
         )}
         <AdminBookEditModal onClose={handleCloseEditModal} {...editModalData} />
