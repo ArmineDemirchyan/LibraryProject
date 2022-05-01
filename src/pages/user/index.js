@@ -1,25 +1,14 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { Box } from "@mui/system";
 import Loading from "components/loading";
-import UserController from "controllers/user";
-import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
+import UserSelect from "components/userSelect";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+
 import routes from "routes/routes";
-import { userPersonalInfoSelector } from "store/selectors/userInfo";
+
 import "./style.scss";
 const User = () => {
-  const [loading, setLoading] = useState(false);
-  const { displayName } = useSelector(userPersonalInfoSelector);
-  const navigate = useNavigationWithQueryParams();
-  const handleLogOut = async () => {
-    setLoading(true);
-    const res = await UserController.logOut();
-    if (res.hasError) return toast.error(res.errorMessage);
-    navigate(routes.home);
-  };
+  const [loading, setLoading] = useState(false); 
   return (
     <div className="main">
       {loading && <Loading />}
@@ -31,16 +20,7 @@ const User = () => {
             <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
             <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
             <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
-            <Box sx={{ minWidth: "10rem" }}>
-              <FormControl fullWidth>
-                <InputLabel>{displayName}</InputLabel>
-                <Select variant="standard">
-                  <MenuItem onClick={handleLogOut} className="menuitem">
-                    դուրս գալ
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            </Box>    
+            <UserSelect setLoading={setLoading}/>
         </nav>
         
         </div>
@@ -67,19 +47,9 @@ const User = () => {
             <div className="aboutleft">
               <h2>ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</h2>
               <p>
-                ԵԻՊՔ-ի օնլայն գրադարանից օգտվելու համար մուտք գործիր քո էջ,եթե
-                դեռ չես գրանցվել գրանցվի՛ր և 10 օրվա ընթացքում մոտեցի՛ր քոլեջի
-                գրադարանավարին՝ գրանցումդ հաստատելու համար և դարձիր մեր օնլայն
-                գրադարանի մասնիկը։ Շտապի՛ր մեր գրքերը քեզ են սպասում։
+                Շնորհավորում եմ դու արդեն մեր օնլայն գրադարանի անդամն ես:<br/>Գրքերին կարող ես ծանոթանալ <b>ԳՐՔԵՐԻ ՑԱՆԿ</b> բաժնում,որտեղ կարող ես ընտրել քո նախընտրած գիրքը և ամրագրել ցանկալի ժամանակահատվածի համար
               </p>
-              <h3>Ինչու՞ ընտրել հենց մեր գրադարանը</h3>
-              <ol>
-                <li>Մենք քեզ մոտ ենք</li>
-                <li>Կարող ես ամրագրել երկար ժամանակով</li>
-                <li>Ընտրել տանը, վերցնել քոլեջից</li>
-                <li>Կարող ես կարդալ հենց գրադարանում</li>
-                <li>Մենք քեզ չենք շտապեցնում</li>
-              </ol>
+              
             </div>
           </div>
         </div>
@@ -89,3 +59,4 @@ const User = () => {
   );
 };
 export default User;
+

@@ -57,16 +57,15 @@ export default function BookList() {
         <div className="booksList-container-wrapper">
           <div className="book-header"></div>
           <div className="header-wrapper">
-            <div className="header">
+            <div className="booklist-header">
               <div>
                 <Link className="header-logo" to="/user">
                   ԵԻՊՔ ԳՐԱԴԱՐԱՆ
                 </Link>
               </div>
-              <div></div>
               <div>
                 <IconButton onClick={handleOpenBasket}>
-                  <LocalGroceryStoreIcon className="" />
+                  <LocalGroceryStoreIcon className="card-icon" />
                 </IconButton>
               </div>
             </div>

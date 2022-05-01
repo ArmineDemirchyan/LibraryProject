@@ -2,19 +2,29 @@
   width: 100%;
   box-sizing: border-box;
 
-  .header-wrapper {
+  .book-header {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+    background-image: url("https://ae01.alicdn.com/kf/H2dccc8155ccd4337b0b246526f1e8977x/Bacal-Custom-Modern-white-Wallpaper-mural-Book-Library-Bookcase-Magazine-Shelf-Art-Wall-Painting-Living-Room.jpg");
+    height: 15em;
     width: 100%;
-    background-color: rgb(6, 52, 88);
-    display: flex;
-    justify-content: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     
-    .header {
-
+  }
+.booklist-header {    
+     
       width: 95%;
       height: 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
+      background-color: rgb(6, 52, 88);
 
       .header-logo {
         text-decoration: none;
@@ -27,7 +37,8 @@
         color: white;
       }
     }
-  }
+    
+  
 
   .books-wrapper {
     width: 100%;
@@ -42,9 +53,9 @@
     }
 
     .bookList-filters-wrapper {
-      
-
+      margin-top:5rem;
       .bookList-filters {
+        
         display: grid;
         justify-content: center;
         width: 100%;
@@ -56,27 +67,6 @@
     }
   }
 
-  .book-header {
-    text-align: center;
-    text-transform: uppercase;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-    background-image: url("https://ae01.alicdn.com/kf/H2dccc8155ccd4337b0b246526f1e8977x/Bacal-Custom-Modern-white-Wallpaper-mural-Book-Library-Bookcase-Magazine-Shelf-Art-Wall-Painting-Living-Room.jpg");
-    height: 15em;
-    width: 100%;
-    background-position: center center;
-
-    /* Background image doesn't tile */
-    background-repeat: no-repeat;
-
-    /* Background image is fixed in the viewport so that it doesn't move when
-the content's height is greater than the image's height */
-    background-attachment: fixed;
-
-    /* This is what makes the background image rescale based
-on the container's size */
-    background-size: cover;
-  }
 
   .bookList-book-card-cardContent-wrapper {
     display: grid;

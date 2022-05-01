@@ -4,6 +4,10 @@ import UserController from "controllers/user";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.scss";
+import routes from "routes/routes";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Box } from "@mui/system";
+import UserSelect from "components/userSelect";
 
 export default function MyBooks() {
   const [loading, setLoading] = useState(false);
@@ -25,21 +29,17 @@ export default function MyBooks() {
     await getMyBooks();
     setLoading(false);
   };
-
+  
   return (
     <>
       {loading && <Loading />}
-      <div className="my-books-container-wrapper">
-        <div className="header-wrapper">
-          <div className="header">
-            <div>
-              <Link className="header-logo" to="/user">
-                ԵԻՊՔ ԳՐԱԴԱՐԱՆ
-              </Link>
-            </div>
-            <div></div>
-          </div>
-        </div>
+      <div className="my-books-container-wrapper">  
+          <nav>   
+           <h1> ԻՄ ԳՐՔԵՐԸ</h1>
+           <Link to={routes.user}>ՀԻՄՆԱԿԱՆ ԷՋ</Link>
+            <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
+            <UserSelect/>
+          </nav>
         <div className="my-books-container-inner-wrapper">
           {myBooks.map(({ book, bookName, bookAuthor, status, id }) => {
             return book ? (
@@ -91,3 +91,4 @@ export default function MyBooks() {
     </>
   );
 }
+
