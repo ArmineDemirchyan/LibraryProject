@@ -16,5 +16,5 @@ export const serializeErrorMessage = (error) => {
       },
     };
   }
-  return { data: {} };
+  return { data: { hasError: true } };
 };

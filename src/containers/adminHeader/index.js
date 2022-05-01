@@ -1,21 +1,17 @@
-import { Button, Tab, Tabs } from "@mui/material";
+import { Tab, Tabs } from "@mui/material";
 import Loading from "components/loading";
 import UserSelect from "components/userSelect";
-import UserController from "controllers/user";
 import {
   adminHeaderData,
   superAdminHeaderData,
   USER_TYPES,
 } from "helpers/constants";
-import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import routes from "routes/routes";
 import { userPersonalInfoSelector } from "store/selectors/userInfo";
 import "./index.scss";
 
 export default function AdminHeader({ tabValue, setTabValue }) {
-  const navigate = useNavigationWithQueryParams();
   const [loading, setLoading] = useState(false);
   const user = useSelector(userPersonalInfoSelector);
   const handleTabChange = (e, index) => {
@@ -25,7 +21,6 @@ export default function AdminHeader({ tabValue, setTabValue }) {
         : adminHeaderData)[index]
     );
   };
-
 
   return (
     <>
@@ -42,7 +37,7 @@ export default function AdminHeader({ tabValue, setTabValue }) {
             ))}
           </Tabs>
           <div>
-            <UserSelect setLoading={setLoading}/>
+            <UserSelect setLoading={setLoading} />
           </div>
         </div>
       </div>

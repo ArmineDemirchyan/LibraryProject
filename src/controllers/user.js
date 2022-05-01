@@ -80,4 +80,19 @@ UserController.CancelBookReservation = async (id) => {
   return response.data;
 };
 
+UserController.changePassword = async (body) => {
+  const response = await API.POST(
+    Hosts.BASE_URL,
+    Controllers.changePassword,
+    "",
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+
 export default UserController;

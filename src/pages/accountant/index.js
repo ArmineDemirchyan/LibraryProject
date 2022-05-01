@@ -1,9 +1,12 @@
 import { Tab, Tabs } from "@mui/material";
+import Loading from "components/loading";
+import UserSelect from "components/userSelect";
 import { ACCOUNTANT_TABS } from "helpers/constants";
 import React, { useState } from "react";
 import "./index.scss";
 
 export default function Accountant() {
+  const [loading, setLoading] = useState(false);
   const [tabValue, setTabValue] = useState(ACCOUNTANT_TABS[0]);
 
   const handleTabChange = (e, index) => {
@@ -11,6 +14,7 @@ export default function Accountant() {
   };
   return (
     <div>
+      {loading && <Loading />}
       <div className="accountant-header-wrapper">
         <div className="accountant-header">
           <div></div>
@@ -19,7 +23,9 @@ export default function Accountant() {
               <Tab label={tab.title} key={tab.id} />
             ))}
           </Tabs>
-          <div></div>
+          <div>
+            <UserSelect setLoading={setLoading} />
+          </div>
         </div>
       </div>
       <tabValue.Comp />

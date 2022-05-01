@@ -29,6 +29,7 @@ export const Methods = {
 };
 
 export const Controllers = {
+  changePassword: "change-password",
   identity: "identity",
   getUserRoleByToken: "getUserRoleByToken",
   refresh: "refresh",

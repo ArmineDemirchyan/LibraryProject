@@ -1,38 +1,52 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { Box } from "@mui/system";
-import { userPersonalInfoSelector } from "store/selectors/userInfo";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import ChangePasswordModal from "components/changePasswordModal";
 import UserController from "controllers/user";
 import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React, { useState } from "react";
-
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import routes from "routes/routes";
-const UserSelect = ({setLoading}) => {
-    
-    const { displayName } = useSelector(userPersonalInfoSelector);
-    console.log(displayName,'displayName');
-    const navigate = useNavigationWithQueryParams();
+import { userPersonalInfoSelector } from "store/selectors/userInfo";
+import "./index.scss";
 
-    const handleLogOut = async () => {
-        setLoading(true);
-        const res = await UserController.logOut();
-        if (res.hasError) return toast.error(res.errorMessage);
-        navigate(routes.home);
-        setLoading(false);
-    }
+const UserSelect = ({ setLoading }) => {
+  const [changePasswordModal, setChangePasswordModal] = useState(false);
+  const { displayName } = useSelector(userPersonalInfoSelector);
+  const navigate = useNavigationWithQueryParams();
 
-    return (
-        <Box sx={{ minWidth: "10rem" }}>
-            <FormControl fullWidth>
-                <InputLabel>{displayName}</InputLabel>
-                <Select variant="standard">
-                    <MenuItem onClick={handleLogOut} className="menuitem">
-                        դուրս գալ
-                    </MenuItem>
-                </Select>
-            </FormControl>
-        </Box>
-    )
-}
+  const handleLogOut = async () => {
+    setLoading(true);
+    const res = await UserController.logOut();
+    if (res.hasError) return toast.error(res.errorMessage);
+    navigate(routes.home);
+    setLoading(false);
+  };
+
+  const handleChangePassword = (payload) => () => {
+    setChangePasswordModal(payload);
+  };
+
+  return (
+    <>
+      <ChangePasswordModal
+        open={changePasswordModal}
+        onClose={handleChangePassword}
+      />
+      <Box sx={{ minWidth: "10rem" }}>
+        <FormControl fullWidth>
+          <InputLabel>{displayName}</InputLabel>
+          <Select variant="standard">
+            <MenuItem onClick={handleLogOut} className="menuitem">
+              դուրս գալ
+            </MenuItem>
+            <MenuItem onClick={handleChangePassword(true)} className="menuitem">
+              Փոխել Գաղտնաբառը
+            </MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+    </>
+  );
+};
 export default UserSelect;

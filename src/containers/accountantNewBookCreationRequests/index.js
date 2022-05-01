@@ -94,13 +94,6 @@ export default function AccountantNewBookCreationRequests() {
     setLoading(false);
   };
 
-  const handleLogOut = async () => {
-    setLoading(true);
-    await UserController.logOut();
-    navigate(routes.home);
-    setLoading(false);
-  };
-
   return (
     <>
       {loading && <Loading />}
@@ -109,9 +102,6 @@ export default function AccountantNewBookCreationRequests() {
         onClose={handelConfirmRequestModalChange}
         handleSubmit={handleConfirmRequest}
       />
-      <div className="table-header">
-        <Button onClick={handleLogOut}>Դուրս Գալ</Button>
-      </div>
       <div className="table-wrapper">
         <AccountantBookRequestsListTableHeaderActions
           setBookCreationRequests={setBookCreationRequests}
