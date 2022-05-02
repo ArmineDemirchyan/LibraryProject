@@ -1,13 +1,11 @@
 import { Button, Card, CardActionArea, CardContent } from "@mui/material";
 import Loading from "components/loading";
+import UserSelect from "components/userSelect";
 import UserController from "controllers/user";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./index.scss";
 import routes from "routes/routes";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { Box } from "@mui/system";
-import UserSelect from "components/userSelect";
+import "./index.scss";
 
 export default function MyBooks() {
   const [loading, setLoading] = useState(false);
@@ -29,17 +27,17 @@ export default function MyBooks() {
     await getMyBooks();
     setLoading(false);
   };
-  
+
   return (
     <>
       {loading && <Loading />}
-      <div className="my-books-container-wrapper">  
-          <nav>   
-           <h1> ԻՄ ԳՐՔԵՐԸ</h1>
-           <Link to={routes.user}>ՀԻՄՆԱԿԱՆ ԷՋ</Link>
-            <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
-            <UserSelect/>
-          </nav>
+      <div className="my-books-container-wrapper">
+        <nav>
+          <h1> ԻՄ ԳՐՔԵՐԸ</h1>
+          <Link to={routes.user}>ՀԻՄՆԱԿԱՆ ԷՋ</Link>
+          <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
+          <UserSelect />
+        </nav>
         <div className="my-books-container-inner-wrapper">
           {myBooks.map(({ book, bookName, bookAuthor, status, id }) => {
             return book ? (
@@ -91,4 +89,3 @@ export default function MyBooks() {
     </>
   );
 }
-

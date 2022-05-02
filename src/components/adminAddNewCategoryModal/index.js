@@ -1,5 +1,4 @@
 import { Button, Modal, TextField } from "@mui/material";
-import { cyan } from "@mui/material/colors";
 import AdminController from "controllers/admin";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -29,7 +28,7 @@ export default function AdminAddNewCategoryModal({ opened, onClose }) {
       <div className="edit-modal-container category-modal-wrapper">
         <h3>Ավելացնել Նոր Կատեգորիա</h3>
         <div>
-          <label htmlFor="name" >Կատեգորյաի անունը</label>
+          <label htmlFor="name">Կատեգորյաի անունը</label>
           <TextField id="name" value={name} onChange={handleChange} />
         </div>
         <div className="modal-buttons">

@@ -82,4 +82,33 @@ AccountantController.getBookDeletionRequests = async () => {
   return response.data;
 };
 
+AccountantController.ConfirmBookDeletionRequest = async (body, requestId) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.bookDeletionRequests,
+    `${requestId}/confirm`,
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+AccountantController.RejectBookDeletionRequest = async (body, requestId) => {
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    Controllers.bookDeletionRequests,
+    `${requestId}/reject`,
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+
 export default AccountantController;

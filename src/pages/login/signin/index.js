@@ -52,9 +52,6 @@ export function Login() {
       {loading && <Loading />}
       <form onSubmit={handleSubmit}>
         <div className="content">
-          {/* <div className="image">
-            <img className="img" src="img/login.png" alt="" />
-          </div> */}
           <div className="from">
             <div className="form_group">
               <label className="label" htmlFor="email">

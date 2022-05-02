@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import AccountantBookRequestsListTableHeaderActions from "components/accountantBookRequestsListTableHeaderActions";
+import AccountantConfirmBookCreationRequestData from "components/accountantConfirmBookCreationRequestData";
 import Loading from "components/loading";
 import AccountantController from "controllers/accountant";
 import React, { useEffect, useState } from "react";
@@ -14,7 +15,7 @@ export default function AccountantRemovableBookRequests() {
     { field: "bookName", headerName: "Գրքի Անուն", flex: 1 },
     { field: "bookAuthor", headerName: "Հեղինակ", flex: 1 },
     { field: "count", headerName: "Քանակ", width: 120 },
-    { field: "requestStatus", headerName: "Կարգավիճակ", width: 120 },
+    { field: "status", headerName: "Կարգավիճակ", width: 120 },
     { field: "note", headerName: "Նշումներ", flex: 1 },
     { field: "deletionReason", headerName: "Հեռացման Պատճառը", flex: 1 },
     {
@@ -23,15 +24,15 @@ export default function AccountantRemovableBookRequests() {
       headerName: "",
       flex: 1,
       renderCell: ({ row }) =>
-        row.requestStatus === "Pending" && (
+        row.status === "Pending" && (
           <>
             <Button
-            // onClick={handelConfirmRequestModalChange(row.id, true, "confirm")}
+              onClick={handelConfirmRequestModalChange(row.id, true, "confirm")}
             >
               հաստատել
             </Button>
             <Button
-            // onClick={handelConfirmRequestModalChange(row.id, true, "reject")}
+              onClick={handelConfirmRequestModalChange(row.id, true, "reject")}
             >
               Չեղարկել
             </Button>
@@ -45,6 +46,11 @@ export default function AccountantRemovableBookRequests() {
   ).data;
   const [loading, setLoading] = useState(false);
   const [bookDeletionRequests, setBookDeletionRequests] = useState([]);
+  const [confirmModalData, setConfirmModalData] = useState({
+    open: false,
+    requestId: null,
+    type: null,
+  });
 
   useEffect(() => {
     getBookDeletionRequests();
@@ -57,11 +63,36 @@ export default function AccountantRemovableBookRequests() {
       .finally(() => setLoading(false));
   };
 
-  console.log(allBookDeletionRequest);
+  const handelConfirmRequestModalChange = (requestId, payload, type) => () => {
+    setConfirmModalData({ open: payload, requestId, type });
+  };
+
+  const handleConfirmRequest = (accountantMessage) => async () => {
+    setLoading(true);
+    confirmModalData.type === "create"
+      ? await AccountantController.ConfirmBookDeletionRequest(
+          { accountantMessage },
+          confirmModalData.requestId
+        )
+      : await AccountantController.RejectBookDeletionRequest(
+          { accountantMessage },
+          confirmModalData.requestId
+        );
+    await getBookDeletionRequests();
+    handelConfirmRequestModalChange(null, false, null);
+    setLoading(false);
+  };
 
   return (
     <>
       {loading && <Loading />}
+      {confirmModalData.open && (
+        <AccountantConfirmBookCreationRequestData
+          {...confirmModalData}
+          onClose={handelConfirmRequestModalChange}
+          handleSubmit={handleConfirmRequest}
+        />
+      )}
       <div className="table-wrapper">
         <AccountantBookRequestsListTableHeaderActions
           setBookCreationRequests={setBookDeletionRequests}
