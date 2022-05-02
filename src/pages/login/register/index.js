@@ -11,10 +11,11 @@ const PHONE_REGEX = /^[0-9]{8}$/
 
 export function Register() {
   const [groupsDropdownData, setGroupsDropdownData] = useState([]);
+
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
-    studentCardNumber: "",
+    studentCardOrPassportNumber: "",
     groupNumber: "",
     email: "",
     password: "",
@@ -36,13 +37,15 @@ export function Register() {
   const {
     firstName,
     lastName,
-    studentCardNumber,
+    studentCardOrPassportNumber,
     groupNumber,
     email,
     password,
     confirmPassword,
     phoneNumber,
   } = userInfo;
+
+  const isTeacher = userInfo.groupNumber === "Դասախոս";
 
   useEffect(() => {
     getGroups().then((res) => {
@@ -80,7 +83,9 @@ export function Register() {
     if (userExists.userExists) {
       return toast.error("The User Already Exists");
     }
-   await SignInController.register(userInfo);
+    const { studentCardOrPassportNumber, ...payload } = userInfo
+    const keyForNumber = isTeacher ? 'passportNumber' : 'studentCardNumber'
+    await SignInController.register({...payload, [keyForNumber]: studentCardOrPassportNumber});
   };
   console.log(errors);
   return (
@@ -158,19 +163,19 @@ export function Register() {
 
             <div className="flex">
               <div className="formgroup">
-                <label className="label" htmlFor="studentCardNumber">
-                  Ուսանողական տոմսի համար
+                <label className="label" htmlFor="studentCardOrPassportNumber">
+                  {isTeacher ? 'Անձնագրի համար': 'Ուսանողական տոմսի համար'}
                 </label>
                 <input
-                    className={`input ${missingValues.studentCardNumber ? 'input-error' : ''}`}
-                    value={studentCardNumber}
-                    onChange={handleChange("studentCardNumber")}
+                    className={`input ${missingValues.studentCardOrPassportNumber ? 'input-error' : ''}`}
+                    value={studentCardOrPassportNumber}
+                    onChange={handleChange("studentCardOrPassportNumber")}
                     type="text"
                     name="username"
-                    placeholder="Օրինակ`  Դ-128"
+                    placeholder={isTeacher ? "Օրինակ`  AM0502565": "Օրինակ`  Դ-128"}
                     autoComplete="off"
                 />
-                {missingValues.studentCardNumber && <div className="error-message">Ուսանողական տոմս դաշտը լրացնելը պարտադիր է</div>}
+                {missingValues.studentCardOrPassportNumber && <div className="error-message">{`${isTeacher ? 'Անձնագրի համար':'Ուսանողական տոմս'} դաշտը լրացնելը պարտադիր է`}</div>}
               </div>
 
               <div className="formgroup">
