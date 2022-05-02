@@ -242,8 +242,8 @@ AdminController.changePassword = async (body) => {
     Controllers.changePassword,
     body
   );
-  if (response.data.hasError) {
-    toast.error(response.data.errorMessage);
+  if (!response.data.succeeded) {
+    toast.error("Error");
     return false;
   }
   toast.success("Success");

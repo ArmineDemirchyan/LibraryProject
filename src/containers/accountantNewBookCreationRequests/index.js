@@ -4,10 +4,9 @@ import AccountantBookRequestsListTableHeaderActions from "components/accountantB
 import AccountantConfirmBookCreationRequestData from "components/accountantConfirmBookCreationRequestData";
 import Loading from "components/loading";
 import AccountantController from "controllers/accountant";
-import UserController from "controllers/user";
-import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React, { useEffect, useState } from "react";
-import routes from "routes/routes";
+import { shallowEqual, useSelector } from "react-redux";
+import { bookCreationListSelector } from "store/selectors/app";
 import "./index.scss";
 
 export default function AccountantNewBookCreationRequests() {
@@ -51,7 +50,10 @@ export default function AccountantNewBookCreationRequests() {
         ),
     },
   ];
-  const navigate = useNavigationWithQueryParams();
+  const allBookCreationRequests = useSelector(
+    bookCreationListSelector,
+    shallowEqual
+  ).data;
   const [confirmModalData, setConfirmModalData] = useState({
     open: false,
     requestId: null,
@@ -105,6 +107,7 @@ export default function AccountantNewBookCreationRequests() {
       <div className="table-wrapper">
         <AccountantBookRequestsListTableHeaderActions
           setBookCreationRequests={setBookCreationRequests}
+          bookCreationRequests={allBookCreationRequests}
         />
         <DataGrid columns={columns} rows={bookCreationRequests} />
       </div>

@@ -2,7 +2,10 @@ import { Controllers, Hosts } from "helpers/constants";
 import { toast } from "react-toastify";
 import API from "service";
 import store from "store/app";
-import { saveBookCreationRequest } from "../store/action-creators/app";
+import {
+  saveBookCreationRequest,
+  saveBookDeletionRequests,
+} from "../store/action-creators/app";
 
 const AccountantController = {};
 
@@ -75,6 +78,7 @@ AccountantController.getBookDeletionRequests = async () => {
     toast.error(response.data.errorMessage);
     return false;
   }
+  store.dispatch(saveBookDeletionRequests(response.data));
   return response.data;
 };
 

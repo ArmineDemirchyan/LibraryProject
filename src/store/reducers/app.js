@@ -8,6 +8,7 @@ const initialState = {
   reservations: [],
   admins: [],
   bookCreationRequests: [],
+  bookDeletionRequests: [],
 };
 
 export default function appReducer(state = initialState, action) {
@@ -27,6 +28,8 @@ export default function appReducer(state = initialState, action) {
       return { ...state, admins: payload };
     case actionTypes.BOOK_CREATION_REQUESTS_LIST:
       return { ...state, bookCreationRequests: payload };
+    case actionTypes.SAVE_BOOK_DELETION_REQUESTS:
+      return { ...state, bookDeletionRequests: payload };
     default:
       return { ...state };
   }

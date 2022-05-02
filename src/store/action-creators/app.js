@@ -33,3 +33,8 @@ export const saveBookCreationRequest = (payload) => ({
   type: actionTypes.BOOK_CREATION_REQUESTS_LIST,
   payload,
 });
+
+export const saveBookDeletionRequests = (payload) => ({
+  type: actionTypes.SAVE_BOOK_DELETION_REQUESTS,
+  payload,
+});

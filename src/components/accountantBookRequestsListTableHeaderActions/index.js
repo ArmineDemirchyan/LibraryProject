@@ -7,16 +7,11 @@ import {
   TextField,
 } from "@mui/material";
 import React from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { bookCreationListSelector } from "store/selectors/app";
 
 export default function AccountantBookRequestsListTableHeaderActions({
   setBookCreationRequests,
+  bookCreationRequests,
 }) {
-  const bookCreationRequests = useSelector(
-    bookCreationListSelector,
-    shallowEqual
-  ).data;
   const handleChange = (id) => (e) => {
     e.target.value !== "all"
       ? setBookCreationRequests(
