@@ -4,6 +4,9 @@ import SignInController from "controllers/signIn";
 import React, { useEffect, useState } from "react";
 import "./style.scss";
 import { toast } from "react-toastify";
+import Armenia from "../../../image/flag.jpg"
+import { Link } from "react-router-dom";
+import UserNavbar from "components/UserNavbar";
 
 const EMAIL_REGEX = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])"
 const PASS_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
@@ -89,16 +92,12 @@ export function Register() {
   };
   console.log(errors);
   return (
-    <div className="base_container">
-      <form onSubmit={handleSubmit}>
+    
+    <div className="base_container"><UserNavbar/>
+      <form onSubmit={handleSubmit} >
+        
         <div className="header">Գրանցում</div>
         <div className="content">
-          {/* <div className="image">
-            <img
-              alt=""
-              src="https://www.cdc.gov/healthyyouth/classroom-management/images/teacher-expectations.jpg"
-            />
-          </div> */}
           <div className="form">
             <div className="flex">
               <div className="formgroup">
@@ -135,13 +134,13 @@ export function Register() {
               </div>
             </div>
             <div className="formgroup">
-              <FormControl className="select">
+              <FormControl className="select" size="small">
                 <InputLabel
                     className="select-label"
                     id="demo-simple-select-label"
                 >
                   Խմբի համար
-                </InputLabel>
+                </InputLabel> 
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -237,17 +236,16 @@ export function Register() {
                 <label htmlFor="area_code" className="phonecode">
                   <img
                     className="flag"
-                    src="../../../public/img/flag.jpg"
+                    src={Armenia}
                     alt="Img"
                   />
-                  +374
                 </label>
                 <input
                   className={`phone ${(errors.phoneNumber || missingValues.phoneNumber) ? 'input-error' : ''}`}
                   value={phoneNumber}
                   onChange={handleChange("phoneNumber")}
                   type="number"
-                  placeholder="8 նիշ"
+                  placeholder="+374 00 000 000"
                   name="phoneNumber"
                   autoComplete="off"
                 />
@@ -255,7 +253,11 @@ export function Register() {
               {missingValues.phoneNumber && <div className="error-message">Հեռախոսահամարի հաստատում դաշտը լրացնելը պարտադիր է</div>}
               {errors.phoneNumber && <div className="error-message">Սխալ հեռախոսահամար</div>}
             </div>
+            <Link to="/login" className="loginlink">
+                Մուտք գործել
+              </Link>
           </div>
+          
         </div>
         <div className="footer">
           <button className="submit-button" type="submit">

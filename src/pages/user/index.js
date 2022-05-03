@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import routes from "routes/routes";
 
 import "./style.scss";
+
 const User = () => {
   const [loading, setLoading] = useState(false); 
   return (

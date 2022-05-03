@@ -1,18 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import SmoothScroll from "smooth-scroll";
-import { NavHashLink } from "react-router-hash-link";
+// import { NavHashLink } from "react-router-hash-link";
 import "./style.scss";
-
+import UserNavbar from "components/UserNavbar";
 export const scroll = new SmoothScroll('Link[to*="#"]', {
   speed: 1000,
   speedAsDuration: true,
 });
 
 const Start = () => {
+  const [loading, setLoading] =useState(false);
+
   return (
     <div className="container">
-      <nav>
+      {/* <nav>
         <div className="navright">
           <NavHashLink smooth to="#header">
             ԵԻՊՔ ԳՐԱԴԱՐԱՆ
@@ -25,7 +27,8 @@ const Start = () => {
           <NavHashLink to="#team">ՀԵՂԻՆԱԿՆԵՐ</NavHashLink>
           <Link to="/login">ՄՈՒՏՔ</Link>
         </div>
-      </nav>
+      </nav> */}
+      <UserNavbar setLoading={setLoading} isLoggedIn={false}/>
       <div>
         <div className="info">
           <div id="header" className="overlay">
