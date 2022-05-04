@@ -9,6 +9,9 @@ import { IconButton } from "@mui/material";
 import AdminBookEditModal from "components/adminBookEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AdminBookDeleteModal from "components/adminBookDeleteModal";
+import { useDispatch, useSelector } from "react-redux";
+import { saveUserInfo } from "store/action-creators/userInfo";
+import { userPersonalInfoSelector } from "store/selectors/userInfo";
 
 export default function AdminBooksList() {
   const ADMIN_BOOKS_LIST_COLUMNS = [
@@ -57,7 +60,8 @@ export default function AdminBooksList() {
   });
   const [loading, setLoading] = useState(true);
   const [bookList, setBookList] = useState([]);
-
+  const dispatch = useDispatch();
+  const userInfo = useSelector(userPersonalInfoSelector);
   const handleEdit = (id) => () =>
     setEditModalData({
       isOpened: true,
@@ -81,6 +85,7 @@ export default function AdminBooksList() {
   };
   useEffect(() => {
     getBookList();
+    dispatch(saveUserInfo({ ...userInfo, token: "a12323ad" }));
   }, []);
   return (
     <>
@@ -96,11 +101,8 @@ export default function AdminBooksList() {
         )}
         <AdminBookEditModal onClose={handleCloseEditModal} {...editModalData} />
         <div className="bookList-table-wrapper">
-          <DataGrid
-            rows={bookList}
-            columns={ADMIN_BOOKS_LIST_COLUMNS}
-            components={{ Header: BookListTableHeaderActions }}
-          />
+          <BookListTableHeaderActions setBookList={setBookList} />
+          <DataGrid rows={bookList} columns={ADMIN_BOOKS_LIST_COLUMNS} />
         </div>
       </div>
     </>

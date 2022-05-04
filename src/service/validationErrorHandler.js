@@ -1,6 +1,10 @@
 import { toast } from "react-toastify";
 
 export const serializeErrorMessage = (error) => {
+  console.log(error.response);
+  if (error.response?.status === 401) {
+    return (window.location.pathname = "/login");
+  }
   if (error?.response?.data) {
     const { data } = error.response;
     if (data.errors) {
