@@ -1,5 +1,4 @@
 import Loading from "components/loading";
-import UserNavbar from "components/UserNavbar";
 import SignInController from "controllers/signIn";
 import { USER_NAVIGATION } from "helpers/constants";
 import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
