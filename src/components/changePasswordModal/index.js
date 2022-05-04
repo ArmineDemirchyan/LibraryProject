@@ -2,11 +2,10 @@ import { Button, Modal, TextField } from "@mui/material";
 import Loading from "components/loading";
 import AdminController from "controllers/admin";
 import UserController from "controllers/user";
-import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
+import { USER_TYPES } from "helpers/constants/index";
 import React, { useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { userPersonalInfoSelector } from "store/selectors/userInfo";
-import { USER_TYPES } from "helpers/constants/index";
 
 export default function ChangePasswordModal({ open, onClose }) {
   const { role } = useSelector(userPersonalInfoSelector, shallowEqual);

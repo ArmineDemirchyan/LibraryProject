@@ -42,7 +42,8 @@ export default function AdminUsersList() {
 
   const handleDeleteUser = (userId) => async () => {
     setLoading(true);
-    AdminController.deleteUser({ userId });
+    await AdminController.deleteUser({ userId });
+    await getUsersList();
     setLoading(false);
   };
 
