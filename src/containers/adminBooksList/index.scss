@@ -12,6 +12,9 @@
     display: flex;
   }
 }
+.mb-4{
+  margin-bottom: 4px;
+}
 
 .edit-modal-container {
   position: absolute;
@@ -28,7 +31,9 @@
 .modal-buttons {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  button{
+    padding: 10px;
+  }
 }
 
 .category-modal-wrapper {

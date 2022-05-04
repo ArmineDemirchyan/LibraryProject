@@ -28,7 +28,7 @@ export default function AdminBookEditModal({
       <div className="edit-modal-container">
         {ADMIN_CREATE_NEW_BOOK_LIST_INPUTS.map(
           ({ type, title, id, disabled }, index) => (
-            <div key={index}>
+            <div key={index} className="textfield-column">
               <label htmlFor="id" className="edit-label">{title}</label>
               <TextField
                 className="edit-textfield"
@@ -41,8 +41,8 @@ export default function AdminBookEditModal({
           )
         )}
         <div className="modal-buttons">
-          <Button onClick={onClose(false)}>Չեղարկել</Button>
-          <Button onClick={handleSubmit}>Հաստատել</Button>
+            <Button onClick={onClose(false)}>Չեղարկել</Button>
+            <Button onClick={handleSubmit}>Հաստատել</Button>
         </div>
       </div>
     </Modal>

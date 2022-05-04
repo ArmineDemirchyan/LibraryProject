@@ -68,8 +68,8 @@ export default function AdminAddNewGroupModal({ open, onCLose }) {
       {loading && <Loading />}
       <Modal open={open}>
         <Box sx={style}>
-          <div>
-            <label htmlFor="groupNumber">Խմբի համար</label>
+          <div className="modal-column-input">
+            <label htmlFor="groupNumber" >Խմբի համար</label>
             <TextField
               id="groupNumber"
               type="number"
@@ -78,7 +78,8 @@ export default function AdminAddNewGroupModal({ open, onCLose }) {
               label="Խմբի Համար"
             />
           </div>
-          <div>
+          <div className="modal-column-input">
+
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 renderInput={(props) => <TextField {...props} />}
@@ -87,7 +88,11 @@ export default function AdminAddNewGroupModal({ open, onCLose }) {
                 onChange={handleChange("creationDate")}
               />
             </LocalizationProvider>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+          
+          </div>
+          <div className="modal-column-input">
+
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 renderInput={(props) => <TextField {...props} />}
                 label="Ավարտման Ամսաթիվ"
@@ -95,8 +100,9 @@ export default function AdminAddNewGroupModal({ open, onCLose }) {
                 onChange={handleChange("graduationDate")}
               />
             </LocalizationProvider>
-          </div>
-          <div>
+            </div>
+          <div className="modal-column-input">
+
             <FormControl fullWidth className="select">
               <InputLabel
                 className="select-label"
