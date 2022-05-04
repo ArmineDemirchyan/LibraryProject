@@ -2,6 +2,7 @@ import UserSelect from 'components/userSelect';
 import React from 'react';
 import routes from "routes/routes";
 import { Link } from "react-router-dom";
+import "./style.scss";
 
 const UserNavbar = ({setLoading, isLoggedIn}) => {
 

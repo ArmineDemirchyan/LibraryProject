@@ -49,6 +49,9 @@ export function Login() {
   };
   return (
     <div className="base-container">
+      <nav>
+      <Link to="/">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
+      </nav>
       {loading && <Loading />}
       <form onSubmit={handleSubmit}>
         <div className="content">
