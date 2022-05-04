@@ -7,7 +7,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-
+    
     form {
         box-shadow: 1px 0px 10px 4px #888888;
         
@@ -58,7 +58,12 @@
         }
     }
 
-
+    nav a{
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(72, 72, 72);
+    }
 
     .footer {
         margin-top: 2em;

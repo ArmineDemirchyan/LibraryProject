@@ -3,6 +3,7 @@ import UserSelect from "components/userSelect";
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 
 import routes from "routes/routes";
 
@@ -15,16 +16,27 @@ const User = () => {
       {loading && <Loading />}
       
       <div className="header-wrapper">
-        <div className="header">
-        <nav>   
-            <a href="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</a>
-            <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
-            <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
-            <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
-            <UserSelect setLoading={setLoading}/>
-        </nav>
-        
+        <nav>
+        <div className="navright">
+          <NavHashLink smooth to="#header" >
+            ԵԻՊՔ ԳՐԱԴԱՐԱՆ
+          </NavHashLink>
         </div>
+        <div className="navleft">
+          <NavHashLink smooth to="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</NavHashLink>
+          <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
+          <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
+          <UserSelect setLoading={setLoading}/>
+        </div>
+      </nav>
+        {/* <nav>   
+            <NavHashLink smooth to="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</NavHashLink>
+            <NavHashLink smooth to="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</NavHashLink>
+            
+            
+            
+        </nav>  */}
+        
         <div className="info-wrapper">
           <div className="info">
             <div id="header" className="overlay">

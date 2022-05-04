@@ -108,7 +108,10 @@ export function Register() {
   };
   return (
     
-    <div className="base_container"><UserNavbar/>
+    <div className="base_container">
+      <nav>
+      <Link to="/">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
+      </nav>
       <form onSubmit={handleSubmit} >
         
         <div className="header">Գրանցում</div>

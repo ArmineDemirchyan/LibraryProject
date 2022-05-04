@@ -10,6 +10,7 @@ import BookListFilters from "components/bookListFilters";
 import Loading from "components/loading";
 import BooksListBasket from "containers/booksListBasket";
 import UserController from "controllers/user";
+import routes from "routes/routes";
 import React, { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -18,7 +19,8 @@ import {
   showBooksBasketContainer,
 } from "store/action-creators/app";
 import { booksBasketSelector } from "store/selectors/app";
-//import scss
+import UserSelect from "components/userSelect";
+import { NavHashLink } from "react-router-hash-link";
 import "./index.scss";
 
 export default function BookList() {
@@ -52,6 +54,19 @@ export default function BookList() {
   return (
     <div className="main">
       <>
+        <nav>
+          <div className="navright">
+            <Link to="/user">
+              ԵԻՊՔ ԳՐԱԴԱՐԱՆ
+            </Link>
+          </div>
+          <div className="navleft">
+
+            <Link to={routes.user}>ՀԻՄՆԱԿԱՆ ԷՋ</Link>
+            <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
+            <UserSelect setLoading={setLoading} />
+          </div>
+        </nav>
         {loading && <Loading />}
         <BooksListBasket />
         <div className="booksList-container-wrapper">
@@ -59,9 +74,9 @@ export default function BookList() {
           <div className="header-wrapper">
             <div className="booklist-header">
               <div>
-                <Link className="header-logo" to="/user">
-                  ԵԻՊՔ ԳՐԱԴԱՐԱՆ
-                </Link>
+                <NavHashLink smooth to="#header" className="header-logo" >
+                  ԳՐՔԵՐԻ ՑԱՆԿ
+                </NavHashLink>
               </div>
               <div>
                 <IconButton onClick={handleOpenBasket}>

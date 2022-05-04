@@ -5,6 +5,7 @@ import UserController from "controllers/user";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import routes from "routes/routes";
+import { NavHashLink } from "react-router-hash-link";
 import "./index.scss";
 
 export default function MyBooks() {
@@ -32,12 +33,19 @@ export default function MyBooks() {
     <>
       {loading && <Loading />}
       <div className="my-books-container-wrapper">
-        <nav>
-          <h1> ԻՄ ԳՐՔԵՐԸ</h1>
+      <nav>
+      <div className="navright">
+          <NavHashLink smooth to="#header" >
+            ԻՄ ԳՐՔԵՐԸ
+          </NavHashLink>
+        </div>
+        <div className="navleft">
+
           <Link to={routes.user}>ՀԻՄՆԱԿԱՆ ԷՋ</Link>
           <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
-          <UserSelect />
-        </nav>
+          <UserSelect setLoading={setLoading}/>
+        </div>
+      </nav>
         <div className="my-books-container-inner-wrapper">
           {myBooks.map(({ book, bookName, bookAuthor, status, id }) => {
             return book ? (
