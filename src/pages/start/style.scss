@@ -76,8 +76,9 @@ nav .active{
     background:linear-gradient(90deg, rgb(74, 72, 72));
 }
 .navright {
-    margin-top: 1.5em;
-    margin-left: 15em;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
 }
 
 .navright a {
@@ -88,12 +89,13 @@ nav .active{
 }
 
 .navleft {
-    margin-top: 1.5em;
-    margin-right: 15em;
+    margin-left: 45px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .navleft a {
-    margin-left: 4em;
+    margin-left: 1.5em;
     text-decoration: none;
     color: rgb(49, 49, 49);
 }
@@ -594,7 +596,20 @@ footer p{
   
   }
   
-  /* mobile narrow
+  @media only screen and (max-width: 1000px) {
+    .navright{
+        margin-left: 2em
+    }
+    .about{
+        flex-direction: column;
+    }
+    .aboutleft{
+        margin-left:0em !important;
+        margin-top: 10px;
+    }
+  }
+  
+    /* mobile narrow
   -------------------------------------------------------------------------- */
   
   @media only screen and (max-width: 480px) {

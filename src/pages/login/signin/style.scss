@@ -1,50 +1,68 @@
-.base-container{
-    margin: 0  auto;
-    margin-top:15rem;
-    width: 20rem;
-    border: 1px solid rgb(195, 193, 193);
-    border-radius: 5px;
-    .registerlink{
+.base-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    background-image: url("../../../image/intro-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
+    form {
+        box-shadow: 1px 0px 10px 4px #888888;
+        
+        margin-top: 150px;
+        padding: 20px;
+        background-color: white;
+    }
+
+    .registerlink {
         margin-left: 5px;
     }
+
     .header {
         font-size: 30px;
         margin-bottom: 20px;
         color: rgb(0, 0, 0);
         text-align: center;
     }
-    img{
+
+    img {
         width: 150px;
         margin-top: -190px;
         margin-left: 100px;
-        
+
     }
-    .form_group{
+
+    .form_group {
         display: flex;
         flex-direction: column;
-        margin-left:15px;
-      .label{
-        margin-top: 4px;
-        font-size: 18px;
-    } 
-     .input{
-        margin-top: 4px;
-        margin-left:3px;
-        width: 15rem;
-        height: 37px;
-        padding: 0px 10px;
-        font-size: 16px;
-        font-family: "Open Sans", sans-serif;
-        background-color: #e0e0e0;
-        border:0;
-        
+        margin-left: 15px;
+
+        .label {
+            margin-top: 4px;
+            font-size: 18px;
+        }
+
+        .input {
+            margin-top: 4px;
+            margin-left: 3px;
+            width: 15rem;
+            height: 37px;
+            padding: 0px 10px;
+            font-size: 16px;
+            font-family: "Open Sans", sans-serif;
+            background-color: #e0e0e0;
+            border: 0;
+
+        }
     }
-    }
-    
-    
-    
-    .footer{
+
+
+
+    .footer {
         margin-top: 2em;
+
         .btn {
             font-family: "Raleway", sans-serif;
             text-transform: uppercase;
@@ -57,13 +75,13 @@
             border-radius: 25px;
             border: 0;
             margin: 0 auto;
-            margin-left:5rem;
+            margin-left: 5rem;
             transition: all 0.5s linear;
             text-decoration: none;
-          }
-        
-    
+        }
+
+
     }
-       
+
 
 }

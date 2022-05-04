@@ -43,7 +43,7 @@ export function Login() {
         navigate(USER_NAVIGATION[response.data.role]);
       }
     } else {
-      return setErrorMessage("Please Fill all Fields");
+      return setErrorMessage("Լրացրեք բոլոր դաշտերը։");
     }
     setLoading(false);
   };

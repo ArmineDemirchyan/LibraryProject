@@ -1,18 +1,20 @@
-import Loading from "components/loading";
-import UserSelect from "components/userSelect";
-import User from "pages/user";
-import React, { useState } from "react";
+import UserSelect from 'components/userSelect';
+import React from 'react';
+import routes from "routes/routes";
+import { Link } from "react-router-dom";
 
-const UserNavbar = () => {
-    const [loading, setLoading] = useState(false); 
-    return (
-        <nav>
-            <a href="#header">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</a>
-            <a href="#about">ԻՆՉՊԵ՞Ս ՕԳՏՎԵԼ</a>
-            <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
-            <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
-            <UserSelect setLoading={setLoading} />
-        </nav>
-    )
-}
+const UserNavbar = ({setLoading, isLoggedIn}) => {
+
+  return (
+
+    <div>
+      <Link className="header-logo" to="/user">ԵԻՊՔ ԳՐԱԴԱՐԱՆ</Link>
+      <Link to={routes.bookList}>ԳՐՔԵՐԻ ՑԱՆԿ</Link>
+      <Link to={routes.myBooks}>ԻՄ ԳՐՔԵՐԸ</Link>
+      {isLoggedIn ? <UserSelect setLoading={setLoading}/> : <Link to="/login">ՄՈՒՏՔ</Link>}
+      
+    </div>
+  );
+};
+
 export default UserNavbar;
