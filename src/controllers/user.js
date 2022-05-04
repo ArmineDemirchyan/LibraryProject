@@ -3,6 +3,7 @@ import API from "service";
 import { setBooksList } from "store/action-creators/app";
 import store from "store/app";
 import { toast } from "react-toastify";
+import { saveUserInfo } from "store/action-creators/userInfo";
 const UserController = {};
 
 UserController.getBookList = async () => {
@@ -49,7 +50,11 @@ UserController.ReserveNewBook = async (books) => {
 UserController.logOut = async () => {
   localStorage.removeItem("token");
   localStorage.removeItem("refreshToken");
-  return await API.POST(Hosts.BASE_URL, Methods.logOut, "");
+  const response = await API.POST(Hosts.BASE_URL, Methods.logOut, "");
+  if (response.data.hasError) {
+    return toast.error("error");
+  }
+  store.dispatch(saveUserInfo({}));
 };
 
 UserController.getMyBookReservations = async () => {

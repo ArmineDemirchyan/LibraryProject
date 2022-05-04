@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 import API from "service";
+import { saveUserInfo } from "store/action-creators/userInfo";
+import store from "store/app";
 
 const { Hosts, Controllers, Methods } = require("helpers/constants");
 
@@ -80,6 +82,20 @@ SignInController.refreshUser = async () => {
     return false;
   }
   return response;
+};
+
+SignInController.adminLogOut = async () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("refreshToken");
+  const response = await API.POST(
+    Hosts.PUBLIC_URL,
+    `${Controllers.admin}/${Controllers.identity}`,
+    Methods.logOut
+  );
+  if (response.data.hasError) {
+    return toast.error("error");
+  }
+  store.dispatch(saveUserInfo({}));
 };
 
 export default SignInController;

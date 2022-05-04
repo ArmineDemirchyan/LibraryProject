@@ -1,7 +1,9 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { Box } from "@mui/system";
 import ChangePasswordModal from "components/changePasswordModal";
+import SignInController from "controllers/signIn";
 import UserController from "controllers/user";
+import { USER_TYPES } from "helpers/constants";
 import useNavigationWithQueryParams from "helpers/hooks/useNavigationWithQueryParams";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -12,13 +14,16 @@ import "./index.scss";
 
 const UserSelect = ({ setLoading }) => {
   const [changePasswordModal, setChangePasswordModal] = useState(false);
-  const { displayName } = useSelector(userPersonalInfoSelector);
+  const { displayName, role } = useSelector(userPersonalInfoSelector);
   const navigate = useNavigationWithQueryParams();
 
   const handleLogOut = async () => {
     setLoading(true);
-    const res = await UserController.logOut();
-    if (res.hasError) return toast.error(res.errorMessage);
+    const res =
+      role === USER_TYPES.student
+        ? await UserController.logOut()
+        : await SignInController.adminLogOut();
+    if (res?.hasError) return toast.error(res.errorMessage);
     navigate(routes.home);
     setLoading(false);
   };

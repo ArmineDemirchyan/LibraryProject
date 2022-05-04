@@ -28,6 +28,8 @@ export default function AdminUsersList() {
             <Button onClick={handleConfirmUser(row.id)}>հաստատել</Button>
             <Button onClick={handleDeleteUser(row.id)}>մերժել</Button>
           </>
+        ) : row.status === "Blocked" ? (
+          <Button onClick={handleConfirmUser(row.id)}>Ակտիվացնել</Button>
         ) : (
           <Button onClick={handleDeActivateUser(row.id)}>Ապաակտիվացնել</Button>
         );
@@ -63,7 +65,7 @@ export default function AdminUsersList() {
 
   const handleDeActivateUser = (id) => async () => {
     setLoading(true);
-    await AdminController.ChangeUserStatus({ id, status: 0 });
+    await AdminController.ChangeUserStatus({ id, status: 2 });
     await getUsersList();
     setLoading(false);
   };

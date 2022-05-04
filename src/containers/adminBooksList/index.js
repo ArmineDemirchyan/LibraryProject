@@ -1,14 +1,14 @@
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import { IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import AdminBookDeleteModal from "components/adminBookDeleteModal";
+import AdminBookEditModal from "components/adminBookEdit";
+import BookListTableHeaderActions from "components/bookListTableHeaderActions";
+import Loading from "components/loading";
+import UserController from "controllers/user";
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import UserController from "controllers/user";
-import EditIcon from "@mui/icons-material/Edit";
-import Loading from "components/loading";
-import BookListTableHeaderActions from "components/bookListTableHeaderActions";
-import { IconButton } from "@mui/material";
-import AdminBookEditModal from "components/adminBookEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AdminBookDeleteModal from "components/adminBookDeleteModal";
 
 export default function AdminBooksList() {
   const ADMIN_BOOKS_LIST_COLUMNS = [
@@ -57,7 +57,6 @@ export default function AdminBooksList() {
   });
   const [loading, setLoading] = useState(true);
   const [bookList, setBookList] = useState([]);
-
   const handleEdit = (id) => () =>
     setEditModalData({
       isOpened: true,
@@ -96,11 +95,8 @@ export default function AdminBooksList() {
         )}
         <AdminBookEditModal onClose={handleCloseEditModal} {...editModalData} />
         <div className="bookList-table-wrapper">
-          <DataGrid
-            rows={bookList}
-            columns={ADMIN_BOOKS_LIST_COLUMNS}
-            components={{ Header: BookListTableHeaderActions }}
-          />
+          <BookListTableHeaderActions setBookList={setBookList} />
+          <DataGrid rows={bookList} columns={ADMIN_BOOKS_LIST_COLUMNS} />
         </div>
       </div>
     </>
