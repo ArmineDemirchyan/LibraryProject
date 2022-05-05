@@ -28,7 +28,6 @@ const Start = () => {
           <Link to="/login">ՄՈՒՏՔ</Link>
         </div>
       </nav>
-      {/* <UserNavbar setLoading={setLoading} isLoggedIn={false}/> */}
       <div>
         <div className="info">
           <div id="header" className="overlay">

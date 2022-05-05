@@ -31,7 +31,7 @@ export default function AdminHeader({ tabValue, setTabValue }) {
       
         <div className="navright">
           <NavHashLink smooth to="#header" >
-            ԳՐԱԴԱՐԱՆ
+            ԳՐԱԴԱՐԱՆԱՎԱՐ
           </NavHashLink>
         </div>
           <Tabs value={tabValue.id} onChange={handleTabChange}>
