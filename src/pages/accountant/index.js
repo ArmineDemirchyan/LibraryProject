@@ -3,6 +3,7 @@ import Loading from "components/loading";
 import UserSelect from "components/userSelect";
 import { ACCOUNTANT_TABS } from "helpers/constants";
 import React, { useState } from "react";
+import { NavHashLink } from "react-router-hash-link";
 import "./index.scss";
 
 export default function Accountant() {
@@ -17,7 +18,11 @@ export default function Accountant() {
       {loading && <Loading />}
       <div className="accountant-header-wrapper">
         <div className="accountant-header">
-          <div></div>
+        <div className="navright">
+          <NavHashLink smooth to="#header" >
+            ՀԱՇՎԱՊԱՀ
+          </NavHashLink>
+        </div>
           <Tabs value={tabValue.id} onChange={handleTabChange}>
             {ACCOUNTANT_TABS.map((tab) => (
               <Tab label={tab.title} key={tab.id} />

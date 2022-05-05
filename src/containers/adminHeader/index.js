@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { userPersonalInfoSelector } from "store/selectors/userInfo";
+import { NavHashLink } from "react-router-hash-link";
 import "./index.scss";
 
 export default function AdminHeader({ tabValue, setTabValue }) {
@@ -27,7 +28,12 @@ export default function AdminHeader({ tabValue, setTabValue }) {
       {loading && <Loading />}
       <div className="header-container-wrapper">
         <div className="header-container">
-          <div></div>
+      
+        <div className="navright">
+          <NavHashLink smooth to="#header" >
+            ԳՐԱԴԱՐԱՆ
+          </NavHashLink>
+        </div>
           <Tabs value={tabValue.id} onChange={handleTabChange}>
             {(user.role === USER_TYPES.superAdmin
               ? superAdminHeaderData

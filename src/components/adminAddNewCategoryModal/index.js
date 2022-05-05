@@ -28,7 +28,7 @@ export default function AdminAddNewCategoryModal({ opened, onClose }) {
       <div className="edit-modal-container  category-modal-wrapper">
         <h3>Ավելացնել Նոր Կատեգորիա</h3>
         <div className="category">
-          <label htmlFor="name">Կատեգորյաի անունը</label>
+          <label htmlFor="name">Կատեգորիայի անունը</label>
           <TextField id="name" value={name} onChange={handleChange} />
         </div>
         <div className="modal-buttons">
