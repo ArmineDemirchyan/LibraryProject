@@ -11,7 +11,6 @@ import "./index.scss";
 
 export default function AccountantNewBookCreationRequests() {
   const columns = [
-    { field: "id", headerName: "Id", width: 60 },
     { field: "name", headerName: "Գրքի Անուն", flex: 1 },
     { field: "author", headerName: "Հեղինակ", flex: 1 },
     { field: "productionYear", headerName: "Գրքի Տարեթիվ", flex: 1 },

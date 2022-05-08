@@ -117,7 +117,6 @@ export const AdminReservationStatuses = {
 };
 
 export const ADMIN_USER_RESERVATIONS_COLUMNS = [
-  { headerName: "id", field: "id", width: 60 },
   { headerName: "հայտի Ստեղծման Ամսաթիվ", field: "creationDate", flex: 1 },
   {
     headerName: "սպասվող վերցման ամսաթիվ",

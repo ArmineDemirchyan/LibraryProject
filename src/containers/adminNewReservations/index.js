@@ -13,7 +13,6 @@ import "./index.scss";
 
 export default function AdminNewReservations() {
   const columns = [
-    { headerName: "id", field: "id", width: 60 },
     { headerName: "հայտի Ստեղծման Ամսաթիվ", field: "creationDate", flex: 1 },
     {
       headerName: "սպասվող վերցման ամսաթիվ",

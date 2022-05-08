@@ -8,7 +8,6 @@ import "./index.scss";
 
 export default function SuperAdminAdmins() {
   const columns = [
-    { flex: 1, headerName: "id", field: "id" },
     { flex: 1, headerName: "Անուն Ազգանուն", field: "name" },
     { flex: 1, headerName: "Էլ. Փոստ", field: "email" },
     { flex: 1, headerName: "Հեռախոսահամար", field: "phoneNumber" },

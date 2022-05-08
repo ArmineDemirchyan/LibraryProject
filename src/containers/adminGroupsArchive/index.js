@@ -8,7 +8,6 @@ import React, { useEffect, useState } from "react";
 
 export default function AdminGroupsArchive() {
   const groupsListColumns = [
-    { field: "id", headerName: "id", width: 40 },
     {
       field: "number",
       headerName: "Խմբի Համար",

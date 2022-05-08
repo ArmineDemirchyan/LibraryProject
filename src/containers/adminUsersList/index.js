@@ -10,7 +10,6 @@ import AdminUserEditModal from "components/adminUserEditModal";
 
 export default function AdminUsersList() {
   const ADMIN_USERS_LIST_COLUMNS = [
-    { width: 60, headerName: "Id", field: "id" },
     { flex: 1, headerName: "Անուն", field: "firstname" },
     { flex: 1, headerName: "Ազգանուն", field: "lastname" },
     { width: 60, headerName: "Խմբի համար", field: "groupNumber" },

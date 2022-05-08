@@ -11,7 +11,6 @@ import "./index.scss";
 
 export default function AccountantRemovableBookRequests() {
   const columns = [
-    { field: "id", headerName: "Id", width: 60 },
     { field: "bookName", headerName: "Գրքի Անուն", flex: 1 },
     { field: "bookAuthor", headerName: "Հեղինակ", flex: 1 },
     { field: "count", headerName: "Քանակ", width: 120 },
