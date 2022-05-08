@@ -41,10 +41,10 @@
   display: flex;
   justify-content: space-between;
 }
-.modal-buttons{
+.modal-buttons {
   margin-top: 15px;
 }
-.modal-column-input{
+.modal-column-input {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;

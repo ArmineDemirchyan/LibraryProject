@@ -250,4 +250,19 @@ AdminController.changePassword = async (body) => {
   return response.data;
 };
 
+AdminController.upDateUser = async (body) => {
+  const response = await API.PUT(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    `${Methods.users}/${body.id}`,
+    body
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  toast.success("Success");
+  return response.data;
+};
+
 export default AdminController;

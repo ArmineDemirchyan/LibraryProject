@@ -1,10 +1,12 @@
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import AdminUsersListHeaderActions from "components/adminUsersListHeaderActions";
 import Loading from "components/loading";
 import AdminController from "controllers/admin";
 import React, { useEffect, useState } from "react";
 import "./index.scss";
+import EditIcon from "@mui/icons-material/Edit";
+import AdminUserEditModal from "components/adminUserEditModal";
 
 export default function AdminUsersList() {
   const ADMIN_USERS_LIST_COLUMNS = [
@@ -23,19 +25,32 @@ export default function AdminUsersList() {
       field: "actions",
       type: "actions",
       renderCell: ({ row }) => {
-        return row.status === "Inactive" ? (
+        return (
           <>
-            <Button onClick={handleConfirmUser(row.id)}>հաստատել</Button>
-            <Button onClick={handleDeleteUser(row.id)}>մերժել</Button>
+            {row.status === "Inactive" ? (
+              <>
+                <Button onClick={handleConfirmUser(row.id)}>հաստատել</Button>
+                <Button onClick={handleDeleteUser(row.id)}>մերժել</Button>
+              </>
+            ) : row.status === "Blocked" ? (
+              <Button onClick={handleConfirmUser(row.id)}>Ակտիվացնել</Button>
+            ) : (
+              <Button onClick={handleDeActivateUser(row.id)}>
+                Ապաակտիվացնել
+              </Button>
+            )}
+            <IconButton onClick={handleUserEditChange(true, row)}>
+              <EditIcon />
+            </IconButton>
           </>
-        ) : row.status === "Blocked" ? (
-          <Button onClick={handleConfirmUser(row.id)}>Ակտիվացնել</Button>
-        ) : (
-          <Button onClick={handleDeActivateUser(row.id)}>Ապաակտիվացնել</Button>
         );
       },
     },
   ];
+  const [userEditModalData, setUserEditModalData] = useState({
+    open: false,
+    data: null,
+  });
   const [loading, setLoading] = useState(false);
   const [userList, setUserList] = useState([]);
   useEffect(() => {
@@ -48,6 +63,9 @@ export default function AdminUsersList() {
     await getUsersList();
     setLoading(false);
   };
+
+  const handleUserEditChange = (open, data) => () =>
+    setUserEditModalData({ open, data });
 
   const getUsersList = async () => {
     setLoading(true);
@@ -72,6 +90,14 @@ export default function AdminUsersList() {
 
   return (
     <>
+      {userEditModalData.open && (
+        <AdminUserEditModal
+          {...userEditModalData}
+          onClose={handleUserEditChange}
+          setLoading={setLoading}
+          getUsersList={getUsersList}
+        />
+      )}
       {loading && <Loading />}
       <div className="users-list-table-wrapper">
         <AdminUsersListHeaderActions setUserList={setUserList} />
