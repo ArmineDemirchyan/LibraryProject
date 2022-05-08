@@ -3,6 +3,7 @@ import { Controllers, Hosts, Methods } from "helpers/constants";
 import { toast } from "react-toastify";
 import {
   saveAdminsList,
+  saveGroupsList,
   saveReservationsList,
   saveUsersList,
 } from "store/action-creators/app";
@@ -262,6 +263,33 @@ AdminController.upDateUser = async (body) => {
     return false;
   }
   toast.success("Success");
+  return response.data;
+};
+
+AdminController.getAllGroupsList = async () => {
+  const response = await API.GET(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    Methods.groups
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
+  store.dispatch(saveGroupsList(response.data));
+  return response.data;
+};
+
+AdminController.getUsersByGroup = async (groupId) => {
+  const response = await API.GET(
+    Hosts.PUBLIC_URL,
+    Controllers.admin,
+    `${Methods.groups}/${groupId}/${Methods.users}`
+  );
+  if (response.data.hasError) {
+    toast.error(response.data.errorMessage);
+    return false;
+  }
   return response.data;
 };
 

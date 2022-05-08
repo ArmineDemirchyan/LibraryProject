@@ -1,6 +1,7 @@
 import AccountantNewBookCreationRequests from "containers/accountantNewBookCreationRequests";
 import AccountantRemovableBookRequests from "containers/accountantRemovableBookRequests";
 import AdminBooksList from "containers/adminBooksList";
+import AdminGroupsArchive from "containers/adminGroupsArchive";
 import AdminNewReservations from "containers/adminNewReservations";
 import AdminUsersList from "containers/adminUsersList";
 import SuperAdminAdmins from "containers/superAdminAdmins";
@@ -70,15 +71,17 @@ export const USER_NAVIGATION = {
 
 export const adminHeaderData = [
   { title: "Գրքերի Ցանկ", Comp: AdminBooksList, id: 0 },
-  { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 1 },
-  { title: "նոր հայտեր", Comp: AdminNewReservations, id: 2 },
+  { title: "Խմբերի Ցանկ", Comp: AdminGroupsArchive, id: 1 },
+  { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 2 },
+  { title: "նոր հայտեր", Comp: AdminNewReservations, id: 3 },
 ];
 
 export const superAdminHeaderData = [
   { title: "Գրքերի Ցանկ", Comp: AdminBooksList, id: 0 },
-  { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 1 },
-  { title: "նոր հայտեր", Comp: AdminNewReservations, id: 2 },
-  { title: "Ադմիններ", Comp: SuperAdminAdmins, id: 3 },
+  { title: "Խմբերի Ցանկ", Comp: AdminGroupsArchive, id: 1 },
+  { title: "Օգտվողների Ցանկ", Comp: AdminUsersList, id: 2 },
+  { title: "նոր հայտեր", Comp: AdminNewReservations, id: 3 },
+  { title: "Ադմիններ", Comp: SuperAdminAdmins, id: 4 },
 ];
 
 export const ADMIN_CREATE_NEW_BOOK_LIST_INPUTS = [
@@ -181,3 +184,15 @@ export const ACCOUNTANT_TABS = [
   },
 ];
 
+export const ADMIN_GROUPS_LIST_USERS_BY_GROUP_TABLE_COLUMNS = [
+  { width: 60, headerName: "Id", field: "id" },
+  { flex: 1, headerName: "Անուն", field: "firstname" },
+  { flex: 1, headerName: "Ազգանուն", field: "lastname" },
+  { width: 60, headerName: "Խմբի համար", field: "groupNumber" },
+  {
+    flex: 1,
+    headerName: "ՈՒսանողական Քարտի համար",
+    field: "studentCardNumber",
+  },
+  { width: 120, headerName: "Կարգավիճակ", field: "status" },
+];

@@ -38,3 +38,8 @@ export const saveBookDeletionRequests = (payload) => ({
   type: actionTypes.SAVE_BOOK_DELETION_REQUESTS,
   payload,
 });
+
+export const saveGroupsList = (payload) => ({
+  type: actionTypes.SAVE_GROUPS_LIST,
+  payload,
+});

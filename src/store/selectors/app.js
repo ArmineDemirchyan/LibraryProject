@@ -9,3 +9,4 @@ export const bookCreationListSelector = (state) =>
   state.app.bookCreationRequests;
 export const bookDeletionRequestsListSelector = (state) =>
   state.app.bookDeletionRequests;
+export const groupsListSelector = (state) => state.app.groupsList;
