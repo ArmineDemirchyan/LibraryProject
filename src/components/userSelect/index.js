@@ -38,7 +38,7 @@ const UserSelect = ({ setLoading }) => {
         open={changePasswordModal}
         onClose={handleChangePassword}
       />
-      <Box sx={{ minWidth: "10rem" }} className="user-select-box">
+      <Box sx={{ minWidth: "12rem" }} className="user-select-box">
         <FormControl fullWidth>
           <InputLabel>{displayName}</InputLabel>
           <Select variant="standard">
