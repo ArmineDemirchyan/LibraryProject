@@ -68,7 +68,7 @@ export default function AdminUserEditModal({
               onChange={handleChange("lastname")}
             />
           </div>
-          <div className="input-item">
+          {/* <div className="input-item">
             <label htmlFor="Էլ. Փոստ">Էլ. Փոստ</label>
             <TextField
               id={"Էլ. Փոստ"}
@@ -76,7 +76,7 @@ export default function AdminUserEditModal({
               value={userData?.email}
               onChange={handleChange("email")}
             />
-          </div>
+          </div> */}
           <div className="input-item">
             <label htmlFor="Ոսանողական Տոմսի Համար">
               Ոսանողական Տոմսի Համար
