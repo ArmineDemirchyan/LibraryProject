@@ -46,7 +46,7 @@ const UserSelect = ({ setLoading }) => {
               դուրս գալ
             </MenuItem>
             <MenuItem onClick={handleChangePassword(true)} className="menuitem">
-              Փոխել Գաղտնաբառը
+              Փոխել գաղտնաբառը
             </MenuItem>
           </Select>
         </FormControl>

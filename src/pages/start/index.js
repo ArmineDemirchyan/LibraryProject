@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 import SmoothScroll from "smooth-scroll";
 import { NavHashLink } from "react-router-hash-link";
 import "./style.scss";
-// import UserNavbar from "components/UserNavbar";
 export const scroll = new SmoothScroll('Link[to*="#"]', {
   speed: 1000,
   speedAsDuration: true,
 });
 
 const Start = () => {
-  // const [loading, setLoading] =useState(false);
 
   return (
     <div className="container">
