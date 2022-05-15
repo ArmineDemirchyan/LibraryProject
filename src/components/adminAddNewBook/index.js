@@ -25,7 +25,7 @@ export default function AdminAddNewBookModal({ modalOpened, onClose }) {
   const [newBookData, setNewBookData] = useState({
     name: "",
     author: "",
-    productionYear: "",
+    productionYear: 1900,
     description: "",
     pagesCount: "",
     quantity: "",
